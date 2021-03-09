@@ -12,15 +12,16 @@ void create_plane (float length, float width, string file_name) {
  MyFile << "plane\n";
  MyFile << "4\n";
 
- string ponto1 = to_string(length/2) + " 0 " + to_string(width/2) + "\n";
- string ponto2 = to_string(length/2) + " 0 " + to_string(-width/2) + "\n";
- string ponto3 = to_string(-length/2) + " 0 " + to_string(-width/2) + "\n";
- string ponto4 = to_string(-length/2) + " 0 " + to_string(width/2) + "\n";
+ string point1 = to_string(length/2) + " 0 " + to_string(width/2) + "\n";
+ string point2 = to_string(length/2) + " 0 " + to_string(-width/2) + "\n";
+ string point3 = to_string(-length/2) + " 0 " + to_string(-width/2) + "\n";
+ string point4 = to_string(-length/2) + " 0 " + to_string(width/2) + "\n";
 
- MyFile << ponto1;
- MyFile << ponto2;
- MyFile << ponto3;
- MyFile << ponto4;
+//Escrever pontos no ficheiro
+ MyFile << point1;
+ MyFile << point2;
+ MyFile << point3;
+ MyFile << point4;
 
  // Close the file
  MyFile.close();
@@ -40,53 +41,84 @@ void create_box (float length, float width, float height, int divisions, string 
 
     //Top and base
     for (int k = 0; k < 2; k++) {
-        //Na primeira iteração y=height/2, para o topo, e na segunda y=-height/2. para a base.
+        //Na primeira iteração y=height/2, para o topo, e na segunda y=-height/2, para a base.
         float y = (height / 2) - (height * k);
 
         for (int i = 0; i < divisions; i++) {
             for (int j = 0; j < divisions; j++) {
+                //coordenadas do ponto de partida, às quais se aplicarão alterações para obter todos os outros pontos desta face
                 float move_x = (translation_l * j) + (-length / 2);
                 float move_z = (translation_w * i) + (-width / 2);
+
                 string point1 = to_string(move_x) + " " + to_string(y) + " " + to_string(move_z) + " | ";
                 string point2 =to_string(move_x) + " " + to_string(y) + " " + to_string(translation_w + move_z) + " | ";
                 string point3 = to_string(translation_l + move_x) + " " + to_string(y) + " " + to_string(translation_w + move_z) + " | ";
                 string point4 = to_string(translation_l + move_x) + " " + to_string(y) + " " + to_string(move_z) + "\n";
-                //por pontos no file
-                MyFile << ponto1;
-                MyFile << ponto2;
-                MyFile << ponto3;
-                MyFile << ponto4;
+
+                //Escrever pontos no ficheiro
+                MyFile << point1;
+                MyFile << point2;
+                MyFile << point3;
+                MyFile << point4;
             }
         }
     }
 
     //Front and back
     for (int k = 0; k < 2; k++) {
-        //Na primeira iteração z=width/2, para a frente, e na segunda z=-width/2, para trás.
+        //Na primeira iteração z=width/2, para a face da frente, e na segunda z=-width/2, para a face trás.
         float z = (width / 2) - (width * k);
 
         for (int i = 0; i < divisions; i++) {
             for (int j = 0; j < divisions; j++) {
+                //coordenadas do ponto de partida, às quais se aplicarão alterações para obter todos os outros pontos desta face
                 float move_x = (translation_l * j) + (-length / 2);
                 float move_y = (height / 2) - (translation_h * i);
+
                 string point1 = to_string(move_x) + " " + to_string(move_y) + " " + to_string(z) + " | ";
                 string point2 = to_string(move_x) + " " + to_string(move_y - translation_h) + " " + to_string(z) + " | ";
                 string point3 = to_string(move_x + translation_l) + " " + to_string(move_y - translation_h) + " " + to_string(z) + " | ";
                 string point4 = to_string(move_x + translation_l) + " " + to_string(move_y) + " " + to_string(z) + "\n";
-                //por pontos no file
-                MyFile << ponto1;
-                MyFile << ponto2;
-                MyFile << ponto3;
-                MyFile << ponto4;
+
+                //Escrever pontos no ficheiro
+                MyFile << point1;
+                MyFile << point2;
+                MyFile << point3;
+                MyFile << point4;
             }
         }
     }
 
 
     //Right and left
-    
+    for (int k = 0; k < 2; k++) {
+        //Na primeira iteração x=length/2, para a face da direita, e na segunda x=-length/2, para a face da esquerda.
+        float x = (length / 2) - (length * k);
+
+        for (int i = 0; i < divisions; i++) {
+            for (int j = 0; j < divisions; j++) {
+                //coordenadas do ponto de partida, às quais se aplicarão alterações para obter todos os outros pontos desta face
+                float move_y = (height / 2) - (translation_h * i);
+                float move_z = (width / 2) - (translation_w * j);
+
+                string point1 = to_string(x) + " " + to_string(move_y) + " " + to_string(move_z) + " | ";
+                string point2 = to_string(x) + " " + to_string(move_y - translation_h) + " " + to_string(move_z) + " | ";
+                string point3 = to_string(x) + " " + to_string(move_y - translation_h) + " " + to_string(move_z - translation_w) + " | ";
+                string point4 = to_string(x) + " " + to_string(move_y) + " " + to_string(move_z - translation_w) + "\n";
+
+                //Escrever pontos no ficheiro
+                MyFile << point1;
+                MyFile << point2;
+                MyFile << point3;
+                MyFile << point4;
+            }
+        }
+    }
+
+    MyFile.close();
 
 }
+
 
 
 
@@ -127,6 +159,7 @@ int main(int argc, char const *argv[]) {
             }
           }
         }
+      }
 
     } else if (strcmp(argv[1], "Sphere") == 0) {
       //do something
