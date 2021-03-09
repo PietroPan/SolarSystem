@@ -27,48 +27,68 @@ void create_plane (float length, float width, string file_name) {
 }
 
 void create_box (float length, float width, float height, int divisions, string file_name) {
-  // Create and open a text file
-  ofstream MyFile(file_name);
+    // Create and open a text file
+    ofstream MyFile(file_name);
 
-  // Write to the file
-   MyFile << "box\n";
-   MyFile << to_string(4*divisions*divisions*6) + "\n";
+    // Write to the file
+    MyFile << "box\n";
+    MyFile << to_string(4 * divisions * divisions * 6) + "\n";
 
-   float translation_l = length/divisions;
-   float translation_w = width/divisions;
-   float translation_h = height/divisions;
+    float translation_l = length / divisions;
+    float translation_w = width / divisions;
+    float translation_h = height / divisions;
 
-   //Top and base
-   for (int k = 0; k < 2; k++) {
-     //Na primeira iteração y=height/2, para o topo, e na segunda y=-height/2. para a base.
-     float y = (height/2) - (height*k);
+    //Top and base
+    for (int k = 0; k < 2; k++) {
+        //Na primeira iteração y=height/2, para o topo, e na segunda y=-height/2. para a base.
+        float y = (height / 2) - (height * k);
 
-     for (int i = 0; i < divisions; i++) {
-       for (int j = 0; j < divisions; j++) {
-         float move_x = (translation_l*j)+(-length/2);
-         float move_z = (translation_w*i)+(-width/2);
-         string point1 = to_string(move_x) + " " + to_string(y) + " " + to_string(move_z) + " | ";
-         string point2 = to_string(move_x) + " " + to_string(y) + " " + to_string(translation_w + move_z) + " | ";
-         string point3 = to_string(translation_l + move_x) + " " + to_string(y) + " " + to_string(translation_w + move_z) + " | ";
-         string point4 = to_string(translation_l + move_x) + " " + to_string(y) + " " + to_string(move_z) + "\n";
-       }
-     }
-   }
+        for (int i = 0; i < divisions; i++) {
+            for (int j = 0; j < divisions; j++) {
+                float move_x = (translation_l * j) + (-length / 2);
+                float move_z = (translation_w * i) + (-width / 2);
+                string point1 = to_string(move_x) + " " + to_string(y) + " " + to_string(move_z) + " | ";
+                string point2 =to_string(move_x) + " " + to_string(y) + " " + to_string(translation_w + move_z) + " | ";
+                string point3 = to_string(translation_l + move_x) + " " + to_string(y) + " " + to_string(translation_w + move_z) + " | ";
+                string point4 = to_string(translation_l + move_x) + " " + to_string(y) + " " + to_string(move_z) + "\n";
+                //por pontos no file
+                MyFile << ponto1;
+                MyFile << ponto2;
+                MyFile << ponto3;
+                MyFile << ponto4;
+            }
+        }
+    }
 
-   //Front and back
-   for (int k = 0; k < 2; k++) {
-     //Na primeira iteração z=width/2, para a frente, e na segunda z=-width/2, para trás.
-     float z = (width/2) - (width*k);
+    //Front and back
+    for (int k = 0; k < 2; k++) {
+        //Na primeira iteração z=width/2, para a frente, e na segunda z=-width/2, para trás.
+        float z = (width / 2) - (width * k);
 
-     for (int i = 0; i < divisions; i++) {
-       for (int j = 0; j < divisions; j++) {
-         float move_x = (translation_l*j)+(-length/2);
-         float move_y = (translation_h*j)+(-height/2);
-         string point1 = to_string(move_x) + " " + to_string(z) + " " + to_string(move_z) + " | ";
-         string point2 = to_string(move_x) + " " + to_string(z) + " " + to_string(translation_w + move_z) + " | ";
-         string point3 = to_string(translation_l + move_x) + " " + to_string(z) + " " + to_string(translation_w + move_z) + " | ";
-         string point4 = to_string(translation_l + move_x) + " " + to_string(z) + " " + to_string(move_z) + "\n";
+        for (int i = 0; i < divisions; i++) {
+            for (int j = 0; j < divisions; j++) {
+                float move_x = (translation_l * j) + (-length / 2);
+                float move_y = (height / 2) - (translation_h * i);
+                string point1 = to_string(move_x) + " " + to_string(move_y) + " " + to_string(z) + " | ";
+                string point2 = to_string(move_x) + " " + to_string(move_y - translation_h) + " " + to_string(z) + " | ";
+                string point3 = to_string(move_x + translation_l) + " " + to_string(move_y - translation_h) + " " + to_string(z) + " | ";
+                string point4 = to_string(move_x + translation_l) + " " + to_string(move_y) + " " + to_string(z) + "\n";
+                //por pontos no file
+                MyFile << ponto1;
+                MyFile << ponto2;
+                MyFile << ponto3;
+                MyFile << ponto4;
+            }
+        }
+    }
+
+
+    //Right and left
+    
+
 }
+
+
 
 int main(int argc, char const *argv[]) {
 
