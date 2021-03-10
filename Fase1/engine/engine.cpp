@@ -5,32 +5,7 @@
 #include <cstring>
 #include "figura3d.cpp"
 
-float pontosPlano[][3] = {{1.0f, 0.0f, 1.0f},
-                          {1.0f, 0.0f, -1.0f},
-                          {-1.0f, 0.0f, 1.0f},
-                          {-1.0f, 0.0f, 1.0f},
-                          {1.0f, 0.0f, -1.0f},
-                          {-1.0f, 0.0f, -1.0f}};
-
-Plano* p = new Plano(6, pontosPlano);
-
 list<Figura3d*> figuras;
-
-Figura3d* file2Figure(string nomeFicheiro) {
-    ifstream infile(nomeFicheiro.c_str());
-    //infile.open(nomeFicheiro);
-    bool teste = infile.is_open();
-    if (teste) {
-        cout << "Abriu o ficheiro" << endl;
-        char tipoFigura[50];
-        infile.getline(tipoFigura, 50);
-        cout << "O tipo da figura é " << (string) tipoFigura << endl;
-
-        if (strcmp(tipoFigura, "plane") == 0) return new Plano(infile);
-    }
-
-    infile.close();
-}
 
 
 void changeSize(int w, int h)
@@ -61,7 +36,7 @@ void renderScene(void)
 
     // set camera
     glLoadIdentity();
-    gluLookAt(5.0,5.0,5.0,
+    gluLookAt(15.0,15.0,15.0,
               0.0,0.0,0.0,
               0.0f,1.0f,0.0f);
 
@@ -87,7 +62,21 @@ void printInfo() {
 
 int main(int argc, char** argv)
 {
-    figuras.push_back(file2Figure("/home/mane/github/CG/Fase1/engine/plane.txt"));
+
+
+    list <string> filesToRead;
+
+    //simula a leitura do xml e retreive do nome dos ficheiros a ler
+    filesToRead.emplace_back("sphere.3d");
+    filesToRead.emplace_back("cone.3d");
+
+
+    list<string> :: iterator it;
+    for (it = filesToRead.begin(); it != filesToRead.end(); ++it) {
+        string aux = *it;
+        figuras.push_back(new Figura3d(aux));
+    }
+
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
     glutInitWindowPosition(100, 100);
@@ -95,7 +84,6 @@ int main(int argc, char** argv)
     glutCreateWindow("Figura3D");
 
     glutDisplayFunc(renderScene);
-    //glutIdleFunc(renderScene);
     glutReshapeFunc(changeSize);
 
     // some OpenGL settings
