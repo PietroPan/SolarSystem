@@ -9,7 +9,7 @@ void create_plane (float length, float width, string file_name) {
  ofstream MyFile(file_name);
 
  // Write to the file
- MyFile << "plane\n";
+ MyFile << "Plane\n";
  MyFile << "4\n";
 
  string point1 = to_string(length/2) + " 0 " + to_string(width/2) + "\n";
@@ -32,8 +32,8 @@ void create_box (float length, float width, float height, int divisions, string 
     ofstream MyFile(file_name);
 
     // Write to the file
-    MyFile << "box\n";
-    MyFile << to_string(4 * divisions * divisions * 6) + "\n";
+    MyFile << "Box\n";
+    MyFile << to_string(4 * divisions * divisions * 6) + "\n"; //ns se esta bem
 
     float translation_l = length / divisions;
     float translation_w = width / divisions;
@@ -125,9 +125,7 @@ int main(int argc, char const *argv[]) {
   if (argc<2) {
     cout << "O número de argumentos é incorreto. \n\n";
 
-  } else {
-
-    if (strcmp(argv[1], "Plane") == 0) {
+  } else if (strcmp(argv[1], "Plane") == 0) {
 
       if (argc == 5) {
         float length = stof(argv[2]);
@@ -140,7 +138,7 @@ int main(int argc, char const *argv[]) {
 
     } else if (strcmp(argv[1], "Box") == 0) {
 
-        if (argc >= 6) {
+        if (argc==6 | argc==7) {
           float length = stof(argv[2]);
           float width = stof(argv[3]);
           float height = stof(argv[4]);
@@ -149,17 +147,16 @@ int main(int argc, char const *argv[]) {
           if (argc == 7) {
             divisions = stoi(argv[5]);
             if (length > 0.0f && width > 0.0f && height > 0.0f && divisions > 0) {
-              create_box(length,width,height,divisions,argv[6]);
-
+                create_box(length, width, height, divisions, argv[6]);
+            }
           } else {
             if (length > 0.0f && width > 0.0f && height > 0.0f && divisions > 0) {
               create_box(length,width,height,divisions,argv[5]);
+
             }
           }
         }
-      }
-
-    } else if (strcmp(argv[1], "Sphere") == 0) {
+      } else if (strcmp(argv[1], "Sphere") == 0) {
       //do something
 
     } else if (strcmp(argv[1], "Cone") == 0) {
@@ -168,9 +165,5 @@ int main(int argc, char const *argv[]) {
     } else {
       cout << "Primitiva desconhecida. \n\n";
     }
-
-  }
-
-
   return 0;
 }
