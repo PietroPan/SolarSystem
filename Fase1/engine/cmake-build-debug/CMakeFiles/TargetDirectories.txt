@@ -1,0 +1,3 @@
+/home/mane/github/CG/Fase1/engine/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/mane/github/CG/Fase1/engine/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/mane/github/CG/Fase1/engine/cmake-build-debug/CMakeFiles/Fase1.dir

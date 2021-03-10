@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/Fase1.dir/figura3d.cpp.o CMakeFiles/Fase1.dir/engine.cpp.o  -o Fase1  /usr/lib/x86_64-linux-gnu/libOpenGL.so /usr/lib/x86_64-linux-gnu/libGLX.so /usr/lib/x86_64-linux-gnu/libGLU.so /usr/lib/x86_64-linux-gnu/libglut.so 
