@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/mane/github/CG/Fase1/engine/engine.cpp
+cstring
+-
+figura3d.cpp
+/home/mane/github/CG/Fase1/engine/figura3d.cpp
+
+/home/mane/github/CG/Fase1/engine/figura3d.cpp
+GLUT/glut.h
+-
+GL/glut.h
+-
+math.h
+-
+cstdio
+-
+iostream
+-
+fstream
+-
+string
+-
+list
+-
+iterator
+-
+

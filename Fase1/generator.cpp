@@ -120,8 +120,6 @@ void create_box (float length, float width, float height, int divisions, string 
 }
 
 
-
-
 int main(int argc, char const *argv[]) {
 
   if (argc<2) {
