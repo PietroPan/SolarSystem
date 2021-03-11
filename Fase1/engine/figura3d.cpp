@@ -52,7 +52,7 @@ private:
     }
 
     void readBox() {}
-    
+
     void readSphere(ifstream &file) {
         if (file.is_open()) {
             char contentor[100];
@@ -65,10 +65,10 @@ private:
             for (int i = 0; i < distinctPoints; i++) {
                 file.getline(contentor, 100);
                 float coordsPonto[3];
-                int index = 1;
+                int index = 0;
                 for (int x = 0; x<3; x++) {
                     char umFloat[50];
-                    for (int n = 0; contentor[index] != ',' && contentor[index] != ')'; n++) {
+                    for (int n = 0; contentor[index] != ' ' && contentor[index] != '\n'; n++) {
                         umFloat[n] = contentor[index++];
                         umFloat[n+1] = '\0';
                     }
