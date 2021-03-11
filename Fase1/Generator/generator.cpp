@@ -71,7 +71,7 @@ void create_box (float length, float width, float height, int divisions, string 
 
     // Write to the file
     MyFile << "Box\n";
-    MyFile << to_string(4 * divisions * divisions * 6) + "\n"; //ns se esta bem
+    MyFile << to_string(6 * divisions * divisions * 6) + "\n"; //ns se esta bem
 
     float translation_l = length / divisions;
     float translation_w = width / divisions;
