@@ -12,6 +12,7 @@
 #include <list>
 #include <iterator>
 #include <cstring>
+#include <map>
 
 using namespace std;
 
@@ -93,6 +94,64 @@ private:
         }
     }
 
+    void mapRead(ifstream &file) {
+        if (file.is_open()) {
+            char contentor[100];
+            file.getline(contentor, 100); // contentor tem o número total de pontos que vai ler
+
+            this->nr_pontos = stoi(contentor);
+            this->pontos = new float*[nr_pontos];
+            map <int, float*> auxMap;
+            int nextKey = 0;
+
+            for (int i = 0; i < nr_pontos; i++) {
+                this->pontos[i] = new float[3];
+                file.getline(contentor, 100);
+                float coordsPonto[3];
+
+                bool b = contentor[0] == 'i';
+                if (b) {
+                    // Encontra um índice
+                    int indice = contentor[1] - '0';
+                    auto it = auxMap.find(indice);
+                    bool encontraChave = it != auxMap.end();
+                    if (encontraChave) {
+                        float* ponto = it->second;
+                        for (int j = 0; j<3; j++) {
+                            this->pontos[i][j] = ponto[j];
+                        }
+                    }
+                } else {
+                    // Encontra um novo ponto
+                    int index = 0;
+                    float* valueMapa = new float[3];
+                    for (int x = 0; x<3; x++) {
+                        char umFloat[100];
+                        for (int n = 0; contentor[index] != ' ' && contentor[index] != '\0'; n++, index++) {
+                            umFloat[n] = contentor[index];
+                            umFloat[n+1] = '\0';
+                        }
+                        index++;
+                        this->pontos[i][x] = stof(umFloat);
+                        valueMapa[x] = this->pontos[i][x];
+                    }
+                    auxMap.insert(pair<int,float*>(nextKey++, valueMapa));
+                }
+                float x,y,z;
+                x = this->pontos[i][0];
+                y = this->pontos[i][1];
+                z = this->pontos[i][2];
+                float auxArray[i+1][3];
+                for (int z = 0; z <= i; z++) {
+                    for (int zz = 0; zz<3; zz++) {
+                        auxArray[z][zz] = pontos[z][zz];
+                    }
+                }
+                int aiaia = 0;
+            }
+        }
+    }
+
 public:
 
     Figura3d(string nomeFicheiro) {
@@ -102,8 +161,16 @@ public:
             char tipoFigura[50];
             infile.getline(tipoFigura, 50);
 
-            if (strcmp(tipoFigura, "plane") == 0) readPlane(infile);
-            else if (strcmp(tipoFigura, "sphere") == 0 || strcmp(tipoFigura, "cone") == 0 || strcmp(tipoFigura, "Cone") == 0) readSphere(infile);
+            if (isupper(tipoFigura[0]) != 0) { // Versão da Maria e Carolina
+                mapRead(infile);
+
+            }
+
+            else if (strcmp(tipoFigura, "plane") == 0) readPlane(infile);
+            else if (strcmp(tipoFigura, "sphere") == 0 ||
+                     strcmp(tipoFigura, "cone") == 0 ||
+                     strcmp(tipoFigura, "Cone") == 0 ||
+                     strcmp(tipoFigura, "box") == 0) readSphere(infile);
         }
 
         infile.close();
@@ -122,6 +189,11 @@ public:
 
             for (int j = 0; j<3; j++) {
                 int pos = 3 * i + j;
+                float x, y, z;
+                x = pontos[pos][0];
+                y = pontos[pos][1];
+                z = pontos[pos][2];
+                cout << x << " " << y << " " << z << endl;
                 glVertex3f(pontos[pos][0], pontos[pos][1], pontos[pos][2]);
             }
         }
