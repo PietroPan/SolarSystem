@@ -58,7 +58,7 @@ class compareStr {
       }
 };
 
-int search_point(ostream& file, map<string,int,compareStr> m, string point, int index) {
+int search_point(ostream& file, map<string,int> &m, string point, int index) {
   auto it = m.find(point);
   if ( it == m.end() ) {
     //not found
@@ -80,13 +80,13 @@ void create_box (float length, float width, float height, int divisions, string 
 
     // Write to the file
     MyFile << "Box\n";
-    MyFile << to_string(4 * divisions * divisions * 6) + "\n"; //ns se esta bem
+    MyFile << to_string(6 * divisions * divisions * 6) + "\n"; //ns se esta bem
 
     float translation_l = length / divisions;
     float translation_w = width / divisions;
     float translation_h = height / divisions;
 
-    map<string,int,compareStr> m;
+    map<string,int> m;
 
     int index = 0;
     std::cout.precision(std::numeric_limits<float>::digits10);
@@ -125,6 +125,7 @@ void create_box (float length, float width, float height, int divisions, string 
                 if (res > index) index = res;
 
                 MyFile << "/" + to_string(index_point0) + "\n";
+
 
             }
         }
