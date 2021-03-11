@@ -50,7 +50,15 @@ void create_plane (float length, float width, string file_name) {
  MyFile.close();
 }
 
-int search_point(ostream& file, map<string,int> m, string point, int index) {
+class compareStr {
+   public:
+      bool operator() (const string  first, const string  second ) const  {
+         if (first.compare(second) == 0) return true;
+         return false;
+      }
+};
+
+int search_point(ostream& file, map<string,int,compareStr> m, string point, int index) {
   auto it = m.find(point);
   if ( it == m.end() ) {
     //not found
@@ -78,7 +86,7 @@ void create_box (float length, float width, float height, int divisions, string 
     float translation_w = width / divisions;
     float translation_h = height / divisions;
 
-    map<string,int> m;
+    map<string,int,compareStr> m;
 
     int index = 0;
     std::cout.precision(std::numeric_limits<float>::digits10);
