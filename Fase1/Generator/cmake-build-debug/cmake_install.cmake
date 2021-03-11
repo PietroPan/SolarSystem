@@ -1,4 +1,4 @@
-# Install script for directory: /home/mane/github/CG/Fase1/Generator
+# Install script for directory: /home/maria/Desktop/3º Ano/Computação Gráfica/Projeto/CG/Fase1/Generator
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/mane/github/CG/Fase1/Generator/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/maria/Desktop/3º Ano/Computação Gráfica/Projeto/CG/Fase1/Generator/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

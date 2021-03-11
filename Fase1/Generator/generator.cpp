@@ -50,25 +50,16 @@ void create_plane (float length, float width, string file_name) {
  MyFile.close();
 }
 
-class compareStr {
-   public:
-      bool operator() (const string & first, const string & second ) const  {
-         if (first.compare(second) == 0) return true;
-         return false;
-      }
-};
-
-int search_point(ostream& file, map<string,int,compareStr> m, string point, int index) {
+int search_point(ostream& file, map<string,int>& m, string point, int index) {
   auto it = m.find(point);
   if ( it == m.end() ) {
-    //not found
     m.insert({point,index});
     file << point;
     return index+1; //retorna o valor de index incrementado para indicar que houve inserção no mapa
 
   } else {
     // found
-    file << "/" + to_string(it->second) + "\n";
+    file << "i" + to_string(it->second) + "\n";
     return index; //retorna o mesmo valor de index passado como argumento para indicar que não houve inserção no mapa
   }
 
@@ -86,7 +77,7 @@ void create_box (float length, float width, float height, int divisions, string 
     float translation_w = width / divisions;
     float translation_h = height / divisions;
 
-    map<string,int,compareStr> m;
+    map<string,int> m;
 
     int index = 0;
     std::cout.precision(std::numeric_limits<float>::digits10);
@@ -118,13 +109,13 @@ void create_box (float length, float width, float height, int divisions, string 
                 if (index_point2 > index) { index = index_point2; index_point2--; }
 
                 //Segundo triangulo
-                MyFile << "/" + to_string(index_point2) + "\n";
+                MyFile << "i" + to_string(index_point2) + "\n";
 
                 string point3 = to_string(translation_l + move_x) + " " + to_string(y) + " " + to_string(move_z) + "\n";
                 res = search_point(MyFile, m, point3, index);
                 if (res > index) index = res;
 
-                MyFile << "/" + to_string(index_point0) + "\n";
+                MyFile << "i" + to_string(index_point0) + "\n";
 
             }
         }
@@ -156,13 +147,13 @@ void create_box (float length, float width, float height, int divisions, string 
                 if (index_point2 > index) { index = index_point2; index_point2--; }
 
                 //Segundo triangulo
-                MyFile << "/" + to_string(index_point2) + "\n";
+                MyFile << "i" + to_string(index_point2) + "\n";
 
                 string point3 = to_string(move_x + translation_l) + " " + to_string(move_y) + " " + to_string(z) + "\n";
                 res = search_point(MyFile, m, point3, index);
                 if (res > index) index = res;
 
-                MyFile << "/" + to_string(index_point0) + "\n";
+                MyFile << "i" + to_string(index_point0) + "\n";
 
             }
         }
@@ -195,13 +186,13 @@ void create_box (float length, float width, float height, int divisions, string 
                 if (index_point2 > index) { index = index_point2; index_point2--; }
 
                 //Segundo triangulo
-                MyFile << "/" + to_string(index_point2) + "\n";
+                MyFile << "i" + to_string(index_point2) + "\n";
 
                 string point3 = to_string(x) + " " + to_string(move_y) + " " + to_string(move_z - translation_w) + "\n";
                 res = search_point(MyFile, m, point3, index);
                 if (res > index) index = res;
 
-                MyFile << "/" + to_string(index_point0) + "\n";
+                MyFile << "i" + to_string(index_point0) + "\n";
 
             }
         }
@@ -209,15 +200,6 @@ void create_box (float length, float width, float height, int divisions, string 
 
     MyFile.close();
 
-}
-
-
-void createSphere(float radius, int slices, int stacks, string file_name){
-    //ff do Alex
-}
-
-void createCone(float radius, float height, int slices, int stacks, string file_name){
-    // ff do Alex
 }
 
 
@@ -259,26 +241,16 @@ int main(int argc, char const *argv[]) {
           } else {
             if (length > 0.0f && width > 0.0f && height > 0.0f && divisions > 0) {
               create_box(length,width,height,divisions,argv[5]);
+
             }
           }
         }
-    } else if (argc == 6 && strcmp(argv[1], "Sphere") == 0) {
-            float radius = stof(argv[2]);
-            int slices = stoi(argv[3]);
-            int stacks = stoi(argv[4]);
+      } else if (strcmp(argv[1], "Sphere") == 0) {
+      //do something
 
-            if(radius > 0.0f && slices > 0 && stacks> 0){
-                createSphere(radius, slices, stacks, argv[5]);
-              }
-    } else if (argc == 7 && strcmp(argv[1], "Cone") == 0) {
-          float radius = stof(argv[2]);
-          float height = stof(argv[3]);
-          int slices = stoi(argv[4]);
-          int stacks = stoi(argv[5]);
+    } else if (strcmp(argv[1], "Cone") == 0) {
+      //do something
 
-        if(radius > 0.0f && height > 0.0f && slices > 0 && stacks> 0){
-            createCone(radius, height, slices, stacks, argv[6]);
-        }
     } else {
       cout << "Primitiva desconhecida. \n\n";
     }
