@@ -1,1 +1,0 @@
-CMakeLists.txt not found in /home/maria/Desktop/3º Ano/Computação Gráfica/Projeto/CG/Fase1/generator Select CMakeLists.txt
