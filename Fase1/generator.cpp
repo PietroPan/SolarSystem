@@ -52,7 +52,7 @@ void create_plane (float length, float width, string file_name) {
 
 class compareStr {
    public:
-      bool operator() (const string  first, const string  second ) const  {
+      bool operator() (const string & first, const string & second ) const  {
          if (first.compare(second) == 0) return true;
          return false;
       }
@@ -240,6 +240,12 @@ int main(int argc, char const *argv[]) {
             divisions = stoi(argv[5]);
             if (length > 0.0f && width > 0.0f && height > 0.0f && divisions > 0) {
                 create_box(length, width, height, divisions, argv[6]);
+                /*
+                string point0 = to_string(0.2f) + " " + to_string(1.5f) + " " + to_string(0.7f) + "\n";
+                string point1 = to_string(0.2f) + " " + to_string(1.5f) + " " + to_string(0.7f) + "\n";
+                cout << to_string(point0.compare(point1)) + "\n";
+                */
+
             }
           } else {
             if (length > 0.0f && width > 0.0f && height > 0.0f && divisions > 0) {
