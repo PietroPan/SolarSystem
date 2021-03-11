@@ -1,0 +1,6 @@
+/snap/clion/139/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/mane/github/CG/Fase1/Generator
+-- Found OpenGL: /usr/lib/x86_64-linux-gnu/libOpenGL.so   
+-- Found GLUT: /usr/lib/x86_64-linux-gnu/libglut.so  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/mane/github/CG/Fase1/Generator/cmake-build-debug
