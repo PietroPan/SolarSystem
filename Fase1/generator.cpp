@@ -212,6 +212,15 @@ void create_box (float length, float width, float height, int divisions, string 
 }
 
 
+void createSphere(float radius, int slices, int stacks, string file_name){
+    //ff do Alex
+}
+
+void createCone(float radius, float height, int slices, int stacks, string file_name){
+    // ff do Alex
+}
+
+
 int main(int argc, char const *argv[]) {
 
   if (argc<2) {
@@ -250,16 +259,26 @@ int main(int argc, char const *argv[]) {
           } else {
             if (length > 0.0f && width > 0.0f && height > 0.0f && divisions > 0) {
               create_box(length,width,height,divisions,argv[5]);
-
             }
           }
         }
-      } else if (strcmp(argv[1], "Sphere") == 0) {
-      //do something
+    } else if (argc == 6 && strcmp(argv[1], "Sphere") == 0) {
+            float radius = stof(argv[2]);
+            int slices = stoi(argv[3]);
+            int stacks = stoi(argv[4]);
 
-    } else if (strcmp(argv[1], "Cone") == 0) {
-      //do something
+            if(radius > 0.0f && slices > 0 && stacks> 0){
+                createSphere(radius, slices, stacks, argv[5]);
+              }
+    } else if (argc == 7 && strcmp(argv[1], "Cone") == 0) {
+          float radius = stof(argv[2]);
+          float height = stof(argv[3]);
+          int slices = stoi(argv[4]);
+          int stacks = stoi(argv[5]);
 
+        if(radius > 0.0f && height > 0.0f && slices > 0 && stacks> 0){
+            createCone(radius, height, slices, stacks, argv[6]);
+        }
     } else {
       cout << "Primitiva desconhecida. \n\n";
     }
