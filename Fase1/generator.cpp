@@ -54,12 +54,13 @@ int search_point(ostream& file, map<string,int> m, string point, int index) {
   if ( it == m.end() ) {
     //not found
     m.insert({point,index});
-    return index+1;
+    return index+1; //retorna o valor de index incrementado para indicar que houve inserção no mapa
+  }
 
   } else {
     // found
     file << "/" + to_string(it->second) + "\n";
-    return index;
+    return index; //retorna o mesmo valor de index passado como argumento para indicar que não houve inserção no mapa
   }
 
 }
@@ -96,7 +97,7 @@ void create_box (float length, float width, float height, int divisions, string 
 
                 string point0 = to_string(move_x) + " " + to_string(y) + " " + to_string(move_z) + " | ";
                 index_point0 = search_point(MyFile, m, point0, index);
-                if (index_point0 > index) index = index_point0;
+                if (index_point0 > index) { index = index_point0; index_point0--; }
 
                 string point1 =to_string(move_x) + " " + to_string(y) + " " + to_string(translation_w + move_z) + " | ";
                 int res = search_point(MyFile,m,point1,index);
@@ -104,7 +105,7 @@ void create_box (float length, float width, float height, int divisions, string 
 
                 string point2 = to_string(translation_l + move_x) + " " + to_string(y) + " " + to_string(translation_w + move_z) + " | ";
                 index_point2 = search_point(MyFile, m, point2, index);
-                if (index_point2 > index) index = index_point2;
+                if (index_point2 > index) { index = index_point2; index_point2--; }
 
                 //Segundo triangulo
                 MyFile << "/" + to_string(index_point2) + "\n";
@@ -129,17 +130,30 @@ void create_box (float length, float width, float height, int divisions, string 
                 //coordenadas do ponto de partida, às quais se aplicarão alterações para obter todos os outros pontos desta face
                 float move_x = (translation_l * j) + (-length / 2);
                 float move_y = (height / 2) - (translation_h * i);
+                int index_point0;
+                int index_point2;
 
-                string point1 = to_string(move_x) + " " + to_string(move_y) + " " + to_string(z) + " | ";
-                string point2 = to_string(move_x) + " " + to_string(move_y - translation_h) + " " + to_string(z) + " | ";
-                string point3 = to_string(move_x + translation_l) + " " + to_string(move_y - translation_h) + " " + to_string(z) + " | ";
-                string point4 = to_string(move_x + translation_l) + " " + to_string(move_y) + " " + to_string(z) + "\n";
+                string point0 = to_string(move_x) + " " + to_string(move_y) + " " + to_string(z) + " | ";
+                index_point0 = search_point(MyFile, m, point0, index);
+                if (index_point0 > index) index = { index = index_point0; index_point0--; }
 
-                //Escrever pontos no ficheiro
-                MyFile << point1;
-                MyFile << point2;
-                MyFile << point3;
-                MyFile << point4;
+                string point1 = to_string(move_x) + " " + to_string(move_y - translation_h) + " " + to_string(z) + " | ";
+                int res = search_point(MyFile,m,point1,index);
+                if (res > index) index = res;
+
+                string point2 = to_string(move_x + translation_l) + " " + to_string(move_y - translation_h) + " " + to_string(z) + " | ";
+                index_point2 = search_point(MyFile, m, point2, index);
+                if (index_point2 > index) index = { index = index_point2; index_point2--; }
+
+                //Segundo triangulo
+                MyFile << "/" + to_string(index_point2) + "\n";
+
+                string point3 = to_string(move_x + translation_l) + " " + to_string(move_y) + " " + to_string(z) + "\n";
+                res = search_point(MyFile, m, point3, index);
+                if (res > index) index = res;
+
+                MyFile << "/" + to_string(index_point0) + "\n";
+
             }
         }
     }
@@ -155,17 +169,30 @@ void create_box (float length, float width, float height, int divisions, string 
                 //coordenadas do ponto de partida, às quais se aplicarão alterações para obter todos os outros pontos desta face
                 float move_y = (height / 2) - (translation_h * i);
                 float move_z = (width / 2) - (translation_w * j);
+                int index_point0;
+                int index_point2;
 
-                string point1 = to_string(x) + " " + to_string(move_y) + " " + to_string(move_z) + " | ";
-                string point2 = to_string(x) + " " + to_string(move_y - translation_h) + " " + to_string(move_z) + " | ";
-                string point3 = to_string(x) + " " + to_string(move_y - translation_h) + " " + to_string(move_z - translation_w) + " | ";
-                string point4 = to_string(x) + " " + to_string(move_y) + " " + to_string(move_z - translation_w) + "\n";
+                string point0 = to_string(x) + " " + to_string(move_y) + " " + to_string(move_z) + " | ";
+                index_point0 = search_point(MyFile, m, point0, index);
+                if (index_point0 > index) index = { index = index_point0; index_point0--; }
 
-                //Escrever pontos no ficheiro
-                MyFile << point1;
-                MyFile << point2;
-                MyFile << point3;
-                MyFile << point4;
+                string point1 = to_string(x) + " " + to_string(move_y - translation_h) + " " + to_string(move_z) + " | ";
+                int res = search_point(MyFile,m,point1,index);
+                if (res > index) index = res;
+
+                string point2 = to_string(x) + " " + to_string(move_y - translation_h) + " " + to_string(move_z - translation_w) + " | ";
+                index_point2 = search_point(MyFile, m, point2, index);
+                if (index_point2 > index) index = { index = index_point2; index_point2--; }
+
+                //Segundo triangulo
+                MyFile << "/" + to_string(index_point2) + "\n";
+
+                string point3 = to_string(x) + " " + to_string(move_y) + " " + to_string(move_z - translation_w) + "\n";
+                res = search_point(MyFile, m, point3, index);
+                if (res > index) index = res;
+
+                MyFile << "/" + to_string(index_point0) + "\n";
+
             }
         }
     }
