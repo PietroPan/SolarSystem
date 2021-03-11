@@ -11,13 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbb0fe9f-a519-4bb6-84f1-1e2c21bb6069" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Engine/cone3.3d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Engine/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Engine/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Engine/cmake-build-debug/CMakeFiles/Engine.dir/engine.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Engine/cmake-build-debug/CMakeFiles/Engine.dir/engine.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Engine/cmake-build-debug/Engine" beforeDir="false" afterPath="$PROJECT_DIR$/../Engine/cmake-build-debug/Engine" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Engine/engine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Engine/engine.cpp" afterDir="false" />
-    </list>
+    <list default="true" id="bbb0fe9f-a519-4bb6-84f1-1e2c21bb6069" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,7 +64,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1615487427212</updated>
-      <workItem from="1615487428555" duration="701000" />
+      <workItem from="1615487428555" duration="973000" />
     </task>
     <servers />
   </component>
