@@ -67,7 +67,7 @@ int main(int argc, char** argv)
 
     //simula a leitura do xml e retreive do nome dos ficheiros a ler
     //filesToRead.emplace_back("sphere.3d");
-    filesToRead.emplace_back("cone_novo.3d");
+    filesToRead.emplace_back("cone3.3d");
 
 
     list<string> :: iterator it;
@@ -83,7 +83,7 @@ int main(int argc, char** argv)
     glutCreateWindow("Figura3D");
 
     glutDisplayFunc(renderScene);
-    glutIdleFunc(renderScene);
+    //glutIdleFunc(renderScene); Descomentar para ativar rave mode :)
     glutReshapeFunc(changeSize);
 
     // some OpenGL settings
