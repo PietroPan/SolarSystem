@@ -6,16 +6,6 @@
 #include <limits>
 using namespace std;
 
-float limit_float (float f, int n) {
-  /* float val = 37.777779;
-
-  float rounded_down = floorf(val * 100) / 100;   Result: 37.77
-  float nearest = roundf(val * 100) / 100;        Result: 37.78
-  float rounded_up = ceilf(val * 100) / 100;      Result: 37.78
-
-  */
-  return roundf(f * pow(10,n)) / pow(10,n);
-}
 
 void create_plane (float length, float width, string file_name) {
   // Create and open a text file
@@ -51,17 +41,7 @@ void create_plane (float length, float width, string file_name) {
 }
 
 
-class compareStr {
-   public:
-      bool operator() (const string & first, const string & second ) const  {
-         if (first.compare(second) == 0) return true;
-         return false;
-      }
-};
-
-
 int search_point(ostream& file, map<string,int>& m, string point, int index) {
-
   auto it = m.find(point);
   if ( it == m.end() ) {
     m.insert({point,index});
@@ -71,7 +51,7 @@ int search_point(ostream& file, map<string,int>& m, string point, int index) {
   } else {
     // found
     file << "i" + to_string(it->second) + "\n";
-    return index; //retorna o mesmo valor de index passado como argumento para indicar que não houve inserção no mapa
+    return it->second; //retorna o valor de index que indica o indice em que estava o ponto
   }
 
 }
