@@ -112,10 +112,12 @@ private:
                 bool b = contentor[0] == 'i';
                 if (b) {
                     // Encontra um índice
-                    int indice = contentor[1] - '0';
+                    //for (int l = 1; contentor[l] != '\0' ;l++)
+                    int indice = stoi(contentor+1);
                     auto it = auxMap.find(indice);
                     bool encontraChave = it != auxMap.end();
                     if (encontraChave) {
+                        cout << "i" << indice << endl;
                         float* ponto = it->second;
                         for (int j = 0; j<3; j++) {
                             this->pontos[i][j] = ponto[j];
@@ -134,7 +136,9 @@ private:
                         index++;
                         this->pontos[i][x] = stof(umFloat);
                         valueMapa[x] = this->pontos[i][x];
+                        cout << this->pontos[i][x] << " ";
                     }
+                    cout << endl;
                     auxMap.insert(pair<int,float*>(nextKey++, valueMapa));
                 }
                 float x,y,z;
@@ -193,7 +197,7 @@ public:
                 x = pontos[pos][0];
                 y = pontos[pos][1];
                 z = pontos[pos][2];
-                cout << x << " " << y << " " << z << endl;
+                //cout << x << " " << y << " " << z << endl;
                 glVertex3f(pontos[pos][0], pontos[pos][1], pontos[pos][2]);
             }
         }

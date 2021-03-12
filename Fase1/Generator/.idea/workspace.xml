@@ -12,19 +12,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbb0fe9f-a519-4bb6-84f1-1e2c21bb6069" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Engine/box.3d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Engine/box_1.3d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/box.3d" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Engine/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Engine/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Engine/cmake-build-debug/CMakeFiles/Engine.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../Engine/cmake-build-debug/CMakeFiles/Engine.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Engine/box.3d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Engine/box_1.3d" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Engine/cmake-build-debug/CMakeFiles/Engine.dir/engine.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Engine/cmake-build-debug/CMakeFiles/Engine.dir/engine.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Engine/cmake-build-debug/CMakeFiles/Engine.dir/figura3d.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Engine/cmake-build-debug/CMakeFiles/Engine.dir/figura3d.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Engine/cmake-build-debug/Engine" beforeDir="false" afterPath="$PROJECT_DIR$/../Engine/cmake-build-debug/Engine" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Engine/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Engine/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Engine/cone.3d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Engine/cone3.3d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Engine/cone_novo.3d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Engine/coneespacos.3d" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Engine/engine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Engine/engine.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Engine/figura3d.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../Engine/figura3d.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Engine/sphere.3d" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,12 +63,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Generator" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Generator" TARGET_NAME="Generator" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Generator" RUN_TARGET_NAME="Generator">
+    <configuration name="Generator" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="box 5 5 5 5 boxmane.3d" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Generator" TARGET_NAME="Generator" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Generator" RUN_TARGET_NAME="Generator">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -85,7 +82,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1615487427212</updated>
-      <workItem from="1615487428555" duration="4315000" />
+      <workItem from="1615487428555" duration="5310000" />
+      <workItem from="1615564906410" duration="2045000" />
     </task>
     <servers />
   </component>
@@ -102,6 +100,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
