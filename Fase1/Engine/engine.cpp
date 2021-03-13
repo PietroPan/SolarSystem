@@ -53,15 +53,6 @@ void renderScene(void)
 }
 
 
-
-void printInfo() {
-
-    printf("Vendor: %s\n", glGetString(GL_VENDOR));
-    printf("Renderer: %s\n", glGetString(GL_RENDERER));
-    printf("Version: %s\n", glGetString(GL_VERSION));
-}
-
-
 int main(int argc, char** argv)
 {
     list <string> filesToRead;

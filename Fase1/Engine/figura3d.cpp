@@ -29,7 +29,6 @@ private:
             char contentor[100];
             file.getline(contentor, 100);
             this->nr_pontos = stoi(contentor);
-            //cout << "Vai ler " << this->nr_pontos << " pontos" << endl;
             this->pontos = new float*[nr_pontos];
             for (int i = 0; i<nr_pontos; i++) {
                 file.getline(contentor, 100);
@@ -51,8 +50,6 @@ private:
             }
         }
     }
-
-    void readBox() {}
 
     void readSphere(ifstream &file) {
         if (file.is_open()) {
