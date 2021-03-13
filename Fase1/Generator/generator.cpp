@@ -31,6 +31,9 @@ void create_plane (float length, float width, string file_name) {
  string point3 = to_string(-x) + " 0 " + to_string(z) + "\n";
  MyFile << point3;
 
+ //Numero de indices
+ MyFile << "6\n";
+
  MyFile << "0\n";
  MyFile << "1\n";
  MyFile << "2\n";
