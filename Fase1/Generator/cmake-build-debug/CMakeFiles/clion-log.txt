@@ -1,4 +1,4 @@
-/snap/clion/139/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/mane/github/CG/Fase1/Generator
+/snap/clion/139/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/home/maria/Desktop/3º Ano/Computação Gráfica/Projeto/CG/Fase1/Generator"
 -- The C compiler identification is GNU 9.3.0
 -- The CXX compiler identification is GNU 9.3.0
 -- Check for working C compiler: /usr/bin/cc
@@ -17,4 +17,4 @@
 -- Found GLUT: /usr/lib/x86_64-linux-gnu/libglut.so  
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/mane/github/CG/Fase1/Generator/cmake-build-debug
+-- Build files have been written to: /home/maria/Desktop/3º Ano/Computação Gráfica/Projeto/CG/Fase1/Generator/cmake-build-debug
