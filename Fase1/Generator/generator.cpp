@@ -15,17 +15,20 @@ void create_plane (float length, float width, string file_name) {
  MyFile << "Plane\n";
  MyFile << "4\n";
 
+ float x = length/2;
+ float z = width/2;
+
  //Pontos do primeiro triangulo
- string point0 = to_string(length/2) + " 0 " + to_string(width/2) + "\n";
+ string point0 = to_string(x) + " 0 " + to_string(z) + "\n";
  MyFile << point0;
 
- string point1 = to_string(length/2) + " 0 " + to_string(-width/2) + "\n";
+ string point1 = to_string(x) + " 0 " + to_string(-z) + "\n";
  MyFile << point1;
 
- string point2 = to_string(-length/2) + " 0 " + to_string(-width/2) + "\n";
+ string point2 = to_string(-x) + " 0 " + to_string(-z) + "\n";
  MyFile << point2;
 
- string point3 = to_string(-length/2) + " 0 " + to_string(width/2) + "\n";
+ string point3 = to_string(-x) + " 0 " + to_string(z) + "\n";
  MyFile << point3;
 
  MyFile << "0\n";

@@ -92,6 +92,22 @@ void renderScene(void) {
               0.0,0.0,0.0,
               0.0f,1.0f,0.0f);
 
+    //desenhar eixos
+    glBegin(GL_LINES);
+
+    glColor3f(1.0f, 1.0f, 1.0f);
+    glVertex3f(-100.0f, 0.0f, 0.0f);
+    glVertex3f(100.0f, 0.0f, 0.0f);
+
+
+    glVertex3f(0.0f, -100.0f, 0.0f);
+    glVertex3f(0.0f, 100.0f, 0.0f);
+
+    glVertex3f(0.0f, 0.0f, -100.0f);
+    glVertex3f(0.0f, 0.0f, 100.0f);
+
+    glEnd();
+
     list<Figura3d*> :: iterator it;
     for (it = figuras.begin(); it != figuras.end(); ++it) {
         Figura3d* aux = *it;
@@ -109,7 +125,8 @@ int main(int argc, char** argv)
 
     TiXmlDocument doc( "scene.xml" );
     bool loadOk = doc.LoadFile();
-
+    cout << loadOk;
+    cout << "\n";
     if (loadOk) {
         TiXmlElement * scene = doc.FirstChildElement( "scene" );
         if( scene ) {

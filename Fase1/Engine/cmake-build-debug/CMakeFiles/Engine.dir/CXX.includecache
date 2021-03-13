@@ -6,21 +6,21 @@
 
 #IncludeRegexTransform: 
 
-/home/maria/Desktop/3º Ano/Computação Gráfica/Projeto/CG/Fase1/Engine/engine.cpp
+/home/carolina/Desktop/CG/projeto/CG/Fase1/Engine/engine.cpp
 cstring
 -
 string
 -
 figura3d.cpp
-/home/maria/Desktop/3º Ano/Computação Gráfica/Projeto/CG/Fase1/Engine/figura3d.cpp
+/home/carolina/Desktop/CG/projeto/CG/Fase1/Engine/figura3d.cpp
 tinyxml/tinyxml.h
-/home/maria/Desktop/3º Ano/Computação Gráfica/Projeto/CG/Fase1/Engine/tinyxml/tinyxml.h
+/home/carolina/Desktop/CG/projeto/CG/Fase1/Engine/tinyxml/tinyxml.h
 tinyxml/tinystr.h
-/home/maria/Desktop/3º Ano/Computação Gráfica/Projeto/CG/Fase1/Engine/tinyxml/tinystr.h
+/home/carolina/Desktop/CG/projeto/CG/Fase1/Engine/tinyxml/tinystr.h
 math.h
 -
 
-/home/maria/Desktop/3º Ano/Computação Gráfica/Projeto/CG/Fase1/Engine/figura3d.cpp
+/home/carolina/Desktop/CG/projeto/CG/Fase1/Engine/figura3d.cpp
 GLUT/glut.h
 -
 GL/glut.h
@@ -44,13 +44,13 @@ cstring
 map
 -
 
-/home/maria/Desktop/3º Ano/Computação Gráfica/Projeto/CG/Fase1/Engine/tinyxml/tinystr.h
+/home/carolina/Desktop/CG/projeto/CG/Fase1/Engine/tinyxml/tinystr.h
 assert.h
 -
 string.h
 -
 
-/home/maria/Desktop/3º Ano/Computação Gráfica/Projeto/CG/Fase1/Engine/tinyxml/tinyxml.h
+/home/carolina/Desktop/CG/projeto/CG/Fase1/Engine/tinyxml/tinyxml.h
 ctype.h
 -
 stdio.h
@@ -67,6 +67,6 @@ iostream
 -
 sstream
 -
-../3º Ano/Computação Gráfica/Projeto/CG/Fase1/Engine/tinyxml/tinystr.h
-/home/maria/Desktop/3º Ano/Computação Gráfica/Projeto/CG/Fase1/Engine/3º Ano/Computação Gráfica/Projeto/CG/Fase1/Engine/tinyxml/tinystr.h
+tinystr.h
+/home/carolina/Desktop/CG/projeto/CG/Fase1/Engine/tinyxml/tinystr.h
 
