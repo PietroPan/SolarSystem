@@ -68,10 +68,10 @@ RM = /snap/clion/139/bin/cmake/linux/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/maria/Desktop/3º Ano/Computação Gráfica/Projeto/CG/Fase1/Generator"
+CMAKE_SOURCE_DIR = /home/mane/github/CG/Fase1/Generator
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/maria/Desktop/3º Ano/Computação Gráfica/Projeto/CG/Fase1/Generator/cmake-build-debug"
+CMAKE_BINARY_DIR = /home/mane/github/CG/Fase1/Generator/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -100,9 +100,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/maria/Desktop/3º Ano/Computação Gráfica/Projeto/CG/Fase1/Generator/cmake-build-debug/CMakeFiles" "/home/maria/Desktop/3º Ano/Computação Gráfica/Projeto/CG/Fase1/Generator/cmake-build-debug/CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/mane/github/CG/Fase1/Generator/cmake-build-debug/CMakeFiles /home/mane/github/CG/Fase1/Generator/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/maria/Desktop/3º Ano/Computação Gráfica/Projeto/CG/Fase1/Generator/cmake-build-debug/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/mane/github/CG/Fase1/Generator/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

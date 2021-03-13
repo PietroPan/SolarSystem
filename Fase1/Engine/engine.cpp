@@ -6,7 +6,57 @@
 #include <string>
 #include "figura3d.cpp"
 
+#define _USE_MATH_DEFINES
+#include <math.h>
+
+#define DIST 30
+
+float alpha = 0.f;
+float beta = M_PI/4;
+
+float pos[3] = {(float)DIST*cos(beta)*sin(alpha),((float) DIST)*sin(beta),(float)DIST*cos(beta)*cos(alpha)};
+
+
 list<Figura3d*> figuras;
+
+void processaSpecialKeys(int key, int x, int y) {
+    float incremento = 0.25f;
+
+    switch (key) {
+        //w
+        case GLUT_KEY_UP:
+            if (beta + incremento <= (M_PI/2)) {
+                beta += incremento;
+            }
+            break;
+
+        //s
+        case GLUT_KEY_DOWN:
+            if (beta - incremento >= -(M_PI/2)) {
+                beta -= incremento;
+            }
+            break;
+
+        //a
+        case GLUT_KEY_LEFT:
+            alpha-= incremento;
+            break;
+
+        //d
+        case GLUT_KEY_RIGHT:
+            alpha+= incremento;
+            break;
+        default:
+            break;
+
+    }
+    pos[0] = (float)DIST*cos(beta)*sin(alpha);
+    pos[1] = (float)DIST*sin(beta);
+    pos[2] = (float)DIST*cos(beta)*cos(alpha);
+
+    glutPostRedisplay();
+
+}
 
 
 void changeSize(int w, int h)
@@ -30,15 +80,13 @@ void changeSize(int w, int h)
 }
 
 
-void renderScene(void)
-{
+void renderScene(void) {
     // clear buffers
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
     // set camera
     glLoadIdentity();
-    gluLookAt(15.0,15.0,15.0,
+    gluLookAt(pos[0], pos[1], pos[2],
               0.0,0.0,0.0,
               0.0f,1.0f,0.0f);
 
@@ -58,10 +106,12 @@ int main(int argc, char** argv)
     list <string> filesToRead;
 
     //simula a leitura do xml e retreive do nome dos ficheiros a ler
+    // ... ler o XML e preencher a lista 'filesToRead' com o nome dos ficheiros .3d a ler
     //filesToRead.emplace_back("sphere.3d");
-    filesToRead.emplace_back("boxMane");
+    filesToRead.emplace_back("sphere.3d");
 
 
+    // Iterar sobre a lista de nomes de ficheiros, criando para cada um, um novo objeto Figura3d, que conterá os pontos a desenhar
     list<string> :: iterator it;
     for (it = filesToRead.begin(); it != filesToRead.end(); ++it) {
         string aux = *it;
@@ -72,11 +122,13 @@ int main(int argc, char** argv)
     glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
     glutInitWindowPosition(100, 100);
     glutInitWindowSize(800, 800);
-    glutCreateWindow("Figura3D");
+    glutCreateWindow("Figura 3D");
 
     glutDisplayFunc(renderScene);
     //glutIdleFunc(renderScene); Descomentar para ativar rave mode :)
     glutReshapeFunc(changeSize);
+
+    glutSpecialFunc(processaSpecialKeys);
 
     // some OpenGL settings
     glEnable(GL_DEPTH_TEST);

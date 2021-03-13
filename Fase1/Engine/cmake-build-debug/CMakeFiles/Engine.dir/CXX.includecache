@@ -13,6 +13,8 @@ string
 -
 figura3d.cpp
 /home/mane/github/CG/Fase1/Engine/figura3d.cpp
+math.h
+-
 
 /home/mane/github/CG/Fase1/Engine/figura3d.cpp
 GLUT/glut.h
