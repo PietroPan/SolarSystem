@@ -19,7 +19,7 @@ void create_plane (float length, float width, string file_name) {
  float z = width/2;
 
  //Pontos do primeiro triangulo
- string point0 = to_string(lx) + " 0 " + to_string(z) + "\n";
+ string point0 = to_string(x) + " 0 " + to_string(z) + "\n";
  MyFile << point0;
 
  string point1 = to_string(x) + " 0 " + to_string(-z) + "\n";
