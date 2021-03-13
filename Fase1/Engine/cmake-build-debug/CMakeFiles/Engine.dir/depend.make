@@ -11,12 +11,15 @@ CMakeFiles/Engine.dir/figura3d.cpp.o: ../figura3d.cpp
 CMakeFiles/Engine.dir/tinyxml/tinystr.cpp.o: ../tinyxml/tinystr.cpp
 CMakeFiles/Engine.dir/tinyxml/tinystr.cpp.o: ../tinyxml/tinystr.h
 
+CMakeFiles/Engine.dir/tinyxml/tinyxml.cpp.o: ../tinyxml/tinystr.h
 CMakeFiles/Engine.dir/tinyxml/tinyxml.cpp.o: ../tinyxml/tinyxml.cpp
 CMakeFiles/Engine.dir/tinyxml/tinyxml.cpp.o: ../tinyxml/tinyxml.h
 
+CMakeFiles/Engine.dir/tinyxml/tinyxmlerror.cpp.o: ../tinyxml/tinystr.h
 CMakeFiles/Engine.dir/tinyxml/tinyxmlerror.cpp.o: ../tinyxml/tinyxml.h
 CMakeFiles/Engine.dir/tinyxml/tinyxmlerror.cpp.o: ../tinyxml/tinyxmlerror.cpp
 
+CMakeFiles/Engine.dir/tinyxml/tinyxmlparser.cpp.o: ../tinyxml/tinystr.h
 CMakeFiles/Engine.dir/tinyxml/tinyxmlparser.cpp.o: ../tinyxml/tinyxml.h
 CMakeFiles/Engine.dir/tinyxml/tinyxmlparser.cpp.o: ../tinyxml/tinyxmlparser.cpp
 
