@@ -52,16 +52,18 @@ void create_sphere(float radius,int slices,int stacks,string file){
 
     float stackang=0,sliceang=0,x1=0,y1=0,z1=0;
     MyFile << pto_string(0,-radius,0);
+
     for (int i=1; i<stacks; i++){
-        stackang = (-M_PI/2)+(M_PI*((float)i/stacks)); 
-		  for (int j=0; j<slices; j++){
-          sliceang = 2*M_PI*((float)j/slices); 
-          x1=(radius*cos(stackang)*cos(sliceang));
-			    z1=(radius*cos(stackang)*sin(sliceang));
-			    y1=radius*sin(stackang);
-          MyFile << pto_string(x1,y1,z1);
-		  }
-	  }
+        stackang = (-M_PI/2)+(M_PI*((float)i/stacks));
+
+        for (int j=0; j<slices; j++){
+            sliceang = 2*M_PI*((float)j/slices);
+            x1=(radius*cos(stackang)*cos(sliceang));
+			z1=(radius*cos(stackang)*sin(sliceang));
+			y1=radius*sin(stackang);
+            MyFile << pto_string(x1,y1,z1);
+        }
+    }
     MyFile << pto_string(0,radius,0);
 
     int nind = 6*(slices+((stacks-2)*slices));
@@ -115,7 +117,7 @@ void create_sphere(float radius,int slices,int stacks,string file){
 void create_cone(float radius,float height,int slices,int stacks,string file){
   ofstream MyFile(file);
   MyFile << "cone\n";
-	int npoints = slices*stacks+1;
+  int npoints = slices*stacks+1;
   MyFile << to_string(npoints+1)+"\n";
 	float ang=0,x1=0,y1=0,z1=0,theight=0,tradius=0;
 	float alfac = (atan(height/radius));
