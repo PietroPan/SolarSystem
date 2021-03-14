@@ -1,1 +1,9 @@
-test.txt
+*.3d
+generator
+
+CMakeFiles/
+.idea/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+cmake-build-debug/
