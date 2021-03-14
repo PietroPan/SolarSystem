@@ -60,26 +60,22 @@ void processaSpecialKeys(int key, int x, int y) {
     float incremento = 0.25f;
 
     switch (key) {
-        //w
         case GLUT_KEY_UP:
             if (beta + incremento <= (M_PI/2)) {
                 beta += incremento;
             }
             break;
 
-        //s
         case GLUT_KEY_DOWN:
             if (beta - incremento >= -(M_PI/2)) {
                 beta -= incremento;
             }
             break;
 
-        //a
         case GLUT_KEY_LEFT:
             alpha-= incremento;
             break;
 
-        //d
         case GLUT_KEY_RIGHT:
             alpha+= incremento;
             break;
@@ -133,14 +129,15 @@ void renderScene(void) {
     //desenhar eixos
     glBegin(GL_LINES);
 
-    glColor3f(1.0f, 1.0f, 1.0f);
+    glColor3f(1.0f, 0.0f, 0.0f);
     glVertex3f(-100.0f, 0.0f, 0.0f);
     glVertex3f(100.0f, 0.0f, 0.0f);
 
-
+    glColor3f(0.0f, 1.0f, 0.0f);
     glVertex3f(0.0f, -100.0f, 0.0f);
     glVertex3f(0.0f, 100.0f, 0.0f);
 
+    glColor3f(0.0f, 0.0f, 1.0f);
     glVertex3f(0.0f, 0.0f, -100.0f);
     glVertex3f(0.0f, 0.0f, 100.0f);
 
