@@ -1,15 +1,10 @@
 #include "cone.h"
 
-void pointsCone(float radius,float height,int slices,int stacks,char *filename){
-    vector<int> indexs;
-    vector<Point> points;
-    int npoints = slices*stacks+1;
-	float ang=0,x1=0,y1=0,z1=0,theight=0,tradius=0;
+void middlepointsC(float radius,float height,int slices,int stacks,vector<Point> &points){
+	float ang=0,x1=0,y1=0,z1=0,theight=0,tradius=0,ia=stacks;
 	float alfac = (atan(height/radius));
 	float heightinc = height/stacks;
 	float radiusdec = heightinc*tan((M_PI/2)-alfac);
-	int ia=stacks;
-	points.push_back(Point(0,0,0));
 	for (int i=0;i<stacks;i++,ia--){
 		theight=i*heightinc;
 		tradius=radiusdec*ia;
@@ -21,8 +16,9 @@ void pointsCone(float radius,float height,int slices,int stacks,char *filename){
 			points.push_back(Point(x1,y1,z1));
 		}
 	}
-	points.push_back(Point(0,height,0));
+}
 
+void bottomIndexsC(int slices,vector<int> &indexs){
 	for(int i=1;i<slices+1;i++){
 		if (i==slices){
 			indexs.push_back(1);
@@ -34,7 +30,9 @@ void pointsCone(float radius,float height,int slices,int stacks,char *filename){
 			indexs.push_back(0);
 		}
 	}
+}
 
+void middleIndexsC(int slices,int stacks,vector<int> &indexs){
 	for (int i=0;i<stacks-1;i++){
 		for (int j=0;j<slices;j++){
 			if (j==(slices-1)){
@@ -59,7 +57,10 @@ void pointsCone(float radius,float height,int slices,int stacks,char *filename){
 			}
 		}
 	}
+}
 
+void topIndexsC(int slices,int stacks,vector<int> &indexs){
+	int npoints = slices*stacks+1;
 	for(int i=0;i<slices;i++){
 		if (i==slices){
 			indexs.push_back(npoints);
@@ -71,6 +72,19 @@ void pointsCone(float radius,float height,int slices,int stacks,char *filename){
 			indexs.push_back(npoints-slices+i);
 		}
 	}
+}
+
+void pointsCone(float radius,float height,int slices,int stacks,char *filename){
+    vector<int> indexs;
+    vector<Point> points;
+
+	points.push_back(Point(0,0,0));//bottom point
+	middlepointsC(radius,height,slices,stacks,points);
+	points.push_back(Point(0,height,0));//top point
+
+	bottomIndexsC(slices,indexs);
+	middleIndexsC(slices,stacks,indexs);
+	topIndexsC(slices,stacks,indexs);
 
     Model model(points,indexs);
     model.writeToFile(filename,"cone");
