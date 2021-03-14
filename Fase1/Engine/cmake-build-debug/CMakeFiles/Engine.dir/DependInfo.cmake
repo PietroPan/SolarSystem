@@ -4,12 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/carolina/Desktop/CG/projeto/CG/Fase1/Engine/engine.cpp" "/home/carolina/Desktop/CG/projeto/CG/Fase1/Engine/cmake-build-debug/CMakeFiles/Engine.dir/engine.cpp.o"
-  "/home/carolina/Desktop/CG/projeto/CG/Fase1/Engine/figura3d.cpp" "/home/carolina/Desktop/CG/projeto/CG/Fase1/Engine/cmake-build-debug/CMakeFiles/Engine.dir/figura3d.cpp.o"
-  "/home/carolina/Desktop/CG/projeto/CG/Fase1/Engine/tinyxml/tinystr.cpp" "/home/carolina/Desktop/CG/projeto/CG/Fase1/Engine/cmake-build-debug/CMakeFiles/Engine.dir/tinyxml/tinystr.cpp.o"
-  "/home/carolina/Desktop/CG/projeto/CG/Fase1/Engine/tinyxml/tinyxml.cpp" "/home/carolina/Desktop/CG/projeto/CG/Fase1/Engine/cmake-build-debug/CMakeFiles/Engine.dir/tinyxml/tinyxml.cpp.o"
-  "/home/carolina/Desktop/CG/projeto/CG/Fase1/Engine/tinyxml/tinyxmlerror.cpp" "/home/carolina/Desktop/CG/projeto/CG/Fase1/Engine/cmake-build-debug/CMakeFiles/Engine.dir/tinyxml/tinyxmlerror.cpp.o"
-  "/home/carolina/Desktop/CG/projeto/CG/Fase1/Engine/tinyxml/tinyxmlparser.cpp" "/home/carolina/Desktop/CG/projeto/CG/Fase1/Engine/cmake-build-debug/CMakeFiles/Engine.dir/tinyxml/tinyxmlparser.cpp.o"
+  "/home/mane/github/CG/Fase1/Engine/engine.cpp" "/home/mane/github/CG/Fase1/Engine/cmake-build-debug/CMakeFiles/Engine.dir/engine.cpp.o"
+  "/home/mane/github/CG/Fase1/Engine/figura3d.cpp" "/home/mane/github/CG/Fase1/Engine/cmake-build-debug/CMakeFiles/Engine.dir/figura3d.cpp.o"
+  "/home/mane/github/CG/Fase1/Engine/tinyxml/tinystr.cpp" "/home/mane/github/CG/Fase1/Engine/cmake-build-debug/CMakeFiles/Engine.dir/tinyxml/tinystr.cpp.o"
+  "/home/mane/github/CG/Fase1/Engine/tinyxml/tinyxml.cpp" "/home/mane/github/CG/Fase1/Engine/cmake-build-debug/CMakeFiles/Engine.dir/tinyxml/tinyxml.cpp.o"
+  "/home/mane/github/CG/Fase1/Engine/tinyxml/tinyxmlerror.cpp" "/home/mane/github/CG/Fase1/Engine/cmake-build-debug/CMakeFiles/Engine.dir/tinyxml/tinyxmlerror.cpp.o"
+  "/home/mane/github/CG/Fase1/Engine/tinyxml/tinyxmlparser.cpp" "/home/mane/github/CG/Fase1/Engine/cmake-build-debug/CMakeFiles/Engine.dir/tinyxml/tinyxmlparser.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

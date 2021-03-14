@@ -11,15 +11,50 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 
-#define DIST 30
-
+float radius = 30.0f;
 float alpha = 0.f;
 float beta = M_PI/4;
 
-float pos[3] = {(float)DIST*cos(beta)*sin(alpha),((float) DIST)*sin(beta),(float)DIST*cos(beta)*cos(alpha)};
+float pos[3] = {radius*cos(beta)*sin(alpha),radius*sin(beta),radius*cos(beta)*cos(alpha)};
 
 
 list<Figura3d*> figuras;
+
+void processaMouse(int button, int state, int x, int y) {
+    if (state == GLUT_DOWN) {
+        switch(button) {
+            case 3:  //mouse wheel scrolls
+                radius -= 1;
+                glutPostRedisplay();
+                break;
+            case 4:
+                radius += 1;
+                glutPostRedisplay();
+                break;
+            default:
+                break;
+        }
+    }
+    pos[0] = radius*cos(beta)*sin(alpha);
+    pos[1] = radius*sin(beta);
+    pos[2] = radius*cos(beta)*cos(alpha);
+
+    glutPostRedisplay();
+}
+
+void mouseMovement(int x, int y) {
+    float unitY = M_PI/glutGet(GLUT_WINDOW_HEIGHT);
+    float unitX = (2 * M_PI)/glutGet(GLUT_WINDOW_WIDTH);
+
+    alpha = unitX * (float)x;
+    beta = (M_PI/2) - unitY * (float)y;
+
+    pos[0] = radius*cos(beta)*sin(alpha);
+    pos[1] = radius*sin(beta);
+    pos[2] = radius*cos(beta)*cos(alpha);
+
+    glutPostRedisplay();
+}
 
 void processaSpecialKeys(int key, int x, int y) {
     float incremento = 0.25f;
@@ -48,17 +83,20 @@ void processaSpecialKeys(int key, int x, int y) {
         case GLUT_KEY_RIGHT:
             alpha+= incremento;
             break;
+
         default:
             break;
-
     }
-    pos[0] = (float)DIST*cos(beta)*sin(alpha);
-    pos[1] = (float)DIST*sin(beta);
-    pos[2] = (float)DIST*cos(beta)*cos(alpha);
+
+    pos[0] = radius*cos(beta)*sin(alpha);
+    pos[1] = radius*sin(beta);
+    pos[2] = radius*cos(beta)*cos(alpha);
 
     glutPostRedisplay();
 
 }
+
+
 
 
 void changeSize(int w, int h)
@@ -164,10 +202,13 @@ int main(int argc, char** argv)
     glutCreateWindow("Figura 3D");
 
     glutDisplayFunc(renderScene);
-    //glutIdleFunc(renderScene); Descomentar para ativar rave mode :)
+    //glutIdleFunc(renderScene);
     glutReshapeFunc(changeSize);
 
+
     glutSpecialFunc(processaSpecialKeys);
+    glutMouseFunc(processaMouse);
+    glutPassiveMotionFunc(mouseMovement);
 
     // some OpenGL settings
     glEnable(GL_DEPTH_TEST);

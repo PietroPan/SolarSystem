@@ -6,21 +6,21 @@
 
 #IncludeRegexTransform: 
 
-/home/carolina/Desktop/CG/projeto/CG/Fase1/Engine/engine.cpp
+/home/mane/github/CG/Fase1/Engine/engine.cpp
 cstring
 -
 string
 -
 figura3d.cpp
-/home/carolina/Desktop/CG/projeto/CG/Fase1/Engine/figura3d.cpp
+/home/mane/github/CG/Fase1/Engine/figura3d.cpp
 tinyxml/tinyxml.h
-/home/carolina/Desktop/CG/projeto/CG/Fase1/Engine/tinyxml/tinyxml.h
+/home/mane/github/CG/Fase1/Engine/tinyxml/tinyxml.h
 tinyxml/tinystr.h
-/home/carolina/Desktop/CG/projeto/CG/Fase1/Engine/tinyxml/tinystr.h
+/home/mane/github/CG/Fase1/Engine/tinyxml/tinystr.h
 math.h
 -
 
-/home/carolina/Desktop/CG/projeto/CG/Fase1/Engine/figura3d.cpp
+/home/mane/github/CG/Fase1/Engine/figura3d.cpp
 GLUT/glut.h
 -
 GL/glut.h
@@ -44,13 +44,13 @@ cstring
 map
 -
 
-/home/carolina/Desktop/CG/projeto/CG/Fase1/Engine/tinyxml/tinystr.h
+/home/mane/github/CG/Fase1/Engine/tinyxml/tinystr.h
 assert.h
 -
 string.h
 -
 
-/home/carolina/Desktop/CG/projeto/CG/Fase1/Engine/tinyxml/tinyxml.h
+/home/mane/github/CG/Fase1/Engine/tinyxml/tinyxml.h
 ctype.h
 -
 stdio.h
@@ -68,5 +68,5 @@ iostream
 sstream
 -
 tinystr.h
-/home/carolina/Desktop/CG/projeto/CG/Fase1/Engine/tinyxml/tinystr.h
+/home/mane/github/CG/Fase1/Engine/tinyxml/tinystr.h
 
