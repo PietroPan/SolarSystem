@@ -6,6 +6,10 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 add_executable(Engine
         figura3d.cpp
+        tinyxml/tinyxml.cpp
+        tinyxml/tinystr.cpp
+        tinyxml/tinyxmlparser.cpp
+        tinyxml/tinyxmlerror.cpp
         engine.cpp)
 
 find_package(OpenGL REQUIRED)

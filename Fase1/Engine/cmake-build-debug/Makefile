@@ -59,19 +59,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/139/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /home/carolina/Desktop/CLion-2020.3.2/clion-2020.3.2/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/139/bin/cmake/linux/bin/cmake -E rm -f
+RM = /home/carolina/Desktop/CLion-2020.3.2/clion-2020.3.2/bin/cmake/linux/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/mane/github/CG/Fase1/Engine
+CMAKE_SOURCE_DIR = /home/carolina/Desktop/CG/projeto/CG/Fase1/Engine
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/mane/github/CG/Fase1/Engine/cmake-build-debug
+CMAKE_BINARY_DIR = /home/carolina/Desktop/CG/projeto/CG/Fase1/Engine/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -79,7 +79,7 @@ CMAKE_BINARY_DIR = /home/mane/github/CG/Fase1/Engine/cmake-build-debug
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/snap/clion/139/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/home/carolina/Desktop/CLion-2020.3.2/clion-2020.3.2/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -90,7 +90,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/snap/clion/139/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/home/carolina/Desktop/CLion-2020.3.2/clion-2020.3.2/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -100,9 +100,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/mane/github/CG/Fase1/Engine/cmake-build-debug/CMakeFiles /home/mane/github/CG/Fase1/Engine/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/carolina/Desktop/CG/projeto/CG/Fase1/Engine/cmake-build-debug/CMakeFiles /home/carolina/Desktop/CG/projeto/CG/Fase1/Engine/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/mane/github/CG/Fase1/Engine/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/carolina/Desktop/CG/projeto/CG/Fase1/Engine/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -197,6 +197,114 @@ figura3d.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/figura3d.cpp.s
 .PHONY : figura3d.cpp.s
 
+tinyxml/tinystr.o: tinyxml/tinystr.cpp.o
+
+.PHONY : tinyxml/tinystr.o
+
+# target to build an object file
+tinyxml/tinystr.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/tinyxml/tinystr.cpp.o
+.PHONY : tinyxml/tinystr.cpp.o
+
+tinyxml/tinystr.i: tinyxml/tinystr.cpp.i
+
+.PHONY : tinyxml/tinystr.i
+
+# target to preprocess a source file
+tinyxml/tinystr.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/tinyxml/tinystr.cpp.i
+.PHONY : tinyxml/tinystr.cpp.i
+
+tinyxml/tinystr.s: tinyxml/tinystr.cpp.s
+
+.PHONY : tinyxml/tinystr.s
+
+# target to generate assembly for a file
+tinyxml/tinystr.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/tinyxml/tinystr.cpp.s
+.PHONY : tinyxml/tinystr.cpp.s
+
+tinyxml/tinyxml.o: tinyxml/tinyxml.cpp.o
+
+.PHONY : tinyxml/tinyxml.o
+
+# target to build an object file
+tinyxml/tinyxml.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/tinyxml/tinyxml.cpp.o
+.PHONY : tinyxml/tinyxml.cpp.o
+
+tinyxml/tinyxml.i: tinyxml/tinyxml.cpp.i
+
+.PHONY : tinyxml/tinyxml.i
+
+# target to preprocess a source file
+tinyxml/tinyxml.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/tinyxml/tinyxml.cpp.i
+.PHONY : tinyxml/tinyxml.cpp.i
+
+tinyxml/tinyxml.s: tinyxml/tinyxml.cpp.s
+
+.PHONY : tinyxml/tinyxml.s
+
+# target to generate assembly for a file
+tinyxml/tinyxml.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/tinyxml/tinyxml.cpp.s
+.PHONY : tinyxml/tinyxml.cpp.s
+
+tinyxml/tinyxmlerror.o: tinyxml/tinyxmlerror.cpp.o
+
+.PHONY : tinyxml/tinyxmlerror.o
+
+# target to build an object file
+tinyxml/tinyxmlerror.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/tinyxml/tinyxmlerror.cpp.o
+.PHONY : tinyxml/tinyxmlerror.cpp.o
+
+tinyxml/tinyxmlerror.i: tinyxml/tinyxmlerror.cpp.i
+
+.PHONY : tinyxml/tinyxmlerror.i
+
+# target to preprocess a source file
+tinyxml/tinyxmlerror.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/tinyxml/tinyxmlerror.cpp.i
+.PHONY : tinyxml/tinyxmlerror.cpp.i
+
+tinyxml/tinyxmlerror.s: tinyxml/tinyxmlerror.cpp.s
+
+.PHONY : tinyxml/tinyxmlerror.s
+
+# target to generate assembly for a file
+tinyxml/tinyxmlerror.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/tinyxml/tinyxmlerror.cpp.s
+.PHONY : tinyxml/tinyxmlerror.cpp.s
+
+tinyxml/tinyxmlparser.o: tinyxml/tinyxmlparser.cpp.o
+
+.PHONY : tinyxml/tinyxmlparser.o
+
+# target to build an object file
+tinyxml/tinyxmlparser.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/tinyxml/tinyxmlparser.cpp.o
+.PHONY : tinyxml/tinyxmlparser.cpp.o
+
+tinyxml/tinyxmlparser.i: tinyxml/tinyxmlparser.cpp.i
+
+.PHONY : tinyxml/tinyxmlparser.i
+
+# target to preprocess a source file
+tinyxml/tinyxmlparser.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/tinyxml/tinyxmlparser.cpp.i
+.PHONY : tinyxml/tinyxmlparser.cpp.i
+
+tinyxml/tinyxmlparser.s: tinyxml/tinyxmlparser.cpp.s
+
+.PHONY : tinyxml/tinyxmlparser.s
+
+# target to generate assembly for a file
+tinyxml/tinyxmlparser.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Engine.dir/build.make CMakeFiles/Engine.dir/tinyxml/tinyxmlparser.cpp.s
+.PHONY : tinyxml/tinyxmlparser.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -212,6 +320,18 @@ help:
 	@echo "... figura3d.o"
 	@echo "... figura3d.i"
 	@echo "... figura3d.s"
+	@echo "... tinyxml/tinystr.o"
+	@echo "... tinyxml/tinystr.i"
+	@echo "... tinyxml/tinystr.s"
+	@echo "... tinyxml/tinyxml.o"
+	@echo "... tinyxml/tinyxml.i"
+	@echo "... tinyxml/tinyxml.s"
+	@echo "... tinyxml/tinyxmlerror.o"
+	@echo "... tinyxml/tinyxmlerror.i"
+	@echo "... tinyxml/tinyxmlerror.s"
+	@echo "... tinyxml/tinyxmlparser.o"
+	@echo "... tinyxml/tinyxmlparser.i"
+	@echo "... tinyxml/tinyxmlparser.s"
 .PHONY : help
 
 

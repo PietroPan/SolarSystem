@@ -15,7 +15,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0afe9497-bf2e-42c7-b50d-8ae82c217ac0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/sphere1.3d" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scene.xml" beforeDir="false" afterPath="$PROJECT_DIR$/scene.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Generator/cmake-build-debug/CMakeFiles/Generator.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/../Generator/cmake-build-debug/CMakeFiles/Generator.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Generator/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../Generator/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,13 +66,16 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tinyxml" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Engine" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Engine" TARGET_NAME="Engine" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Engine" RUN_TARGET_NAME="Engine">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -84,7 +92,15 @@
       <workItem from="1615485405570" duration="507000" />
       <workItem from="1615485983110" duration="13502000" />
       <workItem from="1615564910757" duration="3747000" />
+<<<<<<< HEAD
       <workItem from="1615638333492" duration="6005000" />
+=======
+      <workItem from="1615638333492" duration="4799000" />
+      <workItem from="1615649649676" duration="2623000" />
+      <workItem from="1615652368356" duration="736000" />
+      <workItem from="1615653150655" duration="280000" />
+      <workItem from="1615653632446" duration="24000" />
+>>>>>>> 8869da39622c01012bbb3777cad84a4b40b931ba
     </task>
     <servers />
   </component>
@@ -113,11 +129,6 @@
           <url>file://$PROJECT_DIR$/figura3d.cpp</url>
           <line>79</line>
           <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/figura3d.cpp</url>
-          <line>32</line>
-          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

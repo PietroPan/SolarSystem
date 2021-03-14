@@ -1,5 +1,5 @@
 /*
-www.sourceforge.net/projects/tinyxml
+www.sourceforge.net/projects/XmlParse
 Original code (2.0 and earlier )copyright (c) 2000-2006 Lee Thomason (www.grinninglizard.com)
 
 This software is provided 'as-is', without any express or implied 
@@ -25,7 +25,7 @@ distribution.
 #include "tinyxml.h"
 
 // The goal of the seperate error file is to make the first
-// step towards localization. tinyxml (currently) only supports
+// step towards localization. XmlParse (currently) only supports
 // english error messages, but the could now be translated.
 //
 // It also cleans up the code a bit.

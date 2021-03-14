@@ -1,5 +1,5 @@
 /*
-www.sourceforge.net/projects/tinyxml
+www.sourceforge.net/projects/XmlParse
 Original code by Lee Thomason (www.grinninglizard.com)
 
 This software is provided 'as-is', without any express or implied
@@ -967,7 +967,7 @@ bool TiXmlDocument::LoadFile( const char* _filename, TiXmlEncoding encoding )
 	TIXML_STRING filename( _filename );
 	value = filename;
 
-	// reading in binary mode so that tinyxml can normalize the EOL
+	// reading in binary mode so that XmlParse can normalize the EOL
 	FILE* file = TiXmlFOpen( value.c_str (), "rb" );	
 
 	if ( file )

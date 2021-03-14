@@ -1,5 +1,5 @@
 /*
-www.sourceforge.net/projects/tinyxml
+www.sourceforge.net/projects/XmlParse
 Original code by Lee Thomason (www.grinninglizard.com)
 
 This software is provided 'as-is', without any express or implied 
@@ -407,12 +407,12 @@ const char* TiXmlBase::ReadName( const char* p, TIXML_STRING * name, TiXmlEncodi
 	assert( p );
 
 	// Names start with letters or underscores.
-	// Of course, in unicode, tinyxml has no idea what a letter *is*. The
+	// Of course, in unicode, XmlParse has no idea what a letter *is*. The
 	// algorithm is generous.
 	//
 	// After that, they can be letters, underscores, numbers,
 	// hyphens, or colons. (Colons are valid ony for namespaces,
-	// but tinyxml can't tell namespaces from names.)
+	// but XmlParse can't tell namespaces from names.)
 	if (    p && *p 
 		 && ( IsAlpha( (unsigned char) *p, encoding ) || *p == '_' ) )
 	{
@@ -836,7 +836,7 @@ TiXmlNode* TiXmlNode::Identify( const char* p, TiXmlEncoding encoding )
 	// - Elements start with a letter or underscore, but xml is reserved.
 	// - Comments: <!--
 	// - Decleration: <?xml
-	// - Everthing else is unknown to tinyxml.
+	// - Everthing else is unknown to XmlParse.
 	//
 
 	const char* xmlHeader = { "<?xml" };

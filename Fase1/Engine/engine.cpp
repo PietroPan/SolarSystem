@@ -5,6 +5,8 @@
 #include <cstring>
 #include <string>
 #include "figura3d.cpp"
+#include "tinyxml/tinyxml.h"
+#include "tinyxml/tinystr.h"
 
 #define _USE_MATH_DEFINES
 #include <math.h>
@@ -90,6 +92,22 @@ void renderScene(void) {
               0.0,0.0,0.0,
               0.0f,1.0f,0.0f);
 
+    //desenhar eixos
+    glBegin(GL_LINES);
+
+    glColor3f(1.0f, 1.0f, 1.0f);
+    glVertex3f(-100.0f, 0.0f, 0.0f);
+    glVertex3f(100.0f, 0.0f, 0.0f);
+
+
+    glVertex3f(0.0f, -100.0f, 0.0f);
+    glVertex3f(0.0f, 100.0f, 0.0f);
+
+    glVertex3f(0.0f, 0.0f, -100.0f);
+    glVertex3f(0.0f, 0.0f, 100.0f);
+
+    glEnd();
+
     list<Figura3d*> :: iterator it;
     for (it = figuras.begin(); it != figuras.end(); ++it) {
         Figura3d* aux = *it;
@@ -105,10 +123,31 @@ int main(int argc, char** argv)
 {
     list <string> filesToRead;
 
-    //simula a leitura do xml e retreive do nome dos ficheiros a ler
-    // ... ler o XML e preencher a lista 'filesToRead' com o nome dos ficheiros .3d a ler
-    //filesToRead.emplace_back("sphere.3d");
-    filesToRead.emplace_back("sphere.3d");
+    TiXmlDocument doc( "scene.xml" );
+    bool loadOk = doc.LoadFile();
+    cout << loadOk;
+    cout << "\n";
+    if (loadOk) {
+        TiXmlElement * scene = doc.FirstChildElement( "scene" );
+        if( scene ) {
+            TiXmlElement * figure = scene->FirstChildElement( "model" );
+            if (figure) {
+                filesToRead.emplace_back(figure->Attribute("file"));
+
+                TiXmlElement * figures = figure->NextSiblingElement("model");
+
+                while (figures!=NULL) {
+                    filesToRead.emplace_back(figures->Attribute("file"));
+                    figures = figures->NextSiblingElement("model");
+                }
+
+            }
+        }
+
+    } else {
+        cout << "Erro ao ler ficheiro XML.";
+    }
+
 
 
     // Iterar sobre a lista de nomes de ficheiros, criando para cada um, um novo objeto Figura3d, que conterá os pontos a desenhar
