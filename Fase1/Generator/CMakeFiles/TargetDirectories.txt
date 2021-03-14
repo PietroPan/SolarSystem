@@ -1,0 +1,3 @@
+/home/xela/Documents/CG/STUPID/CG/Fase1/Generator/CMakeFiles/rebuild_cache.dir
+/home/xela/Documents/CG/STUPID/CG/Fase1/Generator/CMakeFiles/edit_cache.dir
+/home/xela/Documents/CG/STUPID/CG/Fase1/Generator/CMakeFiles/generator.dir
