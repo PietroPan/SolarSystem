@@ -14,6 +14,8 @@
 float radius = 30.0f;
 float alpha = 0.f;
 float beta = M_PI/4;
+int ref[2] = {0,0};
+float refAngulo[2] = {0.f,0.f};
 
 float pos[3] = {radius*cos(beta)*sin(alpha),radius*sin(beta),radius*cos(beta)*cos(alpha)};
 
@@ -23,6 +25,12 @@ list<Figura3d*> figuras;
 void processaMouse(int button, int state, int x, int y) {
     if (state == GLUT_DOWN) {
         switch(button) {
+            case GLUT_LEFT_BUTTON:
+                ref[0] = x;
+                ref[1] = y;
+                refAngulo[0] = alpha;
+                refAngulo[1] = beta;
+                break;
             case 3:  //mouse wheel scrolls
                 radius -= 1;
                 glutPostRedisplay();
@@ -35,6 +43,29 @@ void processaMouse(int button, int state, int x, int y) {
                 break;
         }
     }
+    pos[0] = radius*cos(beta)*sin(alpha);
+    pos[1] = radius*sin(beta);
+    pos[2] = radius*cos(beta)*cos(alpha);
+
+    glutPostRedisplay();
+}
+
+void mouseMovement(int x, int y) {
+    float unitX = (2 * M_PI)/glutGet(GLUT_WINDOW_WIDTH);
+    float unitY = M_PI/glutGet(GLUT_WINDOW_HEIGHT);
+
+    alpha = refAngulo[0] + unitX * (ref[0]-x);
+
+    float novoBeta = refAngulo[1] + unitY * (y-ref[1]);
+    if (novoBeta <= -M_PI/2) {
+        beta = -M_PI/2;
+    } else if (novoBeta >= M_PI/2) {
+        beta = M_PI/2;
+    } else {
+        beta = novoBeta;
+    }
+
+
     pos[0] = radius*cos(beta)*sin(alpha);
     pos[1] = radius*sin(beta);
     pos[2] = radius*cos(beta)*cos(alpha);
@@ -210,7 +241,7 @@ int main(int argc, char** argv)
     glutSpecialFunc(processaSpecialKeys);
     glutMouseFunc(processaMouse);
     glutMotionFunc(mouseMovement);
-    glutPassiveMotionFunc(mousePassiveMovement);
+    //glutPassiveMotionFunc(mousePassiveMovement);
 
     // some OpenGL settings
     glEnable(GL_DEPTH_TEST);
