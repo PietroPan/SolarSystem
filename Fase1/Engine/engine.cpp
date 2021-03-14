@@ -42,7 +42,7 @@ void processaMouse(int button, int state, int x, int y) {
     glutPostRedisplay();
 }
 
-void mouseMovement(int x, int y) {
+void mousePassiveMovement(int x, int y) {
     float unitY = M_PI/glutGet(GLUT_WINDOW_HEIGHT);
     float unitX = (2 * M_PI)/glutGet(GLUT_WINDOW_WIDTH);
 
@@ -156,9 +156,13 @@ void renderScene(void) {
 
 int main(int argc, char** argv)
 {
+    if (argc != 2) {
+        cout << "Formato desconhecido. Usar ./Engine *path para o xml*" << endl;
+    }
+
     list <string> filesToRead;
 
-    TiXmlDocument doc( "scene.xml" );
+    TiXmlDocument doc(argv[1]);
     bool loadOk = doc.LoadFile();
     cout << loadOk;
     cout << "\n";
@@ -205,7 +209,8 @@ int main(int argc, char** argv)
 
     glutSpecialFunc(processaSpecialKeys);
     glutMouseFunc(processaMouse);
-    glutPassiveMotionFunc(mouseMovement);
+    glutMotionFunc(mouseMovement);
+    glutPassiveMotionFunc(mousePassiveMovement);
 
     // some OpenGL settings
     glEnable(GL_DEPTH_TEST);
