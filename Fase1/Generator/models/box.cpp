@@ -57,7 +57,7 @@ void calcInds2(int i0,int steps,vector<int> &indexs){
 void pointsBox(float x,float y,float z,int divs,char *filename){
     vector<int> indexs;
     vector<Point> points;
-	float x0=0,y0=0,z0=0;
+	float x0=-(x/2),y0=-(y/2),z0=-(z/2);
 	float xinc=x/divs,yinc=y/divs,zinc=z/divs;
 	int numPlanePoints=pow(divs+1,2),j=0;
 

@@ -31,9 +31,7 @@ int main(int argc, char **argv) {
           if (argc == 7) {
             divisions = stoi(argv[5]);
             if (length > 0.0f && width > 0.0f && height > 0.0f && divisions > 0) {
-                clock_t tStart = clock();
                 pointsBox(length,width,height,divisions,argv[6]);
-                printf("Time taken: %.2fs\n", (double)(clock() - tStart)/CLOCKS_PER_SEC);
             }
           } else {
             if (length > 0.0f && width > 0.0f && height > 0.0f && divisions > 0) {
