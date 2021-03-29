@@ -15,7 +15,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0afe9497-bf2e-42c7-b50d-8ae82c217ac0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/drawable.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/drawable.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gereIncludes.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transformacao.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/figura3d.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/figura3d.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,12 +77,12 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="Engine" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="../scene.xml" REDIRECT_INPUT="false" ELEVATE="false" WORKING_DIR="file://$PROJECT_DIR$/cmake-build-debug" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Engine" TARGET_NAME="Engine" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Engine" RUN_TARGET_NAME="Engine">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="Engine" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="../scene.xml" REDIRECT_INPUT="false" ELEVATE="false" WORKING_DIR="file://$PROJECT_DIR$/cmake-build-debug" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Engine" TARGET_NAME="Engine" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Engine" RUN_TARGET_NAME="Engine">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -103,6 +110,7 @@
       <workItem from="1615653150655" duration="280000" />
       <workItem from="1615653632446" duration="24000" />
       <workItem from="1615747440692" duration="7311000" />
+      <workItem from="1617028057581" duration="6471000" />
     </task>
     <servers />
   </component>

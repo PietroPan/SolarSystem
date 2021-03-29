@@ -10,7 +10,7 @@ add_executable(Engine
         tinyxml/tinystr.cpp
         tinyxml/tinyxmlparser.cpp
         tinyxml/tinyxmlerror.cpp
-        engine.cpp)
+        engine.cpp transformacao.cpp drawable.cpp drawable.h gereIncludes.h)
 
 find_package(OpenGL REQUIRED)
 include_directories(${OpenGL_INCLUDE_DIRS})

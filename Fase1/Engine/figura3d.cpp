@@ -13,10 +13,11 @@
 #include <iterator>
 #include <cstring>
 #include <map>
+#include "drawable.h"
 
 using namespace std;
 
-class Figura3d {
+class Figura3d: public Drawable {
 
 private:
     int nr_pontos;
