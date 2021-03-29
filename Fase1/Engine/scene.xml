@@ -1,3 +1,5 @@
 <scene>
     <model file="../spheret.3d" />
+    <model file="../sphere1.3d" />
+    <model file="../cone.3d" />
 </scene>
