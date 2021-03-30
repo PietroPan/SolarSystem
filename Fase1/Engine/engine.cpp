@@ -2,15 +2,10 @@
 // Created by mane on 10/03/21.
 //
 
-#include <cstring>
-#include <string>
+#include "gereIncludes.h"
+#include "drawable.h"
 #include "figura3d.cpp"
-#include "tinyxml/tinyxml.h"
-#include "tinyxml/tinystr.h"
 #include "transformacao.cpp"
-
-#define _USE_MATH_DEFINES
-#include <math.h>
 
 float radius = 30.0f;
 float alpha = 0.f;

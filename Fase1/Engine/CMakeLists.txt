@@ -5,12 +5,15 @@ project(Engine)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 add_executable(Engine
-        figura3d.cpp
-        tinyxml/tinyxml.cpp
+		figura3d.cpp
+		transformacao.cpp
+		gereIncludes.h
+		tinyxml/tinyxml.cpp
         tinyxml/tinystr.cpp
         tinyxml/tinyxmlparser.cpp
         tinyxml/tinyxmlerror.cpp
-        engine.cpp transformacao.cpp drawable.cpp drawable.h gereIncludes.h)
+        engine.cpp
+		drawable.h)
 
 find_package(OpenGL REQUIRED)
 include_directories(${OpenGL_INCLUDE_DIRS})

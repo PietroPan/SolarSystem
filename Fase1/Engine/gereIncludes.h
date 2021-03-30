@@ -11,7 +11,6 @@
 #include <GL/glut.h>
 #endif
 
-
 #include <iostream>
 #include <cstdio>
 #include <fstream>
@@ -22,7 +21,6 @@
 #include <map>
 #include <cstring>
 #include <string>
-#include "figura3d.cpp"
 #include "tinyxml/tinyxml.h"
 #include "tinyxml/tinystr.h"
 

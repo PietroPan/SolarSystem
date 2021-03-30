@@ -1,21 +1,5 @@
-#ifdef __APPLE__
-#include <GLUT/glut.h>
-#else
-#include <GL/glut.h>
-#endif
-
-#include <math.h>
-#include <cstdio>
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <list>
-#include <iterator>
-#include <cstring>
-#include <map>
+#include "gereIncludes.h"
 #include "drawable.h"
-
-using namespace std;
 
 class Figura3d: public Drawable {
 
@@ -69,6 +53,7 @@ public:
 
     Figura3d(string nomeFicheiro) {
         ifstream infile(nomeFicheiro.c_str());
+        bool b = infile.is_open();
         if (infile.is_open()) {
             file2figure(infile);
         }

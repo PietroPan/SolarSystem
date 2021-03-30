@@ -1,17 +1,8 @@
 //
 // Created by mane on 29/03/21.
 //
-#ifdef __APPLE__
-#include <GLUT/glut.h>
-#else
-#include <GL/glut.h>
-#endif
-
-
-#include <iostream>
+#include "gereIncludes.h"
 #include "drawable.h"
-
-using namespace std;
 
 class Transformacao: public Drawable {};
 

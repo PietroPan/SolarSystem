@@ -1,20 +1,15 @@
 //
-// Created by mane on 29/03/21.
+// Created by mane on 30/03/21.
 //
-#ifdef __APPLE__
-#include <GLUT/glut.h>
-#else
-#include <GL/glut.h>
-#endif
 
 #ifndef ENGINE_DRAWABLE_H
 #define ENGINE_DRAWABLE_H
 
-#include <list>
-#include <iostream>
+//
+// Created by mane on 29/03/21.
+//
 
-using namespace std;
-
+#include "gereIncludes.h"
 
 class Drawable {
 public:
@@ -27,11 +22,8 @@ private:
     list<Group*> groups;
 
 public:
-    Group() {
-
-    }
     Group (list<Drawable*> desenhaveis, list<Group*> groups) {
-        this->desenhaveis = desenhaveis;
+        this->desenhaveis = std::move(desenhaveis);
         this->groups = groups;
     }
 
@@ -63,6 +55,5 @@ public:
         glPopMatrix();
     }
 };
-
 
 #endif //ENGINE_DRAWABLE_H
