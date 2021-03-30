@@ -7,6 +7,7 @@
 #include "figura3d.cpp"
 #include "tinyxml/tinyxml.h"
 #include "tinyxml/tinystr.h"
+#include "transformacao.cpp"
 
 #define _USE_MATH_DEFINES
 #include <math.h>
@@ -21,6 +22,7 @@ float pos[3] = {radius*cos(beta)*sin(alpha),radius*sin(beta),radius*cos(beta)*co
 
 
 list<Figura3d*> figuras;
+Group *desenho;
 
 void processaMouse(int button, int state, int x, int y) {
     if (state == GLUT_DOWN) {
@@ -173,15 +175,116 @@ void renderScene(void) {
     glVertex3f(0.0f, 0.0f, 100.0f);
 
     glEnd();
-
+/*
     list<Figura3d*> :: iterator it;
     for (it = figuras.begin(); it != figuras.end(); ++it) {
         Figura3d* aux = *it;
         aux->draw();
     }
+    */
+    desenho->draw();
 
     // End of frame
     glutSwapBuffers();
+}
+
+Group* defineGrupos (TiXmlElement* groupElement) {
+    list<Group*> subgroups;
+    list<Drawable*> draws;
+
+    while (groupElement != NULL) {
+        TiXmlElement *t = groupElement->FirstChildElement();
+
+        while (t != NULL) {
+            string instruction = t->Value();
+
+            if (instruction == "translate") {
+                TiXmlAttribute *attrib;
+                float x = 0.0f, y = 0.0f, z = 0.0f;
+
+                for (attrib = t->FirstAttribute(); attrib != NULL; attrib = attrib->Next()) {
+                    string name = attrib->Name();
+                    if (name == "X" || name == "axisX") {
+                        x = stof(attrib->Value());
+
+                    } else if (name == "Y" || name == "axisY") {
+                        y = stof(attrib->Value());
+
+                    } else if (name == "Z" || name == "axisZ") {
+                        z = stof(attrib->Value());
+                    }
+                    //std::cout << attrib->Name() << " " << attrib->Value();
+                }
+                Translacao *translation = new Translacao(x, y, z);
+                draws.emplace_back(translation);
+
+
+            } else if (instruction == "rotate") {
+                TiXmlAttribute *attrib;
+                int angle = 0;
+                float x = 0.0f, y = 0.0f, z = 0.0f;
+
+                for (attrib = t->FirstAttribute(); attrib != NULL; attrib = attrib->Next()) {
+                    string name = attrib->Name();
+
+                    if (name == "angle") {
+                        angle = stoi(attrib->Value());
+
+                    } else if (name == "X" || name == "axisX") {
+                        x = stof(attrib->Value());
+
+                    } else if (name == "Y" || name == "axisY") {
+                        y = stof(attrib->Value());
+
+                    } else if (name == "Z" || name == "axisZ") {
+                        z = stof(attrib->Value());
+                    }
+                    //std::cout << attrib->Name() << " " << attrib->Value();
+                }
+
+                Rotacao *rotation = new Rotacao(angle, x, y, z);
+                draws.emplace_back(rotation);
+
+            } else if (instruction == "scale") {
+                TiXmlAttribute *attrib;
+                float x = 0.0f, y = 0.0f, z = 0.0f;
+
+                for (attrib = t->FirstAttribute(); attrib != NULL; attrib = attrib->Next()) {
+                    string name = attrib->Name();
+
+                    if (name == "X" || name == "axisX") {
+                        x = stof(attrib->Value());
+
+                    } else if (name == "Y" || name == "axisY") {
+                        y = stof(attrib->Value());
+
+                    } else if (name == "Z" || name == "axisZ") {
+                        z = stof(attrib->Value());
+                    }
+                    //std::cout << attrib->Name() << " " << attrib->Value();
+                }
+                Escala *scale = new Escala(x, y, z);
+                draws.emplace_back(scale);
+
+            } else if (instruction == "models") {
+                TiXmlElement *model = t->FirstChildElement("model");
+                while (model != NULL) {
+                    string file = model->Attribute("file");
+                    draws.emplace_back(new Figura3d(file));
+                    model = model->NextSiblingElement("model");
+                }
+
+            } else if (instruction == "group") {
+                subgroups.emplace_back(defineGrupos(t));
+            }
+
+            t = t->NextSiblingElement();
+
+        }
+        groupElement = groupElement->NextSiblingElement("group");
+    }
+    Group *res = new Group(draws, subgroups);
+    return res;
 }
 
 
@@ -199,19 +302,10 @@ int main(int argc, char** argv)
     cout << "\n";
     if (loadOk) {
         TiXmlElement * scene = doc.FirstChildElement( "scene" );
+
         if( scene ) {
-            TiXmlElement * figure = scene->FirstChildElement( "model" );
-            if (figure) {
-                filesToRead.emplace_back(figure->Attribute("file"));
-
-                TiXmlElement * figures = figure->NextSiblingElement("model");
-
-                while (figures!=NULL) {
-                    filesToRead.emplace_back(figures->Attribute("file"));
-                    figures = figures->NextSiblingElement("model");
-                }
-
-            }
+            TiXmlElement * g = scene->FirstChildElement("group");
+            desenho = defineGrupos(g);
         }
 
     } else {
@@ -219,13 +313,14 @@ int main(int argc, char** argv)
     }
 
 
-
+/*
     // Iterar sobre a lista de nomes de ficheiros, criando para cada um, um novo objeto Figura3d, que conterá os pontos a desenhar
     list<string> :: iterator it;
     for (it = filesToRead.begin(); it != filesToRead.end(); ++it) {
         string aux = *it;
         figuras.push_back(new Figura3d(aux));
     }
+    */
 
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);

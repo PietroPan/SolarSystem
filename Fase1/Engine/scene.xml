@@ -1,5 +1,14 @@
 <scene>
-    <model file="../spheret.3d" />
-    <model file="../sphere1.3d" />
-    <model file="../cone.3d" />
+    <group>
+        <translate X="1" />
+        <models>
+            <model file="spheret.3d" />
+        </models>
+        <group>
+            <translate Y="1" />
+            <models>
+                <model file="cone.3d" />
+            </models>
+        </group>
+    </group>
 </scene>

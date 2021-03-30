@@ -28,6 +28,23 @@ private:
 
 public:
     Group() {
+
+    }
+    Group (list<Drawable*> desenhaveis, list<Group*> groups) {
+        this->desenhaveis = desenhaveis;
+        this->groups = groups;
+    }
+
+    void addDrawable (Drawable& draw) {
+        desenhaveis.emplace_back(&draw);
+    }
+
+    void addGroup (Group& group) {
+        groups.emplace_back(&group);
+    }
+
+    void setGroups (list<Group *> groups) {
+        this->groups = groups;
     }
 
     void draw() {

@@ -15,14 +15,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0afe9497-bf2e-42c7-b50d-8ae82c217ac0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/drawable.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/drawable.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gereIncludes.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/transformacao.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/figura3d.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/figura3d.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drawable.h" beforeDir="false" afterPath="$PROJECT_DIR$/drawable.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/engine.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scene.xml" beforeDir="false" afterPath="$PROJECT_DIR$/scene.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,19 +73,9 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Engine" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="../scene.xml" REDIRECT_INPUT="false" ELEVATE="false" WORKING_DIR="file://$PROJECT_DIR$/cmake-build-debug" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Engine" TARGET_NAME="Engine" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Engine" RUN_TARGET_NAME="Engine">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
   </component>
@@ -111,6 +97,9 @@
       <workItem from="1615653632446" duration="24000" />
       <workItem from="1615747440692" duration="7311000" />
       <workItem from="1617028057581" duration="6471000" />
+      <workItem from="1617048952001" duration="2292000" />
+      <workItem from="1617054376892" duration="8758000" />
+      <workItem from="1617108657476" duration="10557000" />
     </task>
     <servers />
   </component>
@@ -131,5 +120,46 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/engine.cpp</url>
+          <line>217</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/engine.cpp</url>
+          <line>244</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/engine.cpp</url>
+          <line>272</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/engine.cpp</url>
+          <line>265</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/engine.cpp</url>
+          <line>285</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/engine.cpp</url>
+          <line>276</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/engine.cpp</url>
+          <line>277</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
