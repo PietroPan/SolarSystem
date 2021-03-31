@@ -179,7 +179,6 @@ void renderScene(void) {
     }
     */
 
-    //desenho->draw();
     list<Group*> :: iterator it;
     for(it = grupos.begin(); it != grupos.end(); ++it) {
         Group* grp = *it;
