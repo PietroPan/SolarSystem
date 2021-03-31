@@ -18,6 +18,7 @@ float pos[3] = {radius*cos(beta)*sin(alpha),radius*sin(beta),radius*cos(beta)*co
 
 list<Figura3d*> figuras;
 Group *desenho;
+list<Group*> grupos;
 
 void processaMouse(int button, int state, int x, int y) {
     if (state == GLUT_DOWN) {
@@ -177,7 +178,13 @@ void renderScene(void) {
         aux->draw();
     }
     */
-    desenho->draw();
+
+    //desenho->draw();
+    list<Group*> :: iterator it;
+    for(it = grupos.begin(); it != grupos.end(); ++it) {
+        Group* grp = *it;
+        grp->draw();
+    }
 
     // End of frame
     glutSwapBuffers();
@@ -187,8 +194,7 @@ Group* defineGrupos (TiXmlElement* groupElement) {
     list<Group*> subgroups;
     list<Drawable*> draws;
 
-    while (groupElement != NULL) {
-        TiXmlElement *t = groupElement->FirstChildElement();
+    TiXmlElement *t = groupElement->FirstChildElement();
 
         while (t != NULL) {
             string instruction = t->Value();
@@ -276,8 +282,6 @@ Group* defineGrupos (TiXmlElement* groupElement) {
             t = t->NextSiblingElement();
 
         }
-        groupElement = groupElement->NextSiblingElement("group");
-    }
     Group *res = new Group(draws, subgroups);
     return res;
 }
@@ -298,9 +302,12 @@ int main(int argc, char** argv)
     if (loadOk) {
         TiXmlElement * scene = doc.FirstChildElement( "scene" );
 
-        if( scene ) {
+        if(scene) {
             TiXmlElement * g = scene->FirstChildElement("group");
-            desenho = defineGrupos(g);
+            while (g) {
+                grupos.emplace_back(defineGrupos(g));
+                g = g->NextSiblingElement("group");
+            }
         }
 
     } else {
