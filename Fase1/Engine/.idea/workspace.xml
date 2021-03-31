@@ -16,14 +16,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0afe9497-bf2e-42c7-b50d-8ae82c217ac0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drawable.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/drawable.h" beforeDir="false" afterPath="$PROJECT_DIR$/drawable.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/engine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/engine.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/figura3d.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/figura3d.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gereIncludes.h" beforeDir="false" afterPath="$PROJECT_DIR$/gereIncludes.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scene.xml" beforeDir="false" afterPath="$PROJECT_DIR$/scene.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/transformacao.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/transformacao.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

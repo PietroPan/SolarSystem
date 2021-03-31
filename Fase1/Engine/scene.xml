@@ -9,6 +9,13 @@
             <models>
                 <model file="../cone.3d" />
             </models>
+            <group>
+                <translate X="2" />
+                <rotate angle="34" X="1"/>
+                <models>
+                    <model file="../cone.3d" />
+                </models>
+            </group>
         </group>
     </group>
 </scene>
