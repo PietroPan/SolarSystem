@@ -1,0 +1,162 @@
+<scene>
+    <group>
+        <!--SoL -->
+        <group>
+            <scale X="6" Y="6" Z="6" />
+            <models>
+                <model file = "sphere.3d"/>
+            </models>
+        </group>
+        <!--Mercurio -->
+        <group>
+            <translate X="18"/>
+            <scale X="0.3" Y="0.3" Z="0.3" />
+            <models>
+                <model file = "sphere.3d"/>
+            </models>
+        </group>
+        <!--Venus -->
+        <group>
+            <translate X="28"/>
+            <rotate angle="3" axisX="0" axisY="0" axisZ="1"/>
+            <scale X="0.8" Y="0.8" Z="0.8" />
+            <models>
+                <model file = "sphere.3d"/>
+            </models>
+        </group>
+        <!--Terra -->
+        <group>
+            <translate X="40"/>
+            <rotate angle="23" axisX="0" axisY="0" axisZ="1"/>
+            <models>
+                <model file = "sphere.3d"/>
+            </models>
+            <!--Lua -->
+            <group>
+                <translate X="2.4" Y="2"/>
+                <scale X="0.1" Y="0.1" Z="0.1" />
+                <models>
+                    <model file = "sphere.3d"/>
+                </models>
+            </group>
+        </group>
+        <!--Marte -->
+        <group>
+            <translate X="50"/>
+            <rotate angle="25" axisX="0" axisY="0" axisZ="1"/>
+            <scale X="0.5" Y="0.5" Z="0.5" />
+            <models>
+                <model file = "sphere.3d"/>
+            </models>
+            <!--Phobos -->
+            <group>
+                <translate X="2.5" Y="1.5"/>
+                <scale X="0.1" Y="0.1" Z="0.1" />
+                <models>
+                    <model file = "sphere.3d"/>
+                </models>
+            </group>
+            <!--Deimos -->
+            <group>
+                <translate X="2.2" Y="-2"/>
+                <scale X="0.1" Y="0.1" Z="0.1" />
+                <models>
+                    <model file = "sphere.3d"/>
+                </models>
+            </group>
+        </group>
+        <!--Jupiter -->
+        <group>
+            <translate X="66"/>
+            <rotate angle="3" axisX="0" axisY="0" axisZ="1"/>
+            <scale X="3" Y="3" Z="3" />
+            <models>
+                <model file = "sphere.3d"/>
+            </models>
+            <!--Europa -->
+            <group>
+                <translate X="2.5" Y="1"/>
+                <scale X="0.05" Y="0.05" Z="0.05" />
+                <models>
+                    <model file = "sphere.3d"/>
+                </models>
+            </group>
+            <!--Callisto -->
+            <group>
+                <translate X="1" Y="2.5"/>
+                <scale X="0.05" Y="0.05" Z="0.05" />
+                <models>
+                    <model file = "sphere.3d"/>
+                </models>
+            </group>
+            <!--Ganymede -->
+            <group>
+                <translate X="2" Y="2"/>
+                <scale X="0.05" Y="0.05" Z="0.05" />
+                <models>
+                    <model file = "sphere.3d"/>
+                </models>
+            </group>
+            <!--IO -->
+            <group>
+                <translate X="2" Y="-2"/>
+                <scale X="0.05" Y="0.05" Z="0.05" />
+                <models>
+                    <model file = "sphere.3d"/>
+                </models>
+            </group>
+        </group>
+        <!--Saturno -->
+        <group>
+            <translate X="88"/>
+            <rotate angle="26" axisX="0" axisY="0" axisZ="1"/>
+            <scale X="2.4" Y="2.4" Z="2.4" />
+            <models>
+                <model file = "sphere.3d"/>
+            </models>
+            <!--Anel -->
+            <group>
+                <rotate angle="90" axisX="1" axisY="0" axisZ="0"/>
+                <scale X="2" Y="2" Z="2" />
+                <models>
+                    <model file = "ring.3d"/>
+                </models>
+            </group>
+        </group>
+        <!--Urano -->
+        <group>
+            <translate X="112"/>
+            <rotate angle="98" axisX="0" axisY="0" axisZ="1"/>
+            <scale X="1.4" Y="1.4" Z="1.4" />
+            <models>
+                <model file = "sphere.3d"/>
+            </models>
+            <!--Anel -->
+            <group>
+                <rotate angle="90" axisX="1" axisY="0" axisZ="0"/>
+                <scale X="2" Y="2" Z="2" />
+                <models>
+                    <model file = "ring.3d"/>
+                </models>
+            </group>
+        </group>
+        <!--neptuno -->
+        <group>
+            <translate X="136"/>
+            <rotate angle="28" axisX="0" axisY="0" axisZ="1"/>
+            <scale X="1.5" Y="1.5" Z="1.5" />
+            <models>
+                <model file = "sphere.3d"/>
+            </models>
+            <!--Anel -->
+            <group>
+                <rotate angle="80" axisX="1" axisY="0" axisZ="0"/>
+                <scale X="1.4" Y="1.4" Z="1.4" />
+                <models>
+                    <model file = "ring.3d"/>
+                </models>
+            </group>
+
+        </group>
+    </group>
+</scene>
