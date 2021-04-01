@@ -15,9 +15,8 @@ float refAngulo[2] = {0.f,0.f};
 
 float pos[3] = {radius*cos(beta)*sin(alpha),radius*sin(beta),radius*cos(beta)*cos(alpha)};
 
+string pathDoXML = "";
 
-list<Figura3d*> figuras;
-Group *desenho;
 list<Group*> grupos;
 
 void processaMouse(int button, int state, int x, int y) {
@@ -171,13 +170,6 @@ void renderScene(void) {
     glVertex3f(0.0f, 0.0f, 100.0f);
 
     glEnd();
-/*
-    list<Figura3d*> :: iterator it;
-    for (it = figuras.begin(); it != figuras.end(); ++it) {
-        Figura3d* aux = *it;
-        aux->draw();
-    }
-    */
 
     list<Group*> :: iterator it;
     for(it = grupos.begin(); it != grupos.end(); ++it) {
@@ -270,7 +262,7 @@ Group* defineGrupos (TiXmlElement* groupElement) {
                 TiXmlElement *model = t->FirstChildElement("model");
                 while (model != NULL) {
                     string file = model->Attribute("file");
-                    draws.emplace_back(new Figura3d(file));
+                    draws.emplace_back(new Figura3d(pathDoXML + file));
                     model = model->NextSiblingElement("model");
                 }
 
@@ -285,12 +277,30 @@ Group* defineGrupos (TiXmlElement* groupElement) {
     return res;
 }
 
+void guardaPath3d(char* copiaPath) {
+    int index = 0;
+    for (int i = 0; copiaPath[i]; i++) {
+        if (copiaPath[i] == '/') {
+            index = i;
+        }
+    }
+    if (index != 0) {
+        copiaPath[index] = '\0';
+    }
+}
+
 
 int main(int argc, char** argv)
 {
     if (argc != 2) {
         cout << "Formato desconhecido. Usar ./Engine *path para o xml*" << endl;
     }
+
+    char *copiaPath = new char[255];
+    strcpy(copiaPath, argv[1]);
+    guardaPath3d(copiaPath);
+    pathDoXML = string(copiaPath) + "/";
+    //cout << "O path para o xml é " << pathDoXML << endl;
 
     list <string> filesToRead;
 

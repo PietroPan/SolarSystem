@@ -3,14 +3,14 @@
         <group>
             <scale X="6" Y="6" Z="6" />
             <models>
-                <model file = "../sphere.3d"/>
+                <model file = "sphere.3d"/>
             </models>
         </group>
         <group>
             <translate X="18"/>
             <scale X="0.3" Y="0.3" Z="0.3" />
             <models>
-                <model file = "../sphere.3d"/>
+                <model file = "sphere.3d"/>
             </models>
         </group>
     </group>
