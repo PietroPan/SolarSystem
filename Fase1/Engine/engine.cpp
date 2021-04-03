@@ -52,11 +52,18 @@ void processaNormalKeys(unsigned char key, int x, int y) {
             break;
             //w 119
         case 119:
-            camera->moveFPS(0.5f);
+            camera->moveFPS(1);
             break;
         case 115:
-            camera->moveFPS(-0.5f);
+            camera->moveFPS(-1);
             break;
+        case 113:
+            camera->incStep(1.0f);
+            break;
+        case 101:
+            camera->decStep(1.0f);
+            break;
+            
 
         default:
             break;
@@ -106,16 +113,16 @@ void renderScene(void) {
     glBegin(GL_LINES);
 
     glColor3f(1.0f, 0.0f, 0.0f);
-    glVertex3f(-100.0f, 0.0f, 0.0f);
-    glVertex3f(100.0f, 0.0f, 0.0f);
+    glVertex3f(-200.0f, 0.0f, 0.0f);
+    glVertex3f(200.0f, 0.0f, 0.0f);
 
     glColor3f(0.0f, 1.0f, 0.0f);
-    glVertex3f(0.0f, -100.0f, 0.0f);
-    glVertex3f(0.0f, 100.0f, 0.0f);
+    glVertex3f(0.0f, -200.0f, 0.0f);
+    glVertex3f(0.0f, 200.0f, 0.0f);
 
     glColor3f(0.0f, 0.0f, 1.0f);
-    glVertex3f(0.0f, 0.0f, -100.0f);
-    glVertex3f(0.0f, 0.0f, 100.0f);
+    glVertex3f(0.0f, 0.0f, -200.0f);
+    glVertex3f(0.0f, 0.0f, 200.0f);
 
     glEnd();
 

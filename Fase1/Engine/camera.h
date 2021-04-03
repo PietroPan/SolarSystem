@@ -21,7 +21,7 @@ private:
     float alpha, beta;
 
     // FPS camera
-    float alpha2, beta2;
+    float alpha2, beta2, step;
 
 public:
     Camera(float raio, float alpha, float beta) {
@@ -29,6 +29,7 @@ public:
         this->radius = raio;
         this->alpha = alpha;
         this->beta = beta;
+        this->step = 0.5f;
     }
 
     void switchMode() {
@@ -44,14 +45,14 @@ public:
         }
     }
 
-    void moveFPS(float dist) {
+    void moveFPS(int dir) {
         if (mode == FPS) {
             float posicao[3], destination[3];
             pos(posicao);
 
-            destination[0] = posicao[0] + dist * cos(beta2) * sin(alpha2);
-            destination[1] = posicao[1] + dist * sin(beta2);
-            destination[2] = posicao[2] + dist * cos(beta2) * cos(alpha2);
+            destination[0] = posicao[0] + (dir*step) * cos(beta2) * sin(alpha2);
+            destination[1] = posicao[1] + (dir*step) * sin(beta2);
+            destination[2] = posicao[2] + (dir*step) * cos(beta2) * cos(alpha2);
 
             radius = sqrt(pow(destination[0], 2)
                     + pow(destination[1], 2)
@@ -73,6 +74,16 @@ public:
 
     void zoom(float value) {
         radius += value;
+    }
+    
+    void incStep(float value) {
+        if (mode==FPS) step += value;
+    }
+
+    void decStep(float value) {
+        if ((mode==FPS)&&(step-value)>0){
+            step -= value;
+        }
     }
 
     void guardaRef(int x, int y) {
