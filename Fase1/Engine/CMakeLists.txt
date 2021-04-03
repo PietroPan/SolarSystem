@@ -13,7 +13,7 @@ add_executable(Engine
         tinyxml/tinyxmlparser.cpp
         tinyxml/tinyxmlerror.cpp
         engine.cpp
-		drawable.h)
+		drawable.h camera.h)
 
 find_package(OpenGL REQUIRED)
 include_directories(${OpenGL_INCLUDE_DIRS})

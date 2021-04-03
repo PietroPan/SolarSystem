@@ -6,14 +6,10 @@
 #include "drawable.h"
 #include "figura3d.cpp"
 #include "transformacao.cpp"
+#include "camera.h"
 
-float radius = 30.0f;
-float alpha = 0.f;
-float beta = M_PI/4;
-int ref[2] = {0,0};
-float refAngulo[2] = {0.f,0.f};
 
-float pos[3] = {radius*cos(beta)*sin(alpha),radius*sin(beta),radius*cos(beta)*cos(alpha)};
+Camera* camera = new Camera(30.0f, 0, M_PI/4);
 
 string pathDoXML = "";
 
@@ -23,26 +19,18 @@ void processaMouse(int button, int state, int x, int y) {
     if (state == GLUT_DOWN) {
         switch(button) {
             case GLUT_LEFT_BUTTON:
-                ref[0] = x;
-                ref[1] = y;
-                refAngulo[0] = alpha;
-                refAngulo[1] = beta;
+                camera->guardaRef(x, y);
                 break;
             case 3:  //mouse wheel scrolls
-                radius -= 1;
-                glutPostRedisplay();
+                camera->zoom(-1);
                 break;
             case 4:
-                radius += 1;
-                glutPostRedisplay();
+                camera->zoom(1);
                 break;
             default:
                 break;
         }
     }
-    pos[0] = radius*cos(beta)*sin(alpha);
-    pos[1] = radius*sin(beta);
-    pos[2] = radius*cos(beta)*cos(alpha);
 
     glutPostRedisplay();
 }
@@ -51,75 +39,31 @@ void mouseMovement(int x, int y) {
     float unitX = (2 * M_PI)/glutGet(GLUT_WINDOW_WIDTH);
     float unitY = M_PI/glutGet(GLUT_WINDOW_HEIGHT);
 
-    alpha = refAngulo[0] + unitX * (ref[0]-x);
-
-    float novoBeta = refAngulo[1] + unitY * (y-ref[1]);
-    if (novoBeta <= -M_PI/2) {
-        beta = -M_PI/2;
-    } else if (novoBeta >= M_PI/2) {
-        beta = M_PI/2;
-    } else {
-        beta = novoBeta;
-    }
-
-
-    pos[0] = radius*cos(beta)*sin(alpha);
-    pos[1] = radius*sin(beta);
-    pos[2] = radius*cos(beta)*cos(alpha);
+    camera->mouseMovement(unitX, unitY, x, y);
 
     glutPostRedisplay();
 }
 
-void mousePassiveMovement(int x, int y) {
-    float unitY = M_PI/glutGet(GLUT_WINDOW_HEIGHT);
-    float unitX = (2 * M_PI)/glutGet(GLUT_WINDOW_WIDTH);
 
-    alpha = unitX * (float)x;
-    beta = (M_PI/2) - unitY * (float)y;
-
-    pos[0] = radius*cos(beta)*sin(alpha);
-    pos[1] = radius*sin(beta);
-    pos[2] = radius*cos(beta)*cos(alpha);
-
-    glutPostRedisplay();
-}
-
-void processaSpecialKeys(int key, int x, int y) {
-    float incremento = 0.25f;
-
-    switch (key) {
-        case GLUT_KEY_UP:
-            if (beta + incremento <= (M_PI/2)) {
-                beta += incremento;
-            }
+void processaNormalKeys(unsigned char key, int x, int y) {
+    switch(key) {
+        case 99:
+            camera->switchMode();
             break;
-
-        case GLUT_KEY_DOWN:
-            if (beta - incremento >= -(M_PI/2)) {
-                beta -= incremento;
-            }
+            //w 119
+        case 119:
+            camera->moveFPS(0.5f);
             break;
-
-        case GLUT_KEY_LEFT:
-            alpha-= incremento;
-            break;
-
-        case GLUT_KEY_RIGHT:
-            alpha+= incremento;
+        case 115:
+            camera->moveFPS(-0.5f);
             break;
 
         default:
             break;
     }
 
-    pos[0] = radius*cos(beta)*sin(alpha);
-    pos[1] = radius*sin(beta);
-    pos[2] = radius*cos(beta)*cos(alpha);
-
     glutPostRedisplay();
-
 }
-
 
 
 
@@ -150,9 +94,13 @@ void renderScene(void) {
 
     // set camera
     glLoadIdentity();
-    gluLookAt(pos[0], pos[1], pos[2],
-              0.0,0.0,0.0,
-              0.0f,1.0f,0.0f);
+
+    float posCamera[3], direcaoOlhar[3];
+    camera->pos(posCamera);
+    camera->lookAt(direcaoOlhar);
+    gluLookAt(posCamera[0], posCamera[1], posCamera[2],
+              direcaoOlhar[0], direcaoOlhar[1], direcaoOlhar[2],
+              0.0f, 1.0f, 0.0f);
 
     //desenhar eixos
     glBegin(GL_LINES);
@@ -344,7 +292,7 @@ int main(int argc, char** argv)
     glutReshapeFunc(changeSize);
 
 
-    glutSpecialFunc(processaSpecialKeys);
+    glutKeyboardFunc(processaNormalKeys);
     glutMouseFunc(processaMouse);
     glutMotionFunc(mouseMovement);
     //glutPassiveMotionFunc(mousePassiveMovement);
