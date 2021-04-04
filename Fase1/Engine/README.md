@@ -21,4 +21,4 @@
  s            | moves camera backwards (fps)
  q            | increases camera speed (fps)
  e            | decreases camera speed (fps)
- t            | toggles axis
+ t            | toggles xyz axis
