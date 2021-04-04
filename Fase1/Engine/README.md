@@ -15,8 +15,8 @@
  Key          | Effect
  -------------|----------------------------------------
  mouse        | moves camera
- mouse wheel  | zooms camera 
  c            | changes camera between fps and centered
+ mouse wheel  | zooms camera (centered)
  w            | moves camera foward (fps)
  s            | moves camera backwards (fps)
  q            | increases camera speed (fps)
