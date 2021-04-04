@@ -12,6 +12,7 @@
 Camera* camera = new Camera(30.0f, 0, M_PI/4);
 
 string pathDoXML = "";
+bool axis = false;
 
 list<Group*> grupos;
 
@@ -63,6 +64,8 @@ void processaNormalKeys(unsigned char key, int x, int y) {
         case 101:
             camera->decStep(1.0f);
             break;
+        case 116:
+            axis=!axis;
             
 
         default:
@@ -110,21 +113,23 @@ void renderScene(void) {
               0.0f, 1.0f, 0.0f);
 
     //desenhar eixos
-    glBegin(GL_LINES);
+    if (axis==true){
+        glBegin(GL_LINES);
 
-    glColor3f(1.0f, 0.0f, 0.0f);
-    glVertex3f(-200.0f, 0.0f, 0.0f);
-    glVertex3f(200.0f, 0.0f, 0.0f);
+        glColor3f(1.0f, 0.0f, 0.0f);
+        glVertex3f(-200.0f, 0.0f, 0.0f);
+        glVertex3f(200.0f, 0.0f, 0.0f);
 
-    glColor3f(0.0f, 1.0f, 0.0f);
-    glVertex3f(0.0f, -200.0f, 0.0f);
-    glVertex3f(0.0f, 200.0f, 0.0f);
+        glColor3f(0.0f, 1.0f, 0.0f);
+        glVertex3f(0.0f, -200.0f, 0.0f);
+        glVertex3f(0.0f, 200.0f, 0.0f);
 
-    glColor3f(0.0f, 0.0f, 1.0f);
-    glVertex3f(0.0f, 0.0f, -200.0f);
-    glVertex3f(0.0f, 0.0f, 200.0f);
+        glColor3f(0.0f, 0.0f, 1.0f);
+        glVertex3f(0.0f, 0.0f, -200.0f);
+        glVertex3f(0.0f, 0.0f, 200.0f);
 
-    glEnd();
+        glEnd();
+    }
 
     list<Group*> :: iterator it;
     for(it = grupos.begin(); it != grupos.end(); ++it) {

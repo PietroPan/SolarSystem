@@ -67,9 +67,9 @@
         </group>
         <!--Jupiter -->
         <group>
-            <translate X="66"/>
+            <translate X="70"/>
             <rotate angle="3" axisX="0" axisY="0" axisZ="1"/>
-            <scale X="3" Y="3" Z="3" />
+            <scale X="3.5" Y="3.5" Z="3.5" />
             <models>
                 <model file = "sphereP.3d"/>
             </models>
@@ -108,7 +108,7 @@
         </group>
         <!--Saturno -->
         <group>
-            <translate X="88"/>
+            <translate X="102"/>
             <rotate angle="26" axisX="0" axisY="0" axisZ="1"/>
             <scale X="2.4" Y="2.4" Z="2.4" />
             <models>
@@ -125,7 +125,7 @@
         </group>
         <!--Urano -->
         <group>
-            <translate X="112"/>
+            <translate X="130"/>
             <rotate angle="98" axisX="0" axisY="0" axisZ="1"/>
             <scale X="1.4" Y="1.4" Z="1.4" />
             <models>
@@ -142,7 +142,7 @@
         </group>
         <!--neptuno -->
         <group>
-            <translate X="136"/>
+            <translate X="158"/>
             <rotate angle="28" axisX="0" axisY="0" axisZ="1"/>
             <scale X="1.5" Y="1.5" Z="1.5" />
             <models>
