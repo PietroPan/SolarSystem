@@ -73,7 +73,9 @@ public:
     }
 
     void zoom(float value) {
-        radius += value;
+        if (mode==EXPLORER){
+            radius += value;
+        }
     }
     
     void incStep(float value) {
