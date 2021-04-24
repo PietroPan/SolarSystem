@@ -17,4 +17,6 @@ add_executable(${PROJECT_NAME}
                models/sphere.cpp
                models/sphere.h
                models/plane.cpp
-               models/plane.h)
+               models/plane.h
+               models/bezier.cpp
+               models/bezier.h)

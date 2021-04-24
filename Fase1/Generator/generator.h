@@ -11,6 +11,7 @@
 #include "models/cone.h"
 #include "models/plane.h"
 #include "models/sphere.h"
+#include "models/bezier.h"
 using namespace std;
 
 #endif

@@ -50,6 +50,9 @@ int main(int argc, char **argv) {
         int slices=stoi(argv[4]);
         int stacks=stoi(argv[5]);
         if (radius>0.0f&&height>0.0f&&slices>=0&&stacks>=0) pointsCone(radius,height,slices,stacks,argv[6]);
+    } else if (strcmp(argv[1],"bezier") == 0) {
+        int tess=stoi(argv[3]);
+        pointsBezier(argv[2],tess,argv[4]);
     } else {
       cout << "Primitiva desconhecida. \n\n";
     }
