@@ -14,9 +14,17 @@ class Point {
             this->z=z;
         }
 
-        void getX();
-        void getY();
-        void getZ();
+        float getX(){
+            return this->x;
+        }
+
+        float getY(){
+            return this->y;
+        }
+
+        float getZ(){
+            return this->z;
+        }
         string point_to_string(){return to_string(this->x)+" "+to_string(this->y)+" "+to_string(this->z);}
 };
 

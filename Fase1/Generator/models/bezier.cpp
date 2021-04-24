@@ -1,6 +1,6 @@
 #include "bezier.h"
 
-vector<vector<float>> preCalculate(int h,vector<int> &patch,vector<float> &points){
+vector<vector<float>> preCalculate(char coord,vector<int> &patch,vector<Point> &points){
     float ri[4][4]={0};
     vector<vector<float>> r;
     for (int i=0;i<4;i++){
@@ -13,7 +13,13 @@ vector<vector<float>> preCalculate(int h,vector<int> &patch,vector<float> &point
     float a[4][4]={0};
     for (int i=0;i<4;i++){
         for (int j=0;j<4;j++){
-            a[i][j]=points[patch[((i*4)+j)]*3+h];
+            if (coord=='x'){
+                a[i][j]=points[patch[((i*4)+j)]].getX();
+            } else if (coord=='y'){
+                a[i][j]=points[patch[((i*4)+j)]].getY();
+            } else {
+                a[i][j]=points[patch[((i*4)+j)]].getZ();
+            }
         }
     }
 
@@ -38,7 +44,7 @@ vector<vector<float>> preCalculate(int h,vector<int> &patch,vector<float> &point
     return r;
 }
 
-void calculateIndexes(int n,int tess,vector<unsigned int> &ind){
+void calculateIndexes(int n,int tess,vector<int> &ind){
     tess=tess+1;
     for (int k=0;k<n;k++){
         for (int i=0;i<tess-1;i++){
@@ -55,15 +61,15 @@ void calculateIndexes(int n,int tess,vector<unsigned int> &ind){
     }
 }
 
-void calculatePatches(int tess,vector<float> &iPoints,vector<vector<int>> &iPatches,vector<float> &p){
+void calculatePatches(int tess,vector<Point> &iPoints,vector<vector<int>> &iPatches,vector<Point> &p){
     float inc=float(1/float(tess));
     float u=0.0f,v=0.0f;
     float us[4];
     float vs[4];
     for (int n=0;n<32;n++){
-        vector<vector<float>> rx = preCalculate(0,iPatches[n],iPoints);
-        vector<vector<float>> ry = preCalculate(1,iPatches[n],iPoints);
-        vector<vector<float>> rz = preCalculate(2,iPatches[n],iPoints);
+        vector<vector<float>> rx = preCalculate('x',iPatches[n],iPoints);
+        vector<vector<float>> ry = preCalculate('y',iPatches[n],iPoints);
+        vector<vector<float>> rz = preCalculate('z',iPatches[n],iPoints);
         v=0.0f;
         for (int i=0;i<tess+1;v+=inc,i++){
             vs[0]=pow(v,3);vs[1]=pow(v,2);vs[2]=v;vs[3]=1;
@@ -90,15 +96,18 @@ void calculatePatches(int tess,vector<float> &iPoints,vector<vector<int>> &iPatc
                     resy+=intery[x]*vs[x];
                     resz+=interz[x]*vs[x];
                 }
+            p.push_back(Point(resx,resz,resy));
+            /*
             p.push_back(resx);
             p.push_back(resz);
             p.push_back(resy);
+            */
             }
         }
     }
 }
 
-void readFile(string nameOF,vector<float> &points,vector<vector<int>> &patches){
+void readFile(string nameOF,vector<Point> &points,vector<vector<int>> &patches){
     ifstream readFile(nameOF);
     string line;
     //read number of patches
@@ -133,25 +142,32 @@ void readFile(string nameOF,vector<float> &points,vector<vector<int>> &patches){
         sregex_token_iterator(line.begin(), line.end(), regex, -1),
         sregex_token_iterator()
         );
-
+        
+        for (int j=0;j<out.size();j+=3){
+            points.push_back(Point(stof(out[j]),stof(out[j+1]),stof(out[j+2])));
+        }
+        /*
         for (auto &s: out) {
             points.push_back(stof(s));
-        }
+        }*/
     }
 
 }
 
 void pointsBezier(char* inpFile,int tess,char* outFile){
-    vector<float> points;
+    vector<Point> points;
     vector<vector<int>> patches;
     readFile(inpFile,points,patches);
 
-    vector<unsigned int> ind;
-    vector<float> p;
+    vector<int> ind;
+    vector<Point> p;
 
     calculatePatches(tess,points,patches,p);
     calculateIndexes(patches.size(),tess,ind);
 
+    Model model(p,ind);
+    model.writeToFile(outFile,"bezier");
+/*
     ofstream file;
     file.open(outFile);
     file << "bezier" << "\n";
@@ -164,4 +180,5 @@ void pointsBezier(char* inpFile,int tess,char* outFile){
         file << to_string(ind[i])+"\n";
     
     file.close();
+    */
 }

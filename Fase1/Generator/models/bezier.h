@@ -11,13 +11,13 @@
 #include <limits>
 #include <regex>
 
-vector<vector<float>> preCalculate(int h,vector<int> &patch,vector<float> &points);
+vector<vector<float>> preCalculate(char coord,vector<int> &patch,vector<Point> &points);
 
-void calculateIndexes(int n,int tess,vector<unsigned int> &ind);
+void calculateIndexes(int n,int tess,vector<int> &ind);
 
-void calculatePatches(int tess,vector<float> &iPoints,vector<vector<int>> &iPatches,vector<float> &p);
+void calculatePatches(int tess,vector<Point> &iPoints,vector<vector<int>> &iPatches,vector<Point> &p);
 
-void readFile(string nameOF,vector<float> &points,vector<vector<int>> &patches);
+void readFile(string nameOF,vector<Point> &points,vector<vector<int>> &patches);
 
 void pointsBezier(char* inpFile,int tess,char* outFile);
 
