@@ -66,7 +66,7 @@ void calculatePatches(int tess,vector<Point> &iPoints,vector<vector<int>> &iPatc
     float u=0.0f,v=0.0f;
     float us[4];
     float vs[4];
-    for (int n=0;n<32;n++){
+    for (int n=0;n<iPatches.size();n++){
         vector<vector<float>> rx = preCalculate('x',iPatches[n],iPoints);
         vector<vector<float>> ry = preCalculate('y',iPatches[n],iPoints);
         vector<vector<float>> rz = preCalculate('z',iPatches[n],iPoints);
@@ -97,11 +97,6 @@ void calculatePatches(int tess,vector<Point> &iPoints,vector<vector<int>> &iPatc
                     resz+=interz[x]*vs[x];
                 }
             p.push_back(Point(resx,resz,resy));
-            /*
-            p.push_back(resx);
-            p.push_back(resz);
-            p.push_back(resy);
-            */
             }
         }
     }
@@ -146,10 +141,6 @@ void readFile(string nameOF,vector<Point> &points,vector<vector<int>> &patches){
         for (int j=0;j<out.size();j+=3){
             points.push_back(Point(stof(out[j]),stof(out[j+1]),stof(out[j+2])));
         }
-        /*
-        for (auto &s: out) {
-            points.push_back(stof(s));
-        }*/
     }
 
 }
@@ -167,18 +158,4 @@ void pointsBezier(char* inpFile,int tess,char* outFile){
 
     Model model(p,ind);
     model.writeToFile(outFile,"bezier");
-/*
-    ofstream file;
-    file.open(outFile);
-    file << "bezier" << "\n";
-    file << to_string(p.size()/3)+"\n";
-     for(int i=0; i<p.size();i+=3)
-       file << to_string(p[i])+" "+to_string(p[i+1])+" "+to_string(p[i+2])+"\n";
-
-    file << to_string(ind.size())+"\n";
-    for (int i=0;i<ind.size();i++)
-        file << to_string(ind[i])+"\n";
-    
-    file.close();
-    */
 }
