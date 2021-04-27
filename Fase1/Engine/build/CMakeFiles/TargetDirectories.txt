@@ -1,0 +1,3 @@
+/home/xela/Documents/CG/Manel/CG/Fase1/Engine/build/CMakeFiles/rebuild_cache.dir
+/home/xela/Documents/CG/Manel/CG/Fase1/Engine/build/CMakeFiles/edit_cache.dir
+/home/xela/Documents/CG/Manel/CG/Fase1/Engine/build/CMakeFiles/Engine.dir
