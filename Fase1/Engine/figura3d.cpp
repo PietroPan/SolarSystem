@@ -4,27 +4,20 @@
 class Figura3d: public Drawable {
 
 private:
-    //int nr_pontos;
-    //float** pontos;
-    //unsigned int pointsCount;
-    unsigned int indexsCount;
-    GLuint vertices, indices;
+    int nr_pontos;
+    float** pontos;
 
 
     void file2figure(ifstream &file) {
         if (file.is_open()) {
-            vector<unsigned int> indexs;
-            vector<float> points;
-
             char contentor[100];
             string tipoFigura;
             getline(file, tipoFigura); // Ignora a primeira linha, que indica o tipo de figura
 
             file.getline(contentor, 100); // contentor tem o número de pontos distinctos (em caracteres)
             int distinctPoints = stoi(contentor);
-            //this->pointsCount = distinctPoints;
 
-            //float arrayAuxiliar[distinctPoints][3];
+            float arrayAuxiliar[distinctPoints][3];
 
             for (int i = 0; i < distinctPoints; i++) {
                 file.getline(contentor, 99);
@@ -36,35 +29,23 @@ private:
                         umFloat[n+1] = '\0';
                     }
                     index++;
-                    //arrayAuxiliar[i][x] = stof(umFloat);
-                    points.push_back(stof(umFloat));
+                    arrayAuxiliar[i][x] = stof(umFloat);
                 }
             }
 
             file.getline(contentor, 100); // contentor tem o número de pontos para desenhar
-            //this->nr_pontos = stoi(contentor);
-            this->indexsCount = stoi(contentor);
+            this->nr_pontos = stoi(contentor);
 
-            //this->pontos = new float*[nr_pontos];
-            for (int i = 0; i < this->indexsCount; i++) {
-                //(this->pontos)[i] = new float[3];
+            this->pontos = new float*[nr_pontos];
+            for (int i = 0; i < nr_pontos; i++) {
+                (this->pontos)[i] = new float[3];
                 file.getline(contentor, 20);
                 int indice = stoi(contentor);
-                indexs.push_back(indice);
 
-                /*for (int n = 0; n < 3; n++) {
+                for (int n = 0; n < 3; n++) {
                     this->pontos[i][n] = arrayAuxiliar[indice][n];
-                }*/
+                }
             }
-
-            glGenBuffers(1, &this->vertices);
-            glBindBuffer(GL_ARRAY_BUFFER,this->vertices);
-	        glBufferData(GL_ARRAY_BUFFER,sizeof(float)*points.size(),points.data(),GL_STATIC_DRAW);
-
-	        glGenBuffers(1, &(this->indices));
-	        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,this->indices);
-	        glBufferData(GL_ELEMENT_ARRAY_BUFFER,sizeof(unsigned int)*indexs.size(),indexs.data(),GL_STATIC_DRAW);
-            
         }
     }
 
@@ -82,20 +63,12 @@ public:
 
     void draw() {
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-        /*
         glBegin(GL_TRIANGLES);
+        glColor3f(42.f/255.f,157.f/255.f,143.f/255.f);
 
         for (int i = 0; i < this->nr_pontos; i++) {
             glVertex3f(pontos[i][0], pontos[i][1], pontos[i][2]);
         }
-        glEnd();*/
-
-        glColor3f(42.f/255.f,157.f/255.f,143.f/255.f);
-
-        glBindBuffer(GL_ARRAY_BUFFER,this->vertices);
-        glVertexPointer(3,GL_FLOAT,0,0);
-
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,this->indices);
-        glDrawElements(GL_TRIANGLES,indexsCount,GL_UNSIGNED_INT,0);
+        glEnd();
     }
 };

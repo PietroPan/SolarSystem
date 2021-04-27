@@ -251,31 +251,7 @@ void guardaPath3d(char* copiaPath) {
 
 
 int main(int argc, char** argv)
-{   
-    glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
-    glutInitWindowPosition(100, 100);
-    glutInitWindowSize(800, 800);
-    glutCreateWindow("Figura 3D");
-    glewInit();
-    glEnableClientState(GL_VERTEX_ARRAY);
-
-    glutDisplayFunc(renderScene);
-    //glutIdleFunc(renderScene);
-    glutReshapeFunc(changeSize);
-
-
-    glutKeyboardFunc(processaNormalKeys);
-    glutMouseFunc(processaMouse);
-    glutMotionFunc(mouseMovement);
-    //glutPassiveMotionFunc(mousePassiveMovement);
-    // some OpenGL settings
-    glEnable(GL_DEPTH_TEST);
-    glEnable(GL_CULL_FACE);
-    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-
-    
-
+{
     if (argc != 2) {
         cout << "Formato desconhecido. Usar ./Engine *path para o xml*" << endl;
     }
@@ -317,11 +293,29 @@ int main(int argc, char** argv)
     }
     */
 
-   // enter GLUT�s main cycle
-    glutMainLoop();
-    
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
+    glutInitWindowPosition(100, 100);
+    glutInitWindowSize(800, 800);
+    glutCreateWindow("Figura 3D");
 
-    
+    glutDisplayFunc(renderScene);
+    //glutIdleFunc(renderScene);
+    glutReshapeFunc(changeSize);
+
+
+    glutKeyboardFunc(processaNormalKeys);
+    glutMouseFunc(processaMouse);
+    glutMotionFunc(mouseMovement);
+    //glutPassiveMotionFunc(mousePassiveMovement);
+
+    // some OpenGL settings
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_CULL_FACE);
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+
+    // enter GLUT�s main cycle
+    glutMainLoop();
 
     return 1;
 }

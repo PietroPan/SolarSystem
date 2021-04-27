@@ -8,7 +8,6 @@
 #ifdef __APPLE__
 #include <GLUT/glut.h>
 #else
-#include <GL/glew.h>
 #include <GL/glut.h>
 #endif
 
@@ -22,8 +21,6 @@
 #include <map>
 #include <cstring>
 #include <string>
-#include <vector>
-#include <stdio.h>
 #include "tinyxml/tinyxml.h"
 #include "tinyxml/tinystr.h"
 
