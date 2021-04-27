@@ -1,7 +1,7 @@
 <scene>
     <group>
         <models>
-            <model file="bezierTeapot.3d" />
+            <model file="../models/bezierTeapot.3d" />
         </models>
     </group>
 </scene>

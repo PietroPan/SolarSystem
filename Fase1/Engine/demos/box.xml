@@ -1,7 +1,7 @@
 <scene>
     <group>
         <models>
-            <model file="../demos/box.3d" />
+            <model file="../models/box.3d" />
         </models>
     </group>
 </scene>
