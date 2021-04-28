@@ -153,24 +153,61 @@ Group* defineGrupos (TiXmlElement* groupElement) {
 
             if (instruction == "translate") {
                 TiXmlAttribute *attrib;
-                float x = 0.0f, y = 0.0f, z = 0.0f;
+                float x = 0.0f, y = 0.0f, z = 0.0f, time = 0.0f;
+                bool curve=false;
+                vector<vector<float>> points;
+                int i=0;
 
-                for (attrib = t->FirstAttribute(); attrib != NULL; attrib = attrib->Next()) {
-                    string name = attrib->Name();
-                    if (name == "X" || name == "axisX") {
-                        x = stof(attrib->Value());
+                attrib = t->FirstAttribute();
+                string name = attrib->Name();
+                if (name=="time"){
+                    curve=true;
+                    time = stof(attrib->Value());
+                    TiXmlElement *point = t->FirstChildElement("point");
+                    while (point != NULL) {
+                        vector<float> pointV;
+                        for (attrib = point->FirstAttribute(); attrib != NULL; attrib = attrib->Next()){
+                            name=attrib->Name();
+                            if (name == "X" || name == "axisX") {
+                                x = stof(attrib->Value());
+                                pointV.push_back(x);
 
-                    } else if (name == "Y" || name == "axisY") {
-                        y = stof(attrib->Value());
+                            } else if (name == "Y" || name == "axisY") {
+                                z = stof(attrib->Value());
+                                pointV.push_back(y);
 
-                    } else if (name == "Z" || name == "axisZ") {
-                        z = stof(attrib->Value());
+                            } else if (name == "Z" || name == "axisZ") {
+                                y = stof(attrib->Value());
+                                pointV.push_back(z);
+                            }
+                        }
+                        points.push_back(pointV);
+                        i++;
+                        point = point->NextSiblingElement("point");
                     }
-                    //std::cout << attrib->Name() << " " << attrib->Value();
+                    if (points.size()>=4){
+                        Translacao *translation = new Translacao(x, y, z,points,curve,time);
+                        draws.emplace_back(translation);
+                    }
                 }
-                Translacao *translation = new Translacao(x, y, z);
-                draws.emplace_back(translation);
 
+                else {
+                    for (attrib = t->FirstAttribute(); attrib != NULL; attrib = attrib->Next()) {
+                        name = attrib->Name();
+                        if (name == "X" || name == "axisX") {
+                            x = stof(attrib->Value());
+
+                        } else if (name == "Y" || name == "axisY") {
+                            y = stof(attrib->Value());
+
+                        } else if (name == "Z" || name == "axisZ") {
+                            z = stof(attrib->Value());
+                        }
+                    //std::cout << attrib->Name() << " " << attrib->Value();
+                    }
+                    Translacao *translation = new Translacao(x, y, z,points,curve,time);
+                    draws.emplace_back(translation);
+                }
 
             } else if (instruction == "rotate") {
                 TiXmlAttribute *attrib;
@@ -189,17 +226,16 @@ Group* defineGrupos (TiXmlElement* groupElement) {
                         x = stof(attrib->Value());
 
                     } else if (name == "Y" || name == "axisY") {
-                        y = stof(attrib->Value());
+                        z = stof(attrib->Value());
 
                     } else if (name == "Z" || name == "axisZ") {
-                        z = stof(attrib->Value());
+                        y = stof(attrib->Value());
                     } else if (name == "time"){
                         rotating=true;
                         time = stof(attrib->Value());
                     }
                     //std::cout << attrib->Name() << " " << attrib->Value();
                 }
-
                 Rotacao *rotation = new Rotacao(angle,time, x, y, z,rotating);
                 draws.emplace_back(rotation);
 
