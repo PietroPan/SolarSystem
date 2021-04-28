@@ -8,6 +8,7 @@
 #include "transformacao.cpp"
 #include "camera.h"
 
+int oldTimeSinceStart=0;
 
 Camera* camera = new Camera(30.0f, 0, M_PI/4);
 
@@ -173,8 +174,10 @@ Group* defineGrupos (TiXmlElement* groupElement) {
 
             } else if (instruction == "rotate") {
                 TiXmlAttribute *attrib;
+                float time = 0;
                 int angle = 0;
                 float x = 0.0f, y = 0.0f, z = 0.0f;
+                bool rotating=false;
 
                 for (attrib = t->FirstAttribute(); attrib != NULL; attrib = attrib->Next()) {
                     string name = attrib->Name();
@@ -190,11 +193,14 @@ Group* defineGrupos (TiXmlElement* groupElement) {
 
                     } else if (name == "Z" || name == "axisZ") {
                         z = stof(attrib->Value());
+                    } else if (name == "time"){
+                        rotating=true;
+                        time = stof(attrib->Value());
                     }
                     //std::cout << attrib->Name() << " " << attrib->Value();
                 }
 
-                Rotacao *rotation = new Rotacao(angle, x, y, z);
+                Rotacao *rotation = new Rotacao(angle,time, x, y, z,rotating);
                 draws.emplace_back(rotation);
 
             } else if (instruction == "scale") {
@@ -260,8 +266,8 @@ int main(int argc, char** argv)
     glewInit();
     glEnableClientState(GL_VERTEX_ARRAY);
 
-    glutDisplayFunc(renderScene);
-    //glutIdleFunc(renderScene);
+    //glutDisplayFunc(renderScene);
+    glutIdleFunc(renderScene);
     glutReshapeFunc(changeSize);
 
 

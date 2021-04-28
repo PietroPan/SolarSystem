@@ -4,6 +4,7 @@
 #include "gereIncludes.h"
 #include "drawable.h"
 
+extern int oldTimeSinceStart;
 class Transformacao: public Drawable {};
 
 // translacao
@@ -31,18 +32,35 @@ public:
 class Rotacao: public Transformacao {
 private:
     int angulo;
-    float x,y,z;
+    float x,y,z,time;
+    bool rotating;
 
 public:
-    Rotacao(int ang, float x, float y, float z) {
+    Rotacao(int ang, float time, float x, float y, float z,bool rotating) {
         this->angulo = ang;
+        this->time = time;
         this->x = x;
         this->y = y;
         this->z = z;
+        this->rotating=rotating;
     }
 
     void draw() {
-        glRotatef(angulo, x, y, z);
+        if (rotating){
+            int timeSinceStart = glutGet(GLUT_ELAPSED_TIME);
+            float trueTime = ((float)timeSinceStart/1000.0f);
+            if (time>0){
+                glRotatef(trueTime*360.0f/time,x,y,z);
+            }
+        } else {
+            glRotatef(angulo, x, y, z);
+        }
+        
+        //float deltaTime = (float)(timeSinceStart - oldTimeSinceStart)/1000.0f;
+        //oldTimeSinceStart = timeSinceStart;
+        //glRotatef(angulo, x, y, z);
+        //glRotatef(deltaTime*360/angulo,x,y,z);
+        //glRotatef(trueTime*360.0f/(float)angulo,x,y,z);
     }
 };
 
