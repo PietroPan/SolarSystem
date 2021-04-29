@@ -13,7 +13,9 @@ add_executable(Engine
         tinyxml/tinyxmlparser.cpp
         tinyxml/tinyxmlerror.cpp
         engine.cpp
-		drawable.h camera.h)
+		drawable.h camera.h
+		catmullRomCurve.cpp
+		catmullRomCurve.h)
 
 
 find_package(OpenGL REQUIRED)

@@ -176,11 +176,11 @@ Group* defineGrupos (TiXmlElement* groupElement) {
 
                             } else if (name == "Y" || name == "axisY") {
                                 z = stof(attrib->Value());
-                                pointV.push_back(y);
+                                pointV.push_back(z);
 
                             } else if (name == "Z" || name == "axisZ") {
                                 y = stof(attrib->Value());
-                                pointV.push_back(z);
+                                pointV.push_back(y);
                             }
                         }
                         points.push_back(pointV);
