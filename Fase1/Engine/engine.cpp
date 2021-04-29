@@ -8,7 +8,7 @@
 #include "transformacao.cpp"
 #include "camera.h"
 
-Camera* camera = new Camera(150.0f, 0, M_PI/4);
+Camera* camera = new Camera(200.0f, 0, 0);
 
 string pathDoXML = "";
 bool axis = false;
@@ -67,6 +67,7 @@ void processaNormalKeys(unsigned char key, int x, int y) {
             break;
         case 116:
             axis=!axis;
+            break;
         case 109:
             drawCurves=!drawCurves;
             
@@ -172,17 +173,20 @@ Group* defineGrupos (TiXmlElement* groupElement) {
                             name=attrib->Name();
                             if (name == "X" || name == "axisX") {
                                 x = stof(attrib->Value());
-                                pointV.push_back(x);
+                                //pointV.push_back(x);
 
                             } else if (name == "Y" || name == "axisY") {
-                                z = stof(attrib->Value());
-                                pointV.push_back(z);
+                                y = stof(attrib->Value());
+                                //pointV.push_back(z);
 
                             } else if (name == "Z" || name == "axisZ") {
-                                y = stof(attrib->Value());
-                                pointV.push_back(y);
+                                z = stof(attrib->Value());
+                                //pointV.push_back(y);
                             }
                         }
+                        pointV.push_back(x);
+                        pointV.push_back(y);
+                        pointV.push_back(z);
                         points.push_back(pointV);
                         i++;
                         point = point->NextSiblingElement("point");
@@ -228,10 +232,10 @@ Group* defineGrupos (TiXmlElement* groupElement) {
                         x = stof(attrib->Value());
 
                     } else if (name == "Y" || name == "axisY") {
-                        z = stof(attrib->Value());
+                        y = stof(attrib->Value());
 
                     } else if (name == "Z" || name == "axisZ") {
-                        y = stof(attrib->Value());
+                        z = stof(attrib->Value());
                     } else if (name == "time"){
                         rotating=true;
                         time = stof(attrib->Value());

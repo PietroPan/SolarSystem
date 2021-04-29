@@ -1,5 +1,6 @@
 <scene>
     <group>
+    <rotate angle="-90" X="1" Y="0" Z="0" />
         <models>
             <model file="../models/bezierHeart.3d" />
         </models>
