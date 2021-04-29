@@ -96,7 +96,7 @@ void calculatePatches(int tess,vector<Point> &iPoints,vector<vector<int>> &iPatc
                     resy+=intery[x]*vs[x];
                     resz+=interz[x]*vs[x];
                 }
-            p.push_back(Point(resx,resz,resy));
+            p.push_back(Point(resx,resy,resz));
             }
         }
     }
