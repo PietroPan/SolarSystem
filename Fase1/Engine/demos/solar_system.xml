@@ -1,5 +1,6 @@
 <scene>
     <group>
+        <camera B="22.5" R="200" />
         <!--SoL -->
         <group>
             <scale X="6" Y="6" Z="6" />

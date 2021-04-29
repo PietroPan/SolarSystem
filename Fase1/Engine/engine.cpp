@@ -8,7 +8,8 @@
 #include "transformacao.cpp"
 #include "camera.h"
 
-Camera* camera = new Camera(200.0f, 0, 0);
+//Camera* camera = new Camera(200.0f, 0, M_PI/8);
+Camera* camera = new Camera(10.0f, 0, 0);
 
 string pathDoXML = "";
 bool axis = false;
@@ -276,6 +277,22 @@ Group* defineGrupos (TiXmlElement* groupElement) {
 
             } else if (instruction == "group") {
                 subgroups.emplace_back(defineGrupos(t));
+            } else if (instruction == "camera"){
+                TiXmlAttribute *attrib;
+                for (attrib = t->FirstAttribute(); attrib != NULL; attrib = attrib->Next()) {
+                    string name = attrib->Name();
+
+                    if (name == "R" || name == "radius") {
+                        camera->setRadius(stof(attrib->Value()));
+
+                    } else if (name == "A" || name == "alpha") {
+                        camera->setAlpha(stof(attrib->Value()));
+
+                    } else if (name == "B" || name == "beta") {
+                        camera->setBeta(stof(attrib->Value()));
+                    }
+                    //std::cout << attrib->Name() << " " << attrib->Value();
+                }
             }
 
             t = t->NextSiblingElement();

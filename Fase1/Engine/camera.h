@@ -32,6 +32,24 @@ public:
         this->step = 0.5f;
     }
 
+    void setAlpha(float a){
+        this->alpha=a/180*M_PI;
+    }
+
+    void setBeta(float b){
+        float nBeta=b/180*M_PI;
+        if (nBeta>=M_PI/2){
+            this->beta=M_PI/2-0.01;
+        } else if (nBeta<=-M_PI/2){
+            this->beta=-M_PI/2+0.01;
+        }
+        else this->beta=nBeta;
+    }
+
+    void setRadius(float r){
+        this->radius=r;
+    }
+
     void switchMode() {
         this->mode = !mode;
 
