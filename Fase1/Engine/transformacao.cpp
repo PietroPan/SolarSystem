@@ -4,7 +4,7 @@
 #include "gereIncludes.h"
 #include "drawable.h"
 
-extern int oldTimeSinceStart;
+extern bool drawCurves;
 class Transformacao: public Drawable {};
 
 // translacao
@@ -92,14 +92,69 @@ public:
 	    getCatmullRomPoint(t, (this->points)[indices[0]], (this->points)[indices[1]], (this->points)[indices[2]], (this->points)[indices[3]], pos, deriv);
     }
 
+    void renderCatmullRomCurve() {
+    	float pos[3];
+	    float deriv[3];
+	    float t=0;
+
+        // draw curve using line segments with GL_LINE_LOOP
+	    glBegin(GL_LINE_LOOP);
+        glColor3f(1,1,1);
+	    for (int i = 0; i < 100; ++i,t+=(1.0f/100.0f)) {
+		    getGlobalCatmullRomPoint(t,pos,deriv);
+		    glVertex3f(pos[0], pos[1], pos[2]);
+	    }
+	    glEnd();
+    }
+
+    void cross(float *a, float *b, float *res) {
+
+        res[0] = a[1]*b[2] - a[2]*b[1];
+        res[1] = a[2]*b[0] - a[0]*b[2];
+        res[2] = a[0]*b[1] - a[1]*b[0];
+    }
+
+
+    void normalize(float *a) {
+
+        float l = sqrt(a[0]*a[0] + a[1] * a[1] + a[2] * a[2]);
+        a[0] = a[0]/l;
+        a[1] = a[1]/l;
+        a[2] = a[2]/l;
+    }
+
+
     void draw() {
         if (this->curve){
+            if (drawCurves) renderCatmullRomCurve();
             float pos[3];
             float deriv[3];
             float timeSinceStart = glutGet(GLUT_ELAPSED_TIME);
             float trueTime = ((float)timeSinceStart/1000.0f);
             getGlobalCatmullRomPoint(trueTime/(this->time),pos,deriv);
+            extern float y[3];
+
+            	float x[3]={deriv[0],deriv[1],deriv[2]};
+                normalize(x);
+                float z[3];
+                cross(x,y,z);
+                normalize(z);
+                cross(z,x,y);
+                normalize(y);
+                float f[4]={0,0,0,1};
+                
+                float m[4][4];
+                for (int i=0;i<3;i++) {
+                    m[i][0]=x[i];
+                    m[i][1]=y[i];
+                    m[i][2]=z[i];
+                    m[i][3]=0.0f;
+                    m[3][i]=0.0f;
+                }
+                m[3][3]=1.0f;
+
             glTranslatef(pos[0],pos[1],pos[2]);
+            glMultMatrixf(*m);
 
         } else
         glTranslatef(x, y, z);

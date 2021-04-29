@@ -105,9 +105,9 @@ public:
 
             float novoBeta = refAngulo[1] + unitY * (y-referencia[1]);
             if (novoBeta <= -M_PI/2) {
-                beta = -M_PI/2;
+                beta = (-M_PI/2)+0.01;
             } else if (novoBeta >= M_PI/2) {
-                beta = M_PI/2;
+                beta = (M_PI/2)-0.01;
             } else {
                 beta = novoBeta;
             }

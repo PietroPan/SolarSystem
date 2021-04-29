@@ -8,12 +8,12 @@
 #include "transformacao.cpp"
 #include "camera.h"
 
-int oldTimeSinceStart=0;
-
-Camera* camera = new Camera(30.0f, 0, M_PI/4);
+Camera* camera = new Camera(150.0f, 0, M_PI/4);
 
 string pathDoXML = "";
 bool axis = false;
+bool drawCurves=false;
+float y[3] = {0,1,0};
 
 list<Group*> grupos;
 
@@ -67,6 +67,8 @@ void processaNormalKeys(unsigned char key, int x, int y) {
             break;
         case 116:
             axis=!axis;
+        case 109:
+            drawCurves=!drawCurves;
             
 
         default:

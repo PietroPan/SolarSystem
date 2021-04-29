@@ -22,3 +22,4 @@
  q            | increases camera speed (fps)
  e            | decreases camera speed (fps)
  t            | toggles xyz axis
+ m            | toggles rendering of catmull-rom curves
