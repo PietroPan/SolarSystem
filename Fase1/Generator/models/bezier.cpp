@@ -50,12 +50,12 @@ void calculateIndexes(int n,int tess,vector<int> &ind){
         for (int i=0;i<tess-1;i++){
             for (int j=0;j<tess-1;j++){
                 ind.push_back((i*tess+j)+tess+(k*tess*tess));
-                ind.push_back(i*tess+j+(k*tess*tess));
                 ind.push_back((i*tess+j)+tess+1+(k*tess*tess));
+                ind.push_back(i*tess+j+(k*tess*tess));
 
                 ind.push_back(i*tess+j+(k*tess*tess));
-                ind.push_back((i*tess+j)+1+(k*tess*tess));
                 ind.push_back((i*tess+j)+tess+1+(k*tess*tess));
+                ind.push_back((i*tess+j)+1+(k*tess*tess));
             }
         }
     }
