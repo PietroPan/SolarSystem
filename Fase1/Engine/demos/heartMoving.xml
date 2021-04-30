@@ -1,0 +1,40 @@
+<setup>
+    <camera R="9" beta="0"/>
+</setup>
+<scene>
+    <group>
+    <rotate angle="-90" X="1" Y="0" Z="0" />
+    <translate X="0" Y="0" Z="0.8" />
+        <translate time="10" >
+            <point X="0" Y="0" Z="0" />
+            <point X="0" Y="0" Z="0.65" />
+            <point X="-0.28" Y="0" Z="1.07" />
+            <point X="-0.52" Y="0" Z="1.26" />
+            <point X="-1.36" Y="0" Z="1.41" />
+            <point X="-1.86" Y="0" Z="1.26" />
+            <point X="-2.08" Y="0" Z="1.07" />
+            <point X="-2.37" Y="0" Z="0.65" />
+            <point X="-2.5" Y="0" Z="0" />
+            <point X="-2.2" Y="0" Z="-1" />
+            <point X="-1.4" Y="0" Z="-2" />
+            <point X="0" Y="0" Z="-3.09" />
+            <point X="1.4" Y="0" Z="-2" />
+            <point X="2.2" Y="0" Z="-1" />
+            <point X="2.5" Y="0" Z="0" />
+            <point X="2.37" Y="0" Z="0.65" />
+            <point X="2.08" Y="0" Z="1.07" />
+            <point X="1.86" Y="0" Z="1.26" />
+            <point X="1.36" Y="0" Z="1.41" />
+            <point X="0.52" Y="0" Z="1.26" />
+            <point X="0.28" Y="0" Z="1.07" />
+            <point X="0" Y="0" Z="0.65" />
+            <point X="0" Y="0" Z="0" />
+        </translate>
+        <scale X="0.2" Y="0.2" Z="0.2" />
+        <rotate angle="-90" X="0" Y="1" Z="0" />
+        <rotate time="0.5" X="0" Y="0" Z="1" />
+        <models>
+            <model file="../models/bezierHeart.3d" />
+        </models>
+    </group>
+</scene>

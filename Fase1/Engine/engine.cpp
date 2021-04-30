@@ -8,7 +8,7 @@
 #include "transformacao.cpp"
 #include "camera.h"
 
-Camera* camera = new Camera(10.0f, 0, 0);
+Camera* camera = new Camera(45.0f, 0, M_PI/8);
 
 string pathDoXML = "";
 bool axis = false;
@@ -44,62 +44,6 @@ void mouseMovement(int x, int y) {
 
     glutPostRedisplay();
 }
-
-
-void processaNormalKeys(unsigned char key, int x, int y) {
-    switch(key) {
-        case 99:
-            camera->switchMode();
-            break;
-            //w 119
-        case 119:
-            camera->moveFPS(1);
-            break;
-        case 115:
-            camera->moveFPS(-1);
-            break;
-        case 113:
-            camera->incStep(1.0f);
-            break;
-        case 101:
-            camera->decStep(1.0f);
-            break;
-        case 116:
-            axis=!axis;
-            break;
-        case 109:
-            drawCurves=!drawCurves;
-            
-
-        default:
-            break;
-    }
-
-    glutPostRedisplay();
-}
-
-
-
-void changeSize(int w, int h)
-{
-    // Prevent a divide by zero, when window is too short
-    // (you can�t make a window with zero width).
-    if (h == 0)
-        h = 1;
-    // compute window's aspect ratio
-    float ratio = w * 1.0f / h;
-    // Set the projection matrix as current
-    glMatrixMode(GL_PROJECTION);
-    // Load the identity matrix
-    glLoadIdentity();
-    // Set the viewport to be the entire window
-    glViewport(0, 0, w, h);
-    // Set the perspective
-    gluPerspective(45.0f, ratio, 1.0f, 1000.0f);
-    // return to the model view matrix mode
-    glMatrixMode(GL_MODELVIEW);
-}
-
 
 void renderScene(void) {
     // clear buffers
@@ -142,6 +86,95 @@ void renderScene(void) {
 
     // End of frame
     glutSwapBuffers();
+}
+
+void processaNormalKeys(unsigned char key, int x, int y) {
+    switch(key) {
+        case 99:
+            camera->switchMode();
+            break;
+            //w 119
+        case 119:
+            camera->moveFPS(1);
+            break;
+        case 115:
+            camera->moveFPS(-1);
+            break;
+        case 113:
+            camera->incStep(1.0f);
+            break;
+        case 101:
+            camera->decStep(1.0f);
+            break;
+        case 116:
+            axis=!axis;
+            break;
+        case 109:
+            drawCurves=!drawCurves;
+            break;
+
+        default:
+            break;
+    }
+
+    glutPostRedisplay();
+}
+
+
+
+void changeSize(int w, int h)
+{
+    // Prevent a divide by zero, when window is too short
+    // (you can�t make a window with zero width).
+    if (h == 0)
+        h = 1;
+    // compute window's aspect ratio
+    float ratio = w * 1.0f / h;
+    // Set the projection matrix as current
+    glMatrixMode(GL_PROJECTION);
+    // Load the identity matrix
+    glLoadIdentity();
+    // Set the viewport to be the entire window
+    glViewport(0, 0, w, h);
+    // Set the perspective
+    gluPerspective(45.0f, ratio, 1.0f, 1000.0f);
+    // return to the model view matrix mode
+    glMatrixMode(GL_MODELVIEW);
+}
+
+void setupScene(TiXmlElement* sceneElement){
+    TiXmlElement *t = sceneElement->FirstChildElement();
+    while (t != NULL){
+        string instruction = t->Value();
+
+        if (instruction == "camera"){
+            TiXmlAttribute *attrib;
+            for (attrib = t->FirstAttribute(); attrib != NULL; attrib = attrib->Next()) {
+                string name = attrib->Name();
+
+                if (name == "R" || name == "radius") {
+                    camera->setRadius(stof(attrib->Value()));
+
+                } else if (name == "A" || name == "alpha") {
+                    camera->setAlpha(stof(attrib->Value()));
+
+                } else if (name == "B" || name == "beta") {
+                    camera->setBeta(stof(attrib->Value()));
+                }
+                //std::cout << attrib->Name() << " " << attrib->Value();
+            }
+        } else if (instruction == "iddleFunc"){
+            TiXmlAttribute *attrib = t->FirstAttribute();
+            if ((string)attrib->Name()=="on" && (string)attrib->Value()=="false"){
+                glutIdleFunc(NULL);
+            } else if  ((string)attrib->Name()=="off" && (string)attrib->Value()=="true") {
+                glutIdleFunc(NULL);
+            } else {
+                glutIdleFunc(renderScene);
+            }
+        }
+        t = t->NextSiblingElement();
+    }
 }
 
 Group* defineGrupos (TiXmlElement* groupElement) {
@@ -275,24 +308,7 @@ Group* defineGrupos (TiXmlElement* groupElement) {
 
             } else if (instruction == "group") {
                 subgroups.emplace_back(defineGrupos(t));
-            } else if (instruction == "camera"){
-                TiXmlAttribute *attrib;
-                for (attrib = t->FirstAttribute(); attrib != NULL; attrib = attrib->Next()) {
-                    string name = attrib->Name();
-
-                    if (name == "R" || name == "radius") {
-                        camera->setRadius(stof(attrib->Value()));
-
-                    } else if (name == "A" || name == "alpha") {
-                        camera->setAlpha(stof(attrib->Value()));
-
-                    } else if (name == "B" || name == "beta") {
-                        camera->setBeta(stof(attrib->Value()));
-                    }
-                    //std::cout << attrib->Name() << " " << attrib->Value();
-                }
             }
-
             t = t->NextSiblingElement();
 
         }
@@ -323,7 +339,7 @@ int main(int argc, char** argv)
     glewInit();
     glEnableClientState(GL_VERTEX_ARRAY);
 
-    //glutDisplayFunc(renderScene);
+    glutDisplayFunc(renderScene);
     glutIdleFunc(renderScene);
     glutReshapeFunc(changeSize);
 
@@ -356,10 +372,16 @@ int main(int argc, char** argv)
     cout << loadOk;
     cout << "\n";
     if (loadOk) {
-        TiXmlElement * scene = doc.FirstChildElement( "scene" );
+        TiXmlElement * s = doc.FirstChildElement( "setup" );
+        if (s){
+            setupScene(s);
+            s = s->NextSiblingElement("scene");
+        } else {
+            s=doc.FirstChildElement("scene");
+        }
 
-        if(scene) {
-            TiXmlElement * g = scene->FirstChildElement("group");
+        if(s) {
+            TiXmlElement * g = s->FirstChildElement("group");
             while (g) {
                 grupos.emplace_back(defineGrupos(g));
                 g = g->NextSiblingElement("group");
@@ -369,7 +391,13 @@ int main(int argc, char** argv)
     } else {
         cout << "Erro ao ler ficheiro XML.";
     }
-
+    /*
+if (string(e->Value())=="setup") {
+            cout <<"oiiii\n";
+            //setupScene(e);
+            e = e->NextSiblingElement();
+        }
+        */
 
 /*
     // Iterar sobre a lista de nomes de ficheiros, criando para cada um, um novo objeto Figura3d, que conterá os pontos a desenhar

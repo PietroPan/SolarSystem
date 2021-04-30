@@ -1,6 +1,9 @@
+<setup>
+    <iddleFunc on="true" />
+    <camera B="22.5" R="200" />
+</setup>
 <scene>
     <group>
-        <camera B="22.5" R="200" />
         <!--SoL -->
         <group>
             <scale X="6" Y="6" Z="6" />
@@ -110,6 +113,7 @@
                     <point X="2.771639" Y="0.000000" Z="1.148050" />
                 </translate>
                 <scale X="0.1" Y="0.1" Z="0.1" />
+                <rotate time="12" axisX="0" axisY="-1" axisZ="0"/>
                 <models>
                     <model file = "../models/sphereP.3d"/>
                 </models>
@@ -164,6 +168,7 @@
                     <point X="2.771639" Y="0.000000" Z="1.148050" />
                 </translate>
                 <scale X="0.1" Y="0.1" Z="0.1" />
+                <rotate time="7.2" axisX="0" axisY="-1" axisZ="0"/>
                 <models>
                     <model file = "../models/sphereP.3d"/>
                 </models>
@@ -189,6 +194,7 @@
                     <point X="4.619398" Y="0.000000" Z="1.913417" />
                 </translate>
                 <scale X="0.1" Y="0.1" Z="0.1" />
+                <rotate time="2" axisX="0" axisY="-1" axisZ="0"/>
                 <models>
                     <model file = "../models/sphereP.3d"/>
                 </models>
@@ -243,6 +249,7 @@
                     <point X="2.586863" Y="0.000000" Z="1.071514" />
                 </translate>
                 <scale X="0.05" Y="0.05" Z="0.05" />
+                <rotate time="4" axisX="0" axisY="-1" axisZ="0"/>
                 <models>
                     <model file = "../models/sphereP.3d"/>
                 </models>
@@ -268,6 +275,7 @@
                     <point X="4.619398" Y="0.000000" Z="1.913417" />
                 </translate>
                 <scale X="0.05" Y="0.05" Z="0.05" />
+                <rotate time="9" axisX="0" axisY="-1" axisZ="0"/>
                 <models>
                     <model file = "../models/sphereP.3d"/>
                 </models>
@@ -293,6 +301,7 @@
                     <point X="3.695518" Y="0.000000" Z="1.530734" />
                 </translate>
                 <scale X="0.05" Y="0.05" Z="0.05" />
+                <rotate time="6.2" axisX="0" axisY="-1" axisZ="0"/>
                 <models>
                     <model file = "../models/sphereP.3d"/>
                 </models>
@@ -318,6 +327,7 @@
                     <point X="2.032535" Y="0.000000" Z="0.841904" />
                 </translate>
                 <scale X="0.05" Y="0.05" Z="0.05" />
+                <rotate time="9.9" axisX="0" axisY="-1" axisZ="0"/>
                 <models>
                     <model file = "../models/sphereP.3d"/>
                 </models>
@@ -421,7 +431,7 @@
             </models>
             <!--Anel -->
             <group>
-                <rotate angle="80" axisX="1" axisY="0" axisZ="0"/>
+                <rotate angle="90" axisX="1" axisY="0" axisZ="0"/>
                 <scale X="1.4" Y="1.4" Z="1.4" />
                 <models>
                     <model file = "../models/ring.3d"/>

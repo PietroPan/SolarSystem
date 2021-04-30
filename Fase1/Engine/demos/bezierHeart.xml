@@ -1,6 +1,11 @@
+<setup>
+    <iddleFunc on="false" />
+    <camera B="22.5" R="10" />
+</setup>
 <scene>
     <group>
     <rotate angle="-90" X="1" Y="0" Z="0" />
+    <translate Z="1" />
         <models>
             <model file="../models/bezierHeart.3d" />
         </models>
