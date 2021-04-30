@@ -13,6 +13,7 @@ class Translacao: public Transformacao {
 private:
     float x, y, z, time;
     vector<vector<float>> points;
+    float yAxis[3]={0,-1,0}; 
     bool curve;
 
 public:
@@ -33,7 +34,7 @@ public:
     void draw() {
         if (this->curve){
             if (drawCurves) renderCatmullRomCurve(this->points);
-            catmullRomTranslate(this->time,this->points);
+            catmullRomTranslate(this->time,this->points,this->yAxis);
         } else
         glTranslatef(x, y, z);
     }

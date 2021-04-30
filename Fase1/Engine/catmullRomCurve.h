@@ -9,6 +9,6 @@ void getGlobalCatmullRomPoint(float gt, float *pos, float *deriv,vector<vector<f
 void renderCatmullRomCurve(vector<vector<float>> points);
 void cross(float *a, float *b, float *res);
 void normalize(float *a);
-void catmullRomTranslate(float time,vector<vector<float>> points);
+void catmullRomTranslate(float time,vector<vector<float>> points,float* yAxis);
 
 #endif 

@@ -96,7 +96,7 @@ void normalize(float *a) {
     a[2] = a[2]/l;
 }
 
-void catmullRomTranslate(float time,vector<vector<float>> points){
+void catmullRomTranslate(float time,vector<vector<float>> points,float* yAxis){
     float pos[3];
     float deriv[3];
     float timeSinceStart = glutGet(GLUT_ELAPSED_TIME);
@@ -107,16 +107,16 @@ void catmullRomTranslate(float time,vector<vector<float>> points){
     float x[3]={deriv[0],deriv[1],deriv[2]};
     normalize(x);
     float z[3];
-    cross(x,y,z);
+    cross(x,yAxis,z);
     normalize(z);
-    cross(z,x,y);
-    normalize(y);
+    cross(z,x,yAxis);
+    normalize(yAxis);
     float f[4]={0,0,0,1};
     
     float m[4][4];
     for (int i=0;i<3;i++) {
         m[i][0]=x[i];
-        m[i][1]=y[i];
+        m[i][1]=yAxis[i];
         m[i][2]=z[i];
         m[i][3]=0.0f;
         m[3][i]=0.0f;

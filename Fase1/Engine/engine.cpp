@@ -8,13 +8,11 @@
 #include "transformacao.cpp"
 #include "camera.h"
 
-//Camera* camera = new Camera(200.0f, 0, M_PI/8);
 Camera* camera = new Camera(10.0f, 0, 0);
 
 string pathDoXML = "";
 bool axis = false;
 bool drawCurves=false;
-float y[3] = {0,1,0};
 
 list<Group*> grupos;
 
