@@ -157,5 +157,5 @@ void pointsBezier(char* inpFile,int tess,char* outFile){
     calculateIndexes(patches.size(),tess,ind);
 
     Model model(p,ind);
-    model.writeToFile(outFile,"bezier");
+    model.writeToFile(outFile,"bezierPatch");
 }
