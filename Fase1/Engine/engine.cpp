@@ -268,6 +268,7 @@ Group* defineGrupos (TiXmlElement* groupElement) {
 
                     } else if (name == "Z" || name == "axisZ") {
                         z = stof(attrib->Value());
+                        
                     } else if (name == "time"){
                         rotating=true;
                         time = stof(attrib->Value());

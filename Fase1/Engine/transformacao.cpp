@@ -15,6 +15,8 @@ private:
     vector<vector<float>> points;
     float yAxis[3]={0,-1,0}; 
     bool curve;
+    float oldTime=0.0f;
+    float h=0.0f;
 
 public:
     Translacao() {
@@ -33,8 +35,13 @@ public:
 
     void draw() {
         if (this->curve){
+            float newTime = glutGet(GLUT_ELAPSED_TIME);
+            float deltaTime = (newTime - this->oldTime)/1000.0f;
+            this->oldTime = newTime;
+            (this->h)+=deltaTime/(this->time);
+
             if (drawCurves) renderCatmullRomCurve(this->points);
-            catmullRomTranslate(this->time,this->points,this->yAxis);
+            catmullRomTranslate(this->h,this->points,this->yAxis);
         } else
         glTranslatef(x, y, z);
     }
@@ -43,12 +50,13 @@ public:
 // rotacao
 class Rotacao: public Transformacao {
 private:
-    int angulo;
+    float angulo;
     float x,y,z,time;
     bool rotating;
+    float oldTime=0.0f;
 
 public:
-    Rotacao(int ang, float time, float x, float y, float z,bool rotating) {
+    Rotacao(float ang, float time, float x, float y, float z,bool rotating) {
         this->angulo = ang;
         this->time = time;
         this->x = x;
@@ -59,10 +67,13 @@ public:
 
     void draw() {
         if (this->rotating){
-            int timeSinceStart = glutGet(GLUT_ELAPSED_TIME);
-            float trueTime = ((float)timeSinceStart/1000.0f);
+            float newTime = glutGet(GLUT_ELAPSED_TIME);
+            float deltaTime = (newTime - this->oldTime)/1000.0f;
+            this->oldTime = newTime;
+            
             if (time>0){
-                glRotatef(trueTime*360.0f/time,x,y,z);
+                (this->angulo)+=(deltaTime*360.0f/time);
+                glRotatef(this->angulo,x,y,z);
             }
         } else {
             glRotatef(angulo, x, y, z);
