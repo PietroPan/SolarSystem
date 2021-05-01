@@ -1,4 +1,5 @@
 <setup>
+    <window width="1600" height="900" />
     <iddleFunc on="true" />
     <camera B="22.5" R="200" />
 </setup>

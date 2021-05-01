@@ -172,6 +172,19 @@ void setupScene(TiXmlElement* sceneElement){
             } else {
                 glutIdleFunc(renderScene);
             }
+        } else if (instruction == "window"){
+            TiXmlAttribute *attrib;
+            int width=800, height=800;
+            for (attrib = t->FirstAttribute(); attrib != NULL; attrib = attrib->Next()) {
+                string name = attrib->Name();
+
+                if (name=="width"){
+                    width=stoi(attrib->Value());
+                } else if(name=="height"){
+                    height=stoi(attrib->Value());
+                }
+            }
+            glutReshapeWindow(width,height);
         }
         t = t->NextSiblingElement();
     }
