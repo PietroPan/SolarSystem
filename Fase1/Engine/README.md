@@ -23,3 +23,4 @@
  e            | decreases camera speed (fps)
  t            | toggles xyz axis
  m            | toggles rendering of catmull-rom curves
+ n            | changes the type of rendering of catmull-rom curves (points or lines)
