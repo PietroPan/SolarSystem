@@ -13,6 +13,8 @@ Camera* camera = new Camera(45.0f, 0, M_PI/8);
 string pathDoXML = "";
 bool axis = false;
 bool drawCurves=false;
+bool wPoints=false;
+bool stop=false;
 
 list<Group*> grupos;
 
@@ -109,8 +111,20 @@ void processaNormalKeys(unsigned char key, int x, int y) {
         case 116:
             axis=!axis;
             break;
-        case 109:
+        case 109://m
             drawCurves=!drawCurves;
+            break;
+        case 110://n
+            wPoints=!wPoints;
+            break;
+        case 111://o
+            if (stop) {
+                glutIdleFunc(NULL);
+                stop=false;
+            } else {
+                glutIdleFunc(renderScene);
+                stop=true;
+            }
             break;
 
         default:
@@ -190,9 +204,10 @@ void setupScene(TiXmlElement* sceneElement){
     }
 }
 
-Group* defineGrupos (TiXmlElement* groupElement) {
+Group* defineGrupos (TiXmlElement* groupElement,unordered_map<string, Drawable*> &files) {
     list<Group*> subgroups;
     list<Drawable*> draws;
+    string file;
 
     TiXmlElement *t = groupElement->FirstChildElement();
 
@@ -315,13 +330,17 @@ Group* defineGrupos (TiXmlElement* groupElement) {
             } else if (instruction == "models") {
                 TiXmlElement *model = t->FirstChildElement("model");
                 while (model != NULL) {
-                    string file = model->Attribute("file");
-                    draws.emplace_back(new Figura3d(pathDoXML + file));
+                    bool e=false;
+                    file = model->Attribute("file");
+                    if (!files.count(file)){
+                        files.emplace(file,new Figura3d(pathDoXML + file));
+                    }
+                    draws.emplace_back(files.at(file));
                     model = model->NextSiblingElement("model");
                 }
 
             } else if (instruction == "group") {
-                subgroups.emplace_back(defineGrupos(t));
+                subgroups.emplace_back(defineGrupos(t,files));
             }
             t = t->NextSiblingElement();
 
@@ -395,9 +414,11 @@ int main(int argc, char** argv)
         }
 
         if(s) {
+            unordered_map<string, Drawable*> files;
+
             TiXmlElement * g = s->FirstChildElement("group");
             while (g) {
-                grupos.emplace_back(defineGrupos(g));
+                grupos.emplace_back(defineGrupos(g,files));
                 g = g->NextSiblingElement("group");
             }
         }

@@ -26,6 +26,8 @@
 #include <stdio.h>
 #include "tinyxml/tinyxml.h"
 #include "tinyxml/tinystr.h"
+#include <unordered_map>
+#include <set>
 
 #define _USE_MATH_DEFINES
 #include <math.h>

@@ -1,5 +1,7 @@
 #include "catmullRomCurve.h"
 
+extern bool wPoints;
+
 void multMatrixVector(float *m, float *v, float *res) {
 
 	for (int j = 0; j < 4; ++j) {
@@ -71,7 +73,8 @@ void renderCatmullRomCurve(vector<vector<float>> points) {
     float t=0;
 
     // draw curve using line segments with GL_LINE_LOOP
-    glBegin(GL_LINE_LOOP);
+    if (wPoints) glBegin(GL_POINTS);
+    else glBegin(GL_LINE_LOOP);
     glColor3f(1,1,1);
     for (int i = 0; i < 100; ++i,t+=(1.0f/100.0f)) {
         getGlobalCatmullRomPoint(t,pos,deriv,points);
