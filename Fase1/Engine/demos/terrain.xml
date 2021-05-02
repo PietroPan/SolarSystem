@@ -1,0 +1,11 @@
+<setup>
+    <iddleFunc on="false" />
+    <camera B="22.5" R="250" />
+</setup>
+<scene>
+    <group>
+        <models>
+            <model file="../models/terrain.3d" />
+        </models>
+    </group>
+</scene>
