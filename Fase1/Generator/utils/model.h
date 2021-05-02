@@ -20,7 +20,12 @@ public:
         this->indexs=indexs;
     }
 
+    Model(vector<Point> points){
+        this->points=points;
+    }
+
     void writeToFile(char *filename,char const *tag);
+    void writeTToFile(char *filename,char const *tag,int w,int h);
 };
 
 #endif

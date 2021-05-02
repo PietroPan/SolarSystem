@@ -6,6 +6,8 @@ string pto_string(float x,float y,float z){
 
 int main(int argc, char **argv) {
 
+  ilInit();
+
   if (argc<2) {
     cout << "O número de argumentos é incorreto. \n\n";
 
@@ -53,6 +55,8 @@ int main(int argc, char **argv) {
     } else if (strcmp(argv[1],"bezierPatch") == 0) {
         int tess=stoi(argv[3]);
         pointsBezier(argv[2],tess,argv[4]);
+    } else if (strcmp(argv[1],"terrain") == 0) {
+        pointsTerrain(argv[2],argv[3]);
     } else {
       cout << "Primitiva desconhecida. \n\n";
     }
