@@ -12,6 +12,7 @@ private:
     bool isTerrain=false;
     int w,h;
 
+
     void processTerrain(ifstream &file){
         this->isTerrain=true;
         vector<float> points;
@@ -38,6 +39,8 @@ private:
                 points.push_back(stof(umFloat));
             }
         }
+
+        this->indexsCount=points.size();
 
         glGenBuffers(1, &this->vertices);
         glBindBuffer(GL_ARRAY_BUFFER,this->vertices);
@@ -121,6 +124,7 @@ public:
 
 
     void draw() {
+        extern int nTriangles;
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         /*
         glBegin(GL_TRIANGLES);
@@ -145,5 +149,6 @@ public:
             glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,this->indices);
             glDrawElements(GL_TRIANGLES,indexsCount,GL_UNSIGNED_INT,0);
         }
+        nTriangles+=this->indexsCount/3;
     }
 };
