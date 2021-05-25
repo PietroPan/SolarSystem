@@ -31,6 +31,16 @@ void create_plane (float length, float width, string file_name) {
  MyFile << "3\n";
  MyFile << "0\n";
 
+ MyFile << "0 1 0\n";
+ MyFile << "0 1 0\n";
+ MyFile << "0 1 0\n";
+ MyFile << "0 1 0\n";
+
+ MyFile << "1 1\n";
+ MyFile << "1 0\n";
+ MyFile << "0 0\n";
+ MyFile << "0 1\n";
+
  // Close the file
  MyFile.close();
 }

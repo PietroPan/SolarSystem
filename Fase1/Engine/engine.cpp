@@ -66,6 +66,13 @@ void renderScene(void) {
               0.0f, 1.0f, 0.0f);
 
     //desenhar eixos
+
+    list<Group*> :: iterator it;
+    for(it = grupos.begin(); it != grupos.end(); ++it) {
+        Group* grp = *it;
+        grp->draw();
+    }
+
     if (axis==true){
         glBegin(GL_LINES);
 
@@ -81,13 +88,9 @@ void renderScene(void) {
         glVertex3f(0.0f, 0.0f, -200.0f);
         glVertex3f(0.0f, 0.0f, 200.0f);
 
-        glEnd();
-    }
+        glColor3f(1.0f,1.0f,1.0f);
 
-    list<Group*> :: iterator it;
-    for(it = grupos.begin(); it != grupos.end(); ++it) {
-        Group* grp = *it;
-        grp->draw();
+        glEnd();
     }
 
     float fps;
