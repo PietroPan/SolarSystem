@@ -11,6 +11,7 @@ add_executable(generator
                utils/model.cpp
                utils/model.h
                utils/point.h
+			   utils/point2D.h
                models/box.cpp
                models/box.h
                models/cone.cpp

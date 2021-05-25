@@ -11,7 +11,7 @@
 
 
 void topIndexsS(int slices,int stacks,vector<int> &indexs);
-void midlePointsS(float radius,int slices,int stacks,vector<Point> &points);
+void midlePointsS(float radius,int slices,int stacks,vector<Point> &points,vector<Point> &normals,vector<Point2D> &texPoints);
 void bottomIndexsS(int slices,int i0,vector<int> &indexs);
 void middleIndexsS(int slices,int stacks,vector<int> &indexs);
 void pointsSphere(float radius,int slices,int stacks,char *filename);

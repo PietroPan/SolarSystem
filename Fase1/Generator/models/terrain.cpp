@@ -42,10 +42,12 @@ void pointsTerrain(char * image, char * output){
 // 	Build the vertex arrays
 	
 	vector<Point> p;//pontos
+	vector<Point> normals;
+	vector<Point2D> texPoints;
 	//preparar pontos
 	drawGrid(th,tw,p,imageData);//prencher vetor de pontos de acordo com o tamanho da figura
 	
-    Model model(p);
+    Model model(p,normals,texPoints);
     model.writeTToFile(output,"terrain",tw,th);
     /*verticeCount = p.size() / 3;
 

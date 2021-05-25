@@ -148,6 +148,8 @@ void readFile(string nameOF,vector<Point> &points,vector<vector<int>> &patches){
 void pointsBezier(char* inpFile,int tess,char* outFile){
     vector<Point> points;
     vector<vector<int>> patches;
+    vector<Point> normals;
+	vector<Point2D> texPoints;
     readFile(inpFile,points,patches);
 
     vector<int> ind;
@@ -156,6 +158,6 @@ void pointsBezier(char* inpFile,int tess,char* outFile){
     calculatePatches(tess,points,patches,p);
     calculateIndexes(patches.size(),tess,ind);
 
-    Model model(p,ind);
+    Model model(p,ind,normals,texPoints);
     model.writeToFile(outFile,"bezierPatch");
 }

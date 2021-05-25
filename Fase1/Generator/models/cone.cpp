@@ -77,6 +77,8 @@ void topIndexsC(int slices,int stacks,vector<int> &indexs){
 void pointsCone(float radius,float height,int slices,int stacks,char *filename){
     vector<int> indexs;
     vector<Point> points;
+	vector<Point> normals;
+	vector<Point2D> texPoints;
 
 	points.push_back(Point(0,0,0));//bottom point
 	middlepointsC(radius,height,slices,stacks,points);
@@ -86,6 +88,6 @@ void pointsCone(float radius,float height,int slices,int stacks,char *filename){
 	middleIndexsC(slices,stacks,indexs);
 	topIndexsC(slices,stacks,indexs);
 
-    Model model(points,indexs);
+    Model model(points,indexs,normals,texPoints);
     model.writeToFile(filename,"cone");
 }

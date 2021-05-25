@@ -57,6 +57,8 @@ void calcInds2(int i0,int steps,vector<int> &indexs){
 void pointsBox(float x,float y,float z,int divs,char *filename){
     vector<int> indexs;
     vector<Point> points;
+    vector<Point> normals;
+	vector<Point2D> texPoints;
 	float x0=-(x/2),y0=-(y/2),z0=-(z/2);
 	float xinc=x/divs,yinc=y/divs,zinc=z/divs;
 	int numPlanePoints=pow(divs+1,2),j=0;
@@ -70,6 +72,6 @@ void pointsBox(float x,float y,float z,int divs,char *filename){
 
 	for (int i=0;i<3;i++,j+=numPlanePoints) calcInds(j,divs,indexs);
 	for (int i=0;i<3;i++,j+=numPlanePoints) calcInds2(j,divs,indexs);
-    Model model(points,indexs);
+    Model model(points,indexs,normals,texPoints);
     model.writeToFile(filename,"box");
 }
