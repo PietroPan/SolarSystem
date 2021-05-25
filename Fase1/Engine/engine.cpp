@@ -16,6 +16,10 @@ bool drawCurves=false;
 bool wPoints=false;
 bool stop=false;
 
+int nTriangles=0;
+int timebase;
+float frames;
+
 list<Group*> grupos;
 
 void processaMouse(int button, int state, int x, int y) {
@@ -85,6 +89,21 @@ void renderScene(void) {
         Group* grp = *it;
         grp->draw();
     }
+
+    float fps;
+	float time;
+	frames++;
+	time = glutGet(GLUT_ELAPSED_TIME);
+	if (time - timebase > 1000) {
+		fps = frames*(1000.0/(time-timebase));
+		timebase = time;
+		frames = 0;
+	}
+
+    char s[1000];
+	sprintf(s,"FPS: %f - Triangles: %d",fps,nTriangles);
+	glutSetWindowTitle(s);
+    nTriangles=0;
 
     // End of frame
     glutSwapBuffers();
@@ -402,6 +421,8 @@ int main(int argc, char** argv)
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+
+    timebase = glutGet(GLUT_ELAPSED_TIME);
 
     
 

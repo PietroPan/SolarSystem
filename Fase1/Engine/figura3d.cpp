@@ -12,6 +12,7 @@ private:
     bool isTerrain=false;
     int w,h;
 
+
     void processTerrain(ifstream &file){
         this->isTerrain=true;
         vector<float> points;
@@ -38,6 +39,8 @@ private:
                 points.push_back(stof(umFloat));
             }
         }
+
+        this->indexsCount=points.size();
 
         glGenBuffers(1, &this->vertices);
         glBindBuffer(GL_ARRAY_BUFFER,this->vertices);
@@ -184,5 +187,6 @@ public:
             
             glBindTexture(GL_TEXTURE_2D, 0);
         }
+        nTriangles+=this->indexsCount/3;
     }
 };
