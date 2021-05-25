@@ -208,6 +208,7 @@ Group* defineGrupos (TiXmlElement* groupElement,unordered_map<string, Drawable*>
     list<Group*> subgroups;
     list<Drawable*> draws;
     string file;
+    string texture;
 
     TiXmlElement *t = groupElement->FirstChildElement();
 
@@ -328,13 +329,26 @@ Group* defineGrupos (TiXmlElement* groupElement,unordered_map<string, Drawable*>
                 draws.emplace_back(scale);
 
             } else if (instruction == "models") {
+                TiXmlAttribute *attrib;
                 TiXmlElement *model = t->FirstChildElement("model");
                 while (model != NULL) {
-                    bool e=false;
-                    file = model->Attribute("file");
-                    if (!files.count(file)){
-                        files.emplace(file,new Figura3d(pathDoXML + file));
+                    for (attrib = model->FirstAttribute(); attrib != NULL; attrib = attrib->Next()) {
+                        string name = attrib->Name();
+
+                        if (name == "file"){
+                            bool e=false;
+                            cout << "here";
+                            file = attrib->Value();
+                            if (!files.count(file)){
+                                files.emplace(file,new Figura3d(pathDoXML + file));
+                            }
+                        } else if (name == "texture"){
+                            texture = attrib->Value();
+                            draws.emplace_back(new Texture(texture));
+
+                        }
                     }
+                    cout << file +"\n";
                     draws.emplace_back(files.at(file));
                     model = model->NextSiblingElement("model");
                 }
@@ -371,6 +385,9 @@ int main(int argc, char** argv)
     glutCreateWindow("Figura 3D");
     glewInit();
     glEnableClientState(GL_VERTEX_ARRAY);
+    glEnableClientState(GL_NORMAL_ARRAY);
+	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+    glEnable(GL_TEXTURE_2D);
 
     glutDisplayFunc(renderScene);
     glutIdleFunc(renderScene);

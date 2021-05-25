@@ -12,6 +12,8 @@
 #include <GL/glut.h>
 #endif
 
+#include <IL/il.h>
+
 #include <iostream>
 #include <cstdio>
 #include <fstream>

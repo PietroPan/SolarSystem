@@ -10,7 +10,7 @@
             <scale X="6" Y="6" Z="6" />
             <rotate time="7.9" axisX="0" axisY="1" axisZ="0"/>
             <models>
-                <model file = "../models/sphereP.3d"/>
+                <model file = "../models/sphereP.3d" texture="../8k_sun.jpg"/>
             </models>
         </group>
         <!--Mercurio -->
