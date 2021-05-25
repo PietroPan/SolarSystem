@@ -155,6 +155,7 @@ public:
 
 
     void draw() {
+        extern int nTriangles;
         //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         /*
         glBegin(GL_TRIANGLES);
