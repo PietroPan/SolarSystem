@@ -3,8 +3,9 @@
 </setup>
 <scene>
     <group>
+        <rotate angle="180" X="0" Y="0" Z="1" />
         <models>
-            <model file="../models/cone.3d" />
+            <model file="../ncone.3d" texture="../corneto.jpg" />
         </models>
     </group>
 </scene>

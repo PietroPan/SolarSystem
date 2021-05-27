@@ -1,4 +1,5 @@
 #include "bezier.h"
+#include "terrain.h"
 
 vector<vector<float>> preCalculate(char coord,vector<int> &patch,vector<Point> &points){
     float ri[4][4]={0};
@@ -61,11 +62,16 @@ void calculateIndexes(int n,int tess,vector<int> &ind){
     }
 }
 
-void calculatePatches(int tess,vector<Point> &iPoints,vector<vector<int>> &iPatches,vector<Point> &p){
+void calculatePatches(int tess,vector<Point> &iPoints,vector<vector<int>> &iPatches,vector<Point> &p,vector<Point> &normals,vector<Point2D> &t){
     float inc=float(1/float(tess));
     float u=0.0f,v=0.0f;
     float us[4];
+    float ust[4];
     float vs[4];
+    float vst[4];
+    float tan1[3]={0,0,0};
+    float tan2[3]={0,0,0};
+    float norm[3];
     for (int n=0;n<iPatches.size();n++){
         vector<vector<float>> rx = preCalculate('x',iPatches[n],iPoints);
         vector<vector<float>> ry = preCalculate('y',iPatches[n],iPoints);
@@ -73,21 +79,32 @@ void calculatePatches(int tess,vector<Point> &iPoints,vector<vector<int>> &iPatc
         v=0.0f;
         for (int i=0;i<tess+1;v+=inc,i++){
             vs[0]=pow(v,3);vs[1]=pow(v,2);vs[2]=v;vs[3]=1;
+            vst[0]=pow(v,2)*3;vst[1]=v*2;vst[2]=1;vst[3]=0;
             u=0.0f;
             for(int j=0;j<tess+1;u+=inc,j++){
                 float interx[4]={0};
                 float intery[4]={0};
                 float interz[4]={0};
+
+                float interxt[4]={0};
+                float interyt[4]={0};
+                float interzt[4]={0};
     
                 float resx=0;
                 float resy=0;
                 float resz=0;
+
                 us[0]=pow(u,3);us[1]=pow(u,2);us[2]=u;us[3]=1;
+                ust[0]=pow(u,2)*3;ust[1]=u*2;ust[2]=1;ust[3]=0;
                 for(int x=0;x<4;x++){
                     for (int y=0;y<4;y++){
                         interx[x]+=us[y]*rx[y][x];
                         intery[x]+=us[y]*ry[y][x];
                         interz[x]+=us[y]*rz[y][x];
+
+                        interxt[x]+=ust[y]*rx[y][x];
+                        interyt[x]+=ust[y]*ry[y][x];
+                        interzt[x]+=ust[y]*rz[y][x];
                     }
                 }
 
@@ -95,8 +112,21 @@ void calculatePatches(int tess,vector<Point> &iPoints,vector<vector<int>> &iPatc
                     resx+=interx[x]*vs[x];
                     resy+=intery[x]*vs[x];
                     resz+=interz[x]*vs[x];
+
+
+                    tan1[0]+=interxt[x]*vs[x];
+                    tan1[0]+=interyt[x]*vs[x];
+                    tan1[0]+=interzt[x]*vs[x];
+
+                    tan2[0]+=interx[x]*vst[x];
+                    tan2[0]+=intery[x]*vst[x];
+                    tan2[0]+=interz[x]*vst[x];
                 }
             p.push_back(Point(resx,resy,resz));
+            cross(tan1,tan2,norm);
+            normalize(norm);
+            normals.push_back(Point(norm[0],norm[1],norm[2]));
+            t.push_back(Point2D(u,v));
             }
         }
     }
@@ -155,7 +185,7 @@ void pointsBezier(char* inpFile,int tess,char* outFile){
     vector<int> ind;
     vector<Point> p;
 
-    calculatePatches(tess,points,patches,p);
+    calculatePatches(tess,points,patches,p,normals,texPoints);
     calculateIndexes(patches.size(),tess,ind);
 
     Model model(p,ind,normals,texPoints);

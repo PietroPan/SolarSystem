@@ -4,7 +4,7 @@
 <scene>
     <group>
         <models>
-            <model file="../models/box.3d" />
+            <model file="../nbox.3d" texture="../mColor.jpg" />
         </models>
     </group>
 </scene>

@@ -10,6 +10,11 @@
 #include "../utils/model.h"
 #include <IL/il.h>
 
+
+void drawGrid(int h,int w,vector<Point> &p,unsigned char* c);
 void pointsTerrain(char *, char *);
+void cross(float *a, float *b, float *res);
+void normalize(float *a);
+void sub (float *a, float *b, float *res);
 
 #endif

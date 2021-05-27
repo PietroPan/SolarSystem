@@ -43,8 +43,8 @@ void bottomIndexsS(int slices,int i0,vector<int> &indexs){
 
 void middleIndexsS(int slices,int stacks,vector<int> &indexs){
 	for (int i=0;i<stacks-2;i++){
-        for (int j=0;j<slices+1;j++){
-			if (j==(slices)){
+        for (int j=0;j<slices;j++){
+			/*if (j==(slices)){
 				indexs.push_back((i*(slices+1))+j+1);
             	indexs.push_back((i*(slices+1))+slices+1+j+1); 
             	indexs.push_back((i*(slices+1))+j+2); 
@@ -52,14 +52,14 @@ void middleIndexsS(int slices,int stacks,vector<int> &indexs){
 				indexs.push_back((i*(slices+1))+1);
 				indexs.push_back((i*(slices+1))+j+1);
 				
-			} else {
+			} else {*/
 				indexs.push_back((i*(slices+1))+j+1);
             	indexs.push_back((i*(slices+1))+slices+1+j+1);
             	indexs.push_back((i*(slices+1))+slices+1+j+2);
             	indexs.push_back((i*(slices+1))+j+2);
 				indexs.push_back((i*(slices+1))+j+1);
             	indexs.push_back((i*(slices+1))+slices+1+j+2);
-			}
+			//}
 			
         }
     }

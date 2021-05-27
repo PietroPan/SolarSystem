@@ -15,7 +15,7 @@ vector<vector<float>> preCalculate(char coord,vector<int> &patch,vector<Point> &
 
 void calculateIndexes(int n,int tess,vector<int> &ind);
 
-void calculatePatches(int tess,vector<Point> &iPoints,vector<vector<int>> &iPatches,vector<Point> &p);
+void calculatePatches(int tess,vector<Point> &iPoints,vector<vector<int>> &iPatches,vector<Point> &p,vector<Point> &normals,vector<Point2D> &t);
 
 void readFile(string nameOF,vector<Point> &points,vector<vector<int>> &patches);
 

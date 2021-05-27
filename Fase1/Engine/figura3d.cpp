@@ -16,6 +16,8 @@ private:
     void processTerrain(ifstream &file){
         this->isTerrain=true;
         vector<float> points;
+        vector<float> n;
+        vector<float> t;
         string s;
         //getline(file, s); // Ignora a primeira linha, que indica o tipo de figura
         getline(file, s);
@@ -39,12 +41,49 @@ private:
                 points.push_back(stof(umFloat));
             }
         }
+        
+        for (int i = 0; i < distinctPoints; i++) {
+            file.getline(contentor, 99);
+            int index = 0;
+            for (int x = 0; x<3; x++) {
+                char umFloat[50];
+                for (int n = 0; contentor[index] != ' ' && contentor[index] != '\0'; n++, index++) {
+                    umFloat[n] = contentor[index];
+                    umFloat[n+1] = '\0';
+                }
+                index++;
+                n.push_back(stof(umFloat));
+            }
+        }
+        
 
+        for (int i = 0; i < distinctPoints; i++) {
+            file.getline(contentor, 99);
+            int index = 0;
+            for (int x = 0; x<2; x++) {
+                char umFloat[50];
+                for (int n = 0; contentor[index] != ' ' && contentor[index] != '\0'; n++, index++) {
+                    umFloat[n] = contentor[index];
+                    umFloat[n+1] = '\0';
+                }
+                index++;
+                
+                t.push_back(stof(umFloat));
+            }
+        }
         this->indexsCount=points.size();
 
         glGenBuffers(1, &this->vertices);
         glBindBuffer(GL_ARRAY_BUFFER,this->vertices);
         glBufferData(GL_ARRAY_BUFFER,sizeof(float)*points.size(),points.data(),GL_STATIC_DRAW);
+
+        glGenBuffers(1, &(this->normals));
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,this->normals);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER,sizeof(float)*n.size(),n.data(),GL_STATIC_DRAW);
+
+        glGenBuffers(1, &(this->texCoords));
+        glBindBuffer(GL_ARRAY_BUFFER,this->texCoords);
+        glBufferData(GL_ARRAY_BUFFER, t.size() * sizeof(float), t.data(), GL_STATIC_DRAW);
     }
     
     
@@ -168,8 +207,15 @@ public:
         //glColor3f(42.f/255.f,157.f/255.f,143.f/255.f);
 
         if (this->isTerrain){
-            glBindBuffer(GL_ARRAY_BUFFER, vertices);
+            glBindBuffer(GL_ARRAY_BUFFER,this->vertices);
             glVertexPointer(3, GL_FLOAT, 0, 0);
+            
+            glBindBuffer(GL_ARRAY_BUFFER,this->normals);
+            glNormalPointer(GL_FLOAT,0,0);
+
+            glBindBuffer(GL_ARRAY_BUFFER, this->texCoords);
+	        glTexCoordPointer(2, GL_FLOAT, 0, 0);
+
             for (int i = 0; i < h ; i++) {
                 glDrawArrays(GL_TRIANGLE_STRIP, (w) * 2 * i, (w) * 2);
             }

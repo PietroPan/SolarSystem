@@ -7,7 +7,7 @@
     <rotate angle="-90" X="1" Y="0" Z="0" />
     <translate Z="1" />
         <models>
-            <model file="../models/bezierHeart.3d" />
+            <model file="../nheart.3d" texture="../redp.jpg"/>
         </models>
     </group>
 </scene>

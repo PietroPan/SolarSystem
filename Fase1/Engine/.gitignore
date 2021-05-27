@@ -2,6 +2,8 @@ cmake-build-debug/
 .idea/
 build/
 *.3d
+*.jpg
+*.png
 !models/*.3d
 *.xml
 !demos/*.xml
