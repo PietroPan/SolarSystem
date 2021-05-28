@@ -3,6 +3,7 @@ cmake-build-debug/
 build/
 *.3d
 *.jpg
+!textures/*.jpg
 *.png
 !models/*.3d
 *.xml

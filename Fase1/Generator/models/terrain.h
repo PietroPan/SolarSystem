@@ -11,10 +11,11 @@
 #include <IL/il.h>
 
 
-void drawGrid(int h,int w,vector<Point> &p,unsigned char* c);
-void pointsTerrain(char *, char *);
+void drawGrid(int h,int w,vector<Point> &p,unsigned char* c,float mult);
+void pointsTerrain(char *, char *,float mult);
 void cross(float *a, float *b, float *res);
 void normalize(float *a);
 void sub (float *a, float *b, float *res);
+void computeNormal(int i, int j,int w,unsigned char* c,vector<Point> &normal,float mult);
 
 #endif

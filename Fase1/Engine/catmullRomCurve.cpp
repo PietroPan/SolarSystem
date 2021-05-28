@@ -90,6 +90,14 @@ void cross(float *a, float *b, float *res) {
     res[2] = a[0]*b[1] - a[1]*b[0];
 }
 
+void cross2(float *a, float *b, float *res) {
+    res[0] = a[1]*b[2] - a[2]*b[1];
+    res[1] = a[2]*b[0] - a[0]*b[2];
+    res[2] = a[0]*b[1] - a[1]*b[0];
+
+}
+
+
 
 void normalize(float *a) {
 
@@ -99,6 +107,14 @@ void normalize(float *a) {
     a[2] = a[2]/l;
 }
 
+void buildRotMatrix(float *x, float *y, float *z, float *m) {
+
+	m[0] = x[0]; m[1] = x[1]; m[2] = x[2]; m[3] = 0;
+	m[4] = y[0]; m[5] = y[1]; m[6] = y[2]; m[7] = 0;
+	m[8] = z[0]; m[9] = z[1]; m[10] = z[2]; m[11] = 0;
+	m[12] = 0; m[13] = 0; m[14] = 0; m[15] = 1;
+}
+
 void catmullRomTranslate(float h,vector<vector<float>> points,float* yAxis){
     float pos[3];
     float deriv[3];
@@ -106,24 +122,30 @@ void catmullRomTranslate(float h,vector<vector<float>> points,float* yAxis){
     getGlobalCatmullRomPoint(h,pos,deriv,points);
 
     float x[3]={deriv[0],deriv[1],deriv[2]};
-    normalize(x);
     float z[3];
     cross(x,yAxis,z);
+    cross2(z,x,yAxis);
+
+    normalize(x);
     normalize(z);
-    cross(z,x,yAxis);
     normalize(yAxis);
+
     float f[4]={0,0,0,1};
     
-    float m[4][4];
-    for (int i=0;i<3;i++) {
+    float m[16];
+
+    buildRotMatrix(x,yAxis,z,m);
+    /*for (int i=0;i<3;i++) {
         m[i][0]=x[i];
         m[i][1]=yAxis[i];
         m[i][2]=z[i];
         m[i][3]=0.0f;
         m[3][i]=0.0f;
-    }
-    m[3][3]=1.0f;
+    }*/
+
+
+    //m[3][3]=1.0f;
 
     glTranslatef(pos[0],pos[1],pos[2]);
-    glMultMatrixf(*m);
+    glMultMatrixf(m);
 }

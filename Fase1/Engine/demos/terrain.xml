@@ -3,9 +3,12 @@
     <camera B="22.5" R="250" />
 </setup>
 <scene>
+    <lights>
+        <light type="DIRECTIONAL" dirX="0" dirY="1" dirZ="1"/>
+    </lights>
     <group>
         <models>
-            <model file="../nterrain.3d" texture="../relva.jpg" />
+            <model file="../nterrain.3d" texture="../relva.jpg" diffR="1" diffG="1" diffB="1" ambR="1" ambG="1" ambB="1" />
         </models>
     </group>
 </scene>

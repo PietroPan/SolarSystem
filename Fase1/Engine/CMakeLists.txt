@@ -7,6 +7,9 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 add_executable(Engine
 		figura3d.cpp
 		transformacao.cpp
+		texture.cpp
+		light.cpp
+		material.cpp
 		gereIncludes.h
 		tinyxml/tinyxml.cpp
         tinyxml/tinystr.cpp

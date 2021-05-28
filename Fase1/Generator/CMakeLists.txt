@@ -22,6 +22,8 @@ add_executable(generator
                models/plane.h
                models/bezier.cpp
                models/bezier.h
+			   models/torus.cpp
+               models/torus.h
                models/terrain.cpp
                models/terrain.h)
 

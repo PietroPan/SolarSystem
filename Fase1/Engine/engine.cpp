@@ -4,6 +4,9 @@
 
 #include "gereIncludes.h"
 #include "drawable.h"
+#include "texture.cpp"
+#include "material.cpp"
+#include "light.cpp"
 #include "figura3d.cpp"
 #include "transformacao.cpp"
 #include "camera.h"
@@ -15,6 +18,7 @@ bool axis = false;
 bool drawCurves=false;
 bool wPoints=false;
 bool stop=false;
+bool lines=false;
 
 int nTriangles=0;
 int timebase;
@@ -133,6 +137,9 @@ void processaNormalKeys(unsigned char key, int x, int y) {
         case 116:
             axis=!axis;
             break;
+        case 108://l
+            lines=!lines;
+            break;
         case 109://m
             drawCurves=!drawCurves;
             break;
@@ -221,9 +228,81 @@ void setupScene(TiXmlElement* sceneElement){
                 }
             }
             glutReshapeWindow(width,height);
-        }
+        } 
         t = t->NextSiblingElement();
     }
+}
+
+Group* setupLights (TiXmlElement* lights){
+    glEnable(GL_LIGHTING);
+    list<Drawable*> draws;
+    list<Group*> subgroups;
+    int n=0;
+    TiXmlElement *light = lights->FirstChildElement();
+    while (light != NULL){
+        Light* l = new Light();
+        TiXmlAttribute *attrib;
+        string name;
+        for (attrib = light->FirstAttribute(); attrib != NULL; attrib = attrib->Next()){
+            name = attrib->Name();
+            if (name=="type"){
+                l->initLight(n,attrib->Value());
+            } else if (name == "posX"){
+                l->setPosX(stof(attrib->Value()));
+            } else if (name == "posY"){
+                l->setPosY(stof(attrib->Value()));
+            } else if (name == "posZ"){
+                l->setPosZ(stof(attrib->Value()));
+            } else if (name == "dirX"){
+                l->setDirX(stof(attrib->Value()));
+            } else if (name == "dirY"){
+                l->setDirY(stof(attrib->Value()));
+            } else if (name == "dirZ"){
+                l->setDirZ(stof(attrib->Value()));
+            } else if (name == "cutOff"){
+                l->setCutOff(stof(attrib->Value()));
+            } else if (name == "exponent"){
+                l->setExponent(stof(attrib->Value()));
+            } else {
+                (l->notDefault());
+                    if (name == "ambR"){
+                        l->hasAmb();
+                        l->setAmbR(stof(attrib->Value()));
+                    } else if (name == "ambG"){
+                        l->hasAmb();
+                        l->setAmbG(stof(attrib->Value()));
+                    } else if (name == "ambB"){
+                        l->hasAmb();
+                        l->setAmbB(stof(attrib->Value()));
+                    } else if (name == "diffR"){
+                        l->hasDiff();
+                        l->setDiffR(stof(attrib->Value()));
+                    } else if (name == "diffG"){
+                        l->hasDiff();
+                        l->setDiffG(stof(attrib->Value()));
+                    } else if (name == "diffB"){
+                        l->hasDiff();
+                        l->setDiffB(stof(attrib->Value()));
+                    } else if (name == "specR"){
+                        l->hasSpec();
+                        l->setSpecR(stof(attrib->Value()));
+                    } else if (name == "specG"){
+                        l->hasSpec();
+                        l->setSpecG(stof(attrib->Value()));
+                    } else if (name == "specB"){
+                        l->hasSpec();
+                        l->setSpecB(stof(attrib->Value()));
+                    } 
+            }
+        }
+        light=light->NextSiblingElement();
+        n++;
+        l->setUp();
+        draws.emplace_back(l);
+    }
+
+    Group *res = new Group(draws, subgroups);
+    return res;
 }
 
 Group* defineGrupos (TiXmlElement* groupElement,unordered_map<string, Drawable*> &files) {
@@ -231,7 +310,7 @@ Group* defineGrupos (TiXmlElement* groupElement,unordered_map<string, Drawable*>
     list<Drawable*> draws;
     string file;
     string texture;
-
+    bool grp[6]={true,true,true,true,true,true};
     TiXmlElement *t = groupElement->FirstChildElement();
 
         while (t != NULL) {
@@ -246,7 +325,8 @@ Group* defineGrupos (TiXmlElement* groupElement,unordered_map<string, Drawable*>
 
                 attrib = t->FirstAttribute();
                 string name = attrib->Name();
-                if (name=="time"){
+                if (name=="time" && grp[4]){
+                    grp[4]=false;
                     curve=true;
                     time = stof(attrib->Value());
                     TiXmlElement *point = t->FirstChildElement("point");
@@ -280,7 +360,8 @@ Group* defineGrupos (TiXmlElement* groupElement,unordered_map<string, Drawable*>
                     }
                 }
 
-                else {
+                else if (grp[0]) {
+                    grp[0]=false;
                     for (attrib = t->FirstAttribute(); attrib != NULL; attrib = attrib->Next()) {
                         name = attrib->Name();
                         if (name == "X" || name == "axisX") {
@@ -308,7 +389,8 @@ Group* defineGrupos (TiXmlElement* groupElement,unordered_map<string, Drawable*>
                 for (attrib = t->FirstAttribute(); attrib != NULL; attrib = attrib->Next()) {
                     string name = attrib->Name();
 
-                    if (name == "angle") {
+                    if (name == "angle" && grp[1]) {
+                        grp[1]=false;
                         angle = stoi(attrib->Value());
 
                     } else if (name == "X" || name == "axisX") {
@@ -320,7 +402,8 @@ Group* defineGrupos (TiXmlElement* groupElement,unordered_map<string, Drawable*>
                     } else if (name == "Z" || name == "axisZ") {
                         z = stof(attrib->Value());
                         
-                    } else if (name == "time"){
+                    } else if (name == "time" && grp[5]){
+                        grp[5]=false;
                         rotating=true;
                         time = stof(attrib->Value());
                     }
@@ -329,7 +412,8 @@ Group* defineGrupos (TiXmlElement* groupElement,unordered_map<string, Drawable*>
                 Rotacao *rotation = new Rotacao(angle,time, x, y, z,rotating);
                 draws.emplace_back(rotation);
 
-            } else if (instruction == "scale") {
+            } else if (instruction == "scale" && grp[2]) {
+                grp[2]=false;
                 TiXmlAttribute *attrib;
                 float x = 0.0f, y = 0.0f, z = 0.0f;
 
@@ -350,7 +434,9 @@ Group* defineGrupos (TiXmlElement* groupElement,unordered_map<string, Drawable*>
                 Escala *scale = new Escala(x, y, z);
                 draws.emplace_back(scale);
 
-            } else if (instruction == "models") {
+            } else if (instruction == "models" && grp[3]) {
+                grp[3]=false;
+                Material* m=new Material();
                 TiXmlAttribute *attrib;
                 TiXmlElement *model = t->FirstChildElement("model");
                 while (model != NULL) {
@@ -358,8 +444,8 @@ Group* defineGrupos (TiXmlElement* groupElement,unordered_map<string, Drawable*>
                         string name = attrib->Name();
 
                         if (name == "file"){
+
                             bool e=false;
-                            cout << "here";
                             file = attrib->Value();
                             if (!files.count(file)){
                                 files.emplace(file,new Figura3d(pathDoXML + file));
@@ -368,15 +454,48 @@ Group* defineGrupos (TiXmlElement* groupElement,unordered_map<string, Drawable*>
                             texture = attrib->Value();
                             draws.emplace_back(new Texture(texture));
 
+                        } else if (name == "ambR"){
+                            m->setAmbR(stof(attrib->Value()));
+                        } else if (name == "ambG"){
+                            m->setAmbG(stof(attrib->Value()));
+                        } else if (name == "ambB"){
+                            m->setAmbB(stof(attrib->Value()));
+                        } else if (name == "diffR"){
+                            m->setDiffR(stof(attrib->Value()));
+                        } else if (name == "diffG"){
+                            m->setDiffG(stof(attrib->Value()));
+                        } else if (name == "diffB"){
+                            m->setDiffB(stof(attrib->Value()));
+                        } else if (name == "specR"){
+                            m->setSpecR(stof(attrib->Value()));
+                        } else if (name == "specG"){
+                            m->setSpecG(stof(attrib->Value()));
+                        } else if (name == "specB"){
+                            m->setSpecB(stof(attrib->Value()));
+                        } else if (name == "emissR"){
+                            m->setEmissR(stof(attrib->Value()));
+                        } else if (name == "emissG"){
+                            m->setEmissG(stof(attrib->Value()));
+                        } else if (name == "emissB"){
+                            m->setEmissB(stof(attrib->Value()));
+                        } else if (name == "shine"){
+                            m->setShineI(stoi(attrib->Value()));
                         }
+                        
+                        
                     }
-                    cout << file +"\n";
+                    draws.emplace_back(m);
                     draws.emplace_back(files.at(file));
                     model = model->NextSiblingElement("model");
                 }
 
             } else if (instruction == "group") {
                 subgroups.emplace_back(defineGrupos(t,files));
+            } else if(instruction == "lights") {
+
+            } else {
+                cout << "INVALID SCENE\n";
+                return NULL;
             }
             t = t->NextSiblingElement();
 
@@ -456,7 +575,11 @@ int main(int argc, char** argv)
 
         if(s) {
             unordered_map<string, Drawable*> files;
-
+            TiXmlElement * l = s->FirstChildElement("lights");
+            if (l){
+                grupos.emplace_back(setupLights(l));
+                cout << "LIGHTS\n";
+            }
             TiXmlElement * g = s->FirstChildElement("group");
             while (g) {
                 grupos.emplace_back(defineGrupos(g,files));
@@ -465,7 +588,7 @@ int main(int argc, char** argv)
         }
 
     } else {
-        cout << "Erro ao ler ficheiro XML.";
+        cout << "Erro ao ler ficheiro XML->";
     }
     /*
 if (string(e->Value())=="setup") {

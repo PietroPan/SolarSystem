@@ -184,6 +184,7 @@ void file2figure(ifstream &file) {
 public:
 
     Figura3d(string nomeFicheiro) {
+        cout << nomeFicheiro+"\n";
         ifstream infile(nomeFicheiro.c_str());
         bool b = infile.is_open();
         if (infile.is_open()) {
@@ -195,7 +196,12 @@ public:
 
     void draw() {
         extern int nTriangles;
-        //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        extern bool lines;
+        if (lines){
+            glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        } else {
+            glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);
+        }
         /*
         glBegin(GL_TRIANGLES);
 
@@ -235,5 +241,6 @@ public:
             glBindTexture(GL_TEXTURE_2D, 0);
         }
         nTriangles+=this->indexsCount/3;
+        glPopAttrib();
     }
 };

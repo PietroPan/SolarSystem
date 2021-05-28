@@ -13,6 +13,7 @@
 #include "models/sphere.h"
 #include "models/bezier.h"
 #include "models/terrain.h"
+#include "models/torus.h"
 #include <IL/il.h>
 
 using namespace std;

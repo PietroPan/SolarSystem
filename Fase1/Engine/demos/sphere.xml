@@ -2,9 +2,11 @@
     <iddleFunc on="false" />
 </setup>
 <scene>
+
     <group>
+        <scale X="1" Y="0.1" Z="1"/>
         <models>
-            <model file="../nsphere.3d" texture="../8k_sun.jpg" />
+            <model file="../textures/torus.3d" texture="../textures/saturn_ring.jpg" />
         </models>
     </group>
 </scene>

@@ -2,10 +2,12 @@
     <iddleFunc on="false" />
 </setup>
 <scene>
+    <lights>
+        <light type="DIRECTIONAL" dirX="0" dirY="0" dirZ="1"/>
+    </lights>
     <group>
-        <rotate angle="180" X="0" Y="0" Z="1" />
         <models>
-            <model file="../ncone.3d" texture="../corneto.jpg" />
+            <model file="../ncone.3d" diffR="1" diffG="0.25" diffB="1" ambR="1" ambG="0.25" ambB="1" specR="1" specG="0.25" specB="1" />
         </models>
     </group>
 </scene>

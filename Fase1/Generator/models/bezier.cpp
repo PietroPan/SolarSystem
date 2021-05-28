@@ -69,9 +69,6 @@ void calculatePatches(int tess,vector<Point> &iPoints,vector<vector<int>> &iPatc
     float ust[4];
     float vs[4];
     float vst[4];
-    float tan1[3]={0,0,0};
-    float tan2[3]={0,0,0};
-    float norm[3];
     for (int n=0;n<iPatches.size();n++){
         vector<vector<float>> rx = preCalculate('x',iPatches[n],iPoints);
         vector<vector<float>> ry = preCalculate('y',iPatches[n],iPoints);
@@ -89,7 +86,12 @@ void calculatePatches(int tess,vector<Point> &iPoints,vector<vector<int>> &iPatc
                 float interxt[4]={0};
                 float interyt[4]={0};
                 float interzt[4]={0};
-    
+                
+                float tan1[3]={0};
+                float tan2[3]={0};
+
+                float norm[3]={0};
+
                 float resx=0;
                 float resy=0;
                 float resz=0;
@@ -115,15 +117,21 @@ void calculatePatches(int tess,vector<Point> &iPoints,vector<vector<int>> &iPatc
 
 
                     tan1[0]+=interxt[x]*vs[x];
-                    tan1[0]+=interyt[x]*vs[x];
-                    tan1[0]+=interzt[x]*vs[x];
+                    tan1[1]+=interyt[x]*vs[x];
+                    tan1[2]+=interzt[x]*vs[x];
 
                     tan2[0]+=interx[x]*vst[x];
-                    tan2[0]+=intery[x]*vst[x];
-                    tan2[0]+=interz[x]*vst[x];
+                    tan2[1]+=intery[x]*vst[x];
+                    tan2[2]+=interz[x]*vst[x];
                 }
             p.push_back(Point(resx,resy,resz));
-            cross(tan1,tan2,norm);
+            cross(tan2,tan1,norm);
+            cout << tan1[0];
+            cout << "\n";
+            cout << tan1[1];
+            cout << "\n";
+            cout << tan1[2];
+            cout << "\n";
             normalize(norm);
             normals.push_back(Point(norm[0],norm[1],norm[2]));
             t.push_back(Point2D(u,v));
