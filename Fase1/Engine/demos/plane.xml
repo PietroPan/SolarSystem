@@ -4,7 +4,7 @@
 <scene>
     <group>
         <models>
-            <model file="../models/plane.3d" />
+            <model file="../models/plane.3d" texture="../textures/rug.jpg" />
         </models>
     </group>
 </scene>

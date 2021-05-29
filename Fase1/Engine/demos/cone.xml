@@ -3,11 +3,14 @@
 </setup>
 <scene>
     <lights>
-        <light type="DIRECTIONAL" dirX="0" dirY="0" dirZ="1"/>
+        <light type="DIRECTIONAL" dirX="1" dirY="0.3" dirZ="0"/>
+        <light type="DIRECTIONAL" dirX="1" dirY="0.3" dirZ="0"/>
     </lights>
     <group>
+        <rotate angle="180" X="0" Y="0" Z="1"/>
+        <translate X="0" Y="-4" Z="0"/>
         <models>
-            <model file="../ncone.3d" diffR="1" diffG="0.25" diffB="1" ambR="1" ambG="0.25" ambB="1" specR="1" specG="0.25" specB="1" />
+            <model file="../models/cone.3d" texture="../textures/iceCream.jpg" />
         </models>
     </group>
 </scene>

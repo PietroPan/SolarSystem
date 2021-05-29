@@ -1,0 +1,58 @@
+<setup>
+    <window width="1600" height="900" />
+    <iddleFunc on="true" />
+</setup>
+<scene>
+    <lights>
+        <light type="DIRECTIONAL" dirX="0" dirY="1" dirZ="1"/>
+    </lights>
+    <group>
+        <models>
+            <model file="../models/sskyBox.3d" texture="../textures/skyBox.jpg" emissR="1" emissG="1" emissB="1" />
+        </models>
+    </group>
+    <group>
+        <scale X="20" Y="20" Z="20" />
+        <translate X="20" Y="0" Z="0" />
+        <models>
+            <model file = "../models/terrain.3d" texture="../textures/soccerfield.jpg" diffR="1" diffG="1" diffB="1" ambR="1" ambG="1" ambB="1"/> 
+        </models>
+    </group>
+    <group>
+        <translate X="0" Y="2" Z="0"/>
+        <models>
+            <model file = "../models/sphereP.3d" texture="../textures/basketball.jpg"/>
+        </models>
+    </group>
+    <group>
+        <scale X="0.8" Y="0.8" Z="0.8"/>
+        <translate X="5" Y="2" Z="0"/>
+        <models>
+            <model file = "../models/sphereP.3d" texture="../textures/football.jpg"/>
+        </models>
+    </group>
+
+    <group>
+        <scale X="0.72" Y="0.72" Z="0.72"/>
+        <translate X="10.5" Y="2" Z="0"/>
+        <models>
+            <model file = "../models/sphereP.3d" texture="../textures/volleyball.jpg"/>
+        </models>
+    </group>
+
+    <group>
+        <scale X="0.3" Y="0.3" Z="0.3"/>
+        <translate X="6" Y="2" Z="14"/>
+        <models>
+            <model file = "../models/sphereP.3d" texture="../textures/tennisball.jpg"/>
+        </models>
+    </group>
+
+    <group>
+        <scale X="0.15" Y="0.15" Z="0.15"/>
+        <translate X="40" Y="2" Z="30"/>
+        <models>
+            <model file = "../models/sphereP.3d" texture="../textures/golfball.jpg"/>
+        </models>
+    </group>
+</scene>

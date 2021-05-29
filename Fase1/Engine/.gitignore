@@ -1,6 +1,7 @@
 cmake-build-debug/
 .idea/
 build/
+*.xcf
 *.3d
 *.jpg
 !textures/*.jpg

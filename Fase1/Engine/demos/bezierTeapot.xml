@@ -10,7 +10,7 @@
         <rotate angle="-90" X="1" Y="0" Z="0" />
         <translate Z="-1" />
         <models>
-            <model file="../nteapot.3d" diffR="1" diffG="0.25" diffB="1" ambR="1" ambG="0.25" ambB="1" specR="1" specG="0.25" specB="1" />
+            <model file="../models/bezierTeapot.3d" texture="../textures/clay.jpg" emissR="0.1" emissG="0.1" emissB="0.1" />
         </models>
     </group>
 </scene>

@@ -5,14 +5,13 @@
 <scene>
     <lights>
         <light type="DIRECTIONAL" dirX="1" dirY="0" dirZ="1" diffR="1" diffG="0" diffB="0" ambR="0.2" ambG="0.2" ambB="0.2" specR="1" specG="0" specB="0"/>
-        <!--light type="SPOT" dirX="0" dirY="0" dirZ="-1" posX="0" posY="0" posZ="12" diffR="0" diffG="1" diffB="0" ambR="0.2" ambG="0.2" ambB="0.2" specR="0" specG="1" specB="0" cutOff="5" exponent="128"/-->
         <light type="DIRECTIONAL" dirX="-1" dirY="0" dirZ="1" diffR="0" diffG="1" diffB="0" ambR="0.2" ambG="0.2" ambB="0.2" specR="0" specG="1" specB="0"/>
     </lights>
     <group>
     <rotate angle="-90" X="1" Y="0" Z="0" />
     <translate Z="1" />
         <models>
-            <model file="../nheart.3d" diffR="1" diffG="1" diffB="1" ambR="0.3" ambG="0.3" ambB="0.3" specR="1" specG="1" specB="1" />
+            <model file="../models/bezierHeart.3d" diffR="1" diffG="1" diffB="1" ambR="0.3" ambG="0.3" ambB="0.3" specR="1" specG="1" specB="1" />
         </models>
     </group>
 </scene>

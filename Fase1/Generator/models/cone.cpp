@@ -22,7 +22,7 @@ void basepointsC(float radius,int slices,vector<Point> &points,vector<Point> &no
 void middlepointsC(float radius,float height,int slices,int stacks,vector<Point> &points,vector<Point> &normals,vector<Point2D> &texcoords){
 	float ang=0,x1=0,y1=0,z1=0,theight=0,tradius=0,ia=stacks;
 	float alfac = (atan(height/radius));
-	float betac = 90-alfac;
+	float betac = (atan(radius/height));
 	float heightinc = height/stacks;
 	float radiusdec = heightinc*tan((M_PI/2)-alfac);
 	for (int i=0;i<stacks;i++,ia--){
@@ -37,6 +37,12 @@ void middlepointsC(float radius,float height,int slices,int stacks,vector<Point>
 			x1=sin(ang)*cos(betac);
 			y1=sin(betac);
 			z1=cos(ang)*cos(betac);
+			cout << x1;
+			cout << " ";
+			cout << y1;
+			cout << " ",
+			cout << z1;
+			cout << "\n";
 			normals.push_back(Point(x1,y1,z1));
 			texcoords.push_back(Point2D(sin(ang)*0.25f*(ia/float(stacks))+0.75f,cos(ang)*0.5f*(ia/float(stacks))+0.5f));
 		}

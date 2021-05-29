@@ -1,0 +1,10 @@
+<setup>
+    <iddleFunc on="false" />
+</setup>
+<scene>
+    <group>
+        <models>
+            <model file="../models/sskyBox.3d" texture="../textures/skyBox.jpg" />
+        </models>
+    </group>
+</scene>

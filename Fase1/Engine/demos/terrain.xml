@@ -4,11 +4,11 @@
 </setup>
 <scene>
     <lights>
-        <light type="DIRECTIONAL" dirX="0" dirY="1" dirZ="1"/>
+        <light type="DIRECTIONAL" dirX="0" dirY="0.8" dirZ="1"/>
     </lights>
     <group>
         <models>
-            <model file="../nterrain.3d" texture="../relva.jpg" diffR="1" diffG="1" diffB="1" ambR="1" ambG="1" ambB="1" />
+            <model file="../models/terrain.3d" texture="../textures/relva.jpg" diffR="1" diffG="1" diffB="1" ambR="1" ambG="1" ambB="1" />
         </models>
     </group>
 </scene>

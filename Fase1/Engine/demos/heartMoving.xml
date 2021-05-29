@@ -2,6 +2,9 @@
     <camera R="9" beta="0"/>
 </setup>
 <scene>
+    <lights>
+        <light type="DIRECTIONAL" dirX="0" dirY="0" dirZ="1"/>
+    </lights>
     <group>
     <rotate angle="-90" X="1" Y="0" Z="0" />
     <translate X="0" Y="0" Z="0.8" />
@@ -35,7 +38,7 @@
         <rotate angle="-90" X="0" Y="1" Z="0" />
         <rotate time="0.5" X="0" Y="0" Z="1" />
         <models>
-            <model file="../models/bezierHeart.3d" />
+            <model file="../models/bezierHeart.3d" texture="../textures/redc.jpg" />
         </models>
     </group>
     </group>

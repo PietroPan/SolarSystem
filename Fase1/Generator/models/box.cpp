@@ -15,10 +15,10 @@ void xzPlane(float x0,float y0,float z0,float xinc,float zinc,int steps,vector<P
 			if (y0<0){
 				normals.push_back(Point(0,-1,0));
 				if (rep) texPoints.push_back(Point2D(i%2,j%2));				
-					else texPoints.push_back(Point2D((float(i)/float(steps))*0.25+0.25,(1.0f/3.0f)-(float(j)/float(steps))*(1.0f/3.0f)));
+					else texPoints.push_back(Point2D((float(i)/float(steps-1))*0.25+0.25,(1.0f/3.0f)-(float(j)/float(steps-1))*(1.0f/3.0f)));
 			} else {
 				if (rep) texPoints.push_back(Point2D(i%2 ,j%2));					
-				else texPoints.push_back(Point2D( (float(i)/float(steps))*0.25+0.25 ,(float(j)/float(steps))*(1.0f/3.0f)+(2.0f/3.0f) ));
+				else texPoints.push_back(Point2D( (float(i)/float(steps-1))*0.25+0.25 ,(float(j)/float(steps-1))*(1.0f/3.0f)+(2.0f/3.0f) ));
 				normals.push_back(Point(0,1,0));
 			}
 		}
@@ -32,11 +32,11 @@ void zyPlane(float x0,float y0,float z0,float yinc,float zinc,int steps,vector<P
 			if (x0<0){
 				normals.push_back(Point(-1,0,0));
 				if (rep) texPoints.push_back(Point2D(i%2,j%2));
-				else texPoints.push_back(Point2D((float(j)/float(steps))*0.25+0.25,(float(i)/float(steps))*(1.0f/3.0f)+(1.0f/3.0f)));
+				else texPoints.push_back(Point2D((float(j)/float(steps-1))*0.25+0.25,(float(i)/float(steps-1))*(1.0f/3.0f)+(1.0f/3.0f)));
 			} else {
 				normals.push_back(Point(1,0,0));
 				if (rep) texPoints.push_back(Point2D(i%2,j%2));
-				else texPoints.push_back(Point2D(1-(float(j)/float(steps))*0.25,(float(i)/float(steps))*(1.0f/3.0f)+(1.0f/3.0f)));
+				else texPoints.push_back(Point2D(1-(float(j)/float(steps-1))*0.25,(float(i)/float(steps-1))*(1.0f/3.0f)+(1.0f/3.0f)));
 			}
 
 			
@@ -53,12 +53,12 @@ void yxPlane(float x0,float y0,float z0,float xinc,float yinc,int steps,vector<P
 			if (z0<0){
 				normals.push_back(Point(0,0,-1));
 				if (rep) texPoints.push_back(Point2D(i%2,j%2));
-				else texPoints.push_back(Point2D(0.25-(float(j)/float(steps))*0.25,(float(i)/float(steps))*(1.0f/3.0f)+(1.0f/3.0f)));
+				else texPoints.push_back(Point2D(0.25-(float(j)/float(steps-1))*0.25,(float(i)/float(steps-1))*(1.0f/3.0f)+(1.0f/3.0f)));
 				
 			} else {
 				normals.push_back(Point(0,0,1));
 				if (rep) texPoints.push_back(Point2D(i%2,j%2));
-				else texPoints.push_back(Point2D((float(j)/float(steps))*0.25+0.5,(float(i)/float(steps))*(1.0f/3.0f)+(1.0f/3.0f)));
+				else texPoints.push_back(Point2D((float(j)/float(steps-1))*0.25+0.5,(float(i)/float(steps-1))*(1.0f/3.0f)+(1.0f/3.0f)));
 			}
 		}
 	}

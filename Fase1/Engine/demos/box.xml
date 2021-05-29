@@ -2,12 +2,9 @@
     <iddleFunc on="false" />
 </setup>
 <scene>
-    <lights>
-        <light type="SPOT" dirX="0" dirY="-1" dirZ="0" posX="0" posY="20" posZ="0" cutOff="5"  />
-    </lights>
     <group>
         <models>
-            <model file="../nbox.3d" diffR="1" diffG="0.25" diffB="1" ambR="1" ambG="0.25" ambB="1" specR="1" specG="0.25" specB="1" />
+            <model file="../models/box.3d" texture="../textures/color.jpg" />
         </models>
     </group>
 </scene>
