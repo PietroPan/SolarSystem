@@ -12,10 +12,10 @@
         </models>
     </group>
     <group>
-        <scale X="20" Y="20" Z="20" />
-        <translate X="20" Y="0" Z="0" />
+        <translate X="0" Y="-0.5" Z="0" />
+        <scale X="20" Y="1" Z="20" />
         <models>
-            <model file = "../models/terrain.3d" texture="../textures/soccerfield.jpg" diffR="1" diffG="1" diffB="1" ambR="1" ambG="1" ambB="1"/> 
+            <model file = "../repbox.3d" texture="../textures/soccerfield.jpg" /> 
         </models>
     </group>
     <group>

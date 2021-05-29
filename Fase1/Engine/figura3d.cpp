@@ -22,11 +22,13 @@ private:
         //getline(file, s); // Ignora a primeira linha, que indica o tipo de figura
         getline(file, s);
         w=stoi(s);
+        cout << w;
+        cout << "sup\n";
         getline(file, s); 
         h=stoi(s);
         char contentor[100];
 
-        int distinctPoints = (w*2*h);
+        int distinctPoints = (w*2*(h-1));
         for (int i = 0; i < distinctPoints; i++) {
         file.getline(contentor, 99);
         int index = 0;
