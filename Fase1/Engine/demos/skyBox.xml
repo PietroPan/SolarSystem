@@ -3,6 +3,7 @@
 </setup>
 <scene>
     <group>
+        <scale X="0.3" Y="0.3" Z="0.3"/>
         <models>
             <model file="../models/sskyBox.3d" texture="../textures/skyBox.jpg" />
         </models>

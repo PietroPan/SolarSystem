@@ -10,12 +10,6 @@ void basepointsC(float radius,int slices,vector<Point> &points,vector<Point> &no
 			points.push_back(Point(x1,y1,z1));
 			normals.push_back(Point(0,-1,0));
 			texcoords.push_back(Point2D(sin(ang)*0.25f+0.25f,cos(ang)*0.5f+0.5f));
-			cout << "1 ";
-			cout << sin(ang)*0.5f+0.25f;
-			cout << "\n ";
-			cout << "2 ";
-			cout << cos(ang)+0.5f;
-			cout << "\n ";
 		}
 }
 
@@ -37,12 +31,6 @@ void middlepointsC(float radius,float height,int slices,int stacks,vector<Point>
 			x1=sin(ang)*cos(betac);
 			y1=sin(betac);
 			z1=cos(ang)*cos(betac);
-			cout << x1;
-			cout << " ";
-			cout << y1;
-			cout << " ",
-			cout << z1;
-			cout << "\n";
 			normals.push_back(Point(x1,y1,z1));
 			texcoords.push_back(Point2D(sin(ang)*0.25f*(ia/float(stacks))+0.75f,cos(ang)*0.5f*(ia/float(stacks))+0.5f));
 		}
@@ -51,33 +39,15 @@ void middlepointsC(float radius,float height,int slices,int stacks,vector<Point>
 
 void bottomIndexsC(int slices,vector<int> &indexs){
 	for(int i=1;i<slices+1;i++){
-		/*if (i==slices){
-			indexs.push_back(1);
-			indexs.push_back(i);
-			indexs.push_back(0);
-		} else {*/
 			indexs.push_back(i+1);
 			indexs.push_back(i);
 			indexs.push_back(0);
-		//}
 	}
 }
 
 void middleIndexsC(int slices,int stacks,vector<int> &indexs){
 	for (int i=0;i<stacks-1;i++){
 		for (int j=0;j<slices;j++){
-			/*if (j==(slices-1)){
-				if (i==0){
-
-				}
-				indexs.push_back((i*slices)+j+slices+1);
-				indexs.push_back((i*slices)+j+1);
-				indexs.push_back((i*slices)+j+2);
-
-				indexs.push_back((i*slices)+j+1);
-				indexs.push_back((i*slices)+1);
-				indexs.push_back((i*slices)+j+2);
-			} else {*/
 				indexs.push_back((i*(slices+1))+j+slices+1+slices+2);
 				indexs.push_back((i*(slices+1))+j+slices+2);
 				indexs.push_back((i*(slices+1))+j+slices+1+slices+3);
@@ -85,7 +55,6 @@ void middleIndexsC(int slices,int stacks,vector<int> &indexs){
 				indexs.push_back((i*(slices+1))+j+slices+2);
 				indexs.push_back((i*(slices+1))+j+slices+3);
 				indexs.push_back((i*(slices+1))+j+slices+1+slices+3);
-		//	}
 		}
 	}
 }
@@ -93,15 +62,9 @@ void middleIndexsC(int slices,int stacks,vector<int> &indexs){
 void topIndexsC(int slices,int stacks,vector<int> &indexs){
 	int npoints = (slices+1)*(stacks+1)+1;
 	for(int i=0;i<slices;i++){
-		/*if (i==slices){
-			indexs.push_back(npoints);
-			indexs.push_back(npoints-1-slices+i);
-			indexs.push_back(npoints-1-slices);
-		} else {*/
 			indexs.push_back(npoints);
 			indexs.push_back(npoints-1-slices+i);
 			indexs.push_back(npoints-slices+i);
-		//}
 	}
 }
 

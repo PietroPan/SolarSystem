@@ -126,12 +126,6 @@ void calculatePatches(int tess,vector<Point> &iPoints,vector<vector<int>> &iPatc
                 }
             p.push_back(Point(resx,resy,resz));
             cross(tan2,tan1,norm);
-            cout << tan1[0];
-            cout << "\n";
-            cout << tan1[1];
-            cout << "\n";
-            cout << tan1[2];
-            cout << "\n";
             normalize(norm);
             normals.push_back(Point(norm[0],norm[1],norm[2]));
             t.push_back(Point2D(u,v));

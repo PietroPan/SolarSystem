@@ -52,8 +52,8 @@ void computeNormal(int i, int j,int w,unsigned char* c,vector<Point> &normal,flo
 
 void drawGrid(int h,int w,vector<Point> &p,unsigned char* c,vector<Point> &n,vector<Point2D> &t,float mult){
 	float ih=-((float(h)-1)/2),iw=-((float(w)-1)/2);//posição do ponto incial
-	for (int i=0;i<h-1;i++){
-		for (int j=0;j<w;j++){
+	for (int i=1;i<h-2;i++){
+		for (int j=1;j<w-1;j++){
             p.push_back(Point(ih+j,(c[j+(w*i)])*mult,iw+i));
 			t.push_back(Point2D(j,i));
 			computeNormal(i,j,w,c,n,mult);

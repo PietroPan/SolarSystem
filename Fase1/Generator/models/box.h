@@ -5,11 +5,11 @@
 #include <math.h>
 #include "../utils/point.h"
 
-void xzPlane(float x0,float y0,float z0,float xinc,float zinc,int steps,vector<Point> &points,vector<Point> &normals,vector<Point2D> &texPoints,bool rep);
+void xzPlane(float x0,float y0,float z0,float xinc,float zinc,int steps,vector<Point> &points,vector<Point> &normals,vector<Point2D> &texPoints,bool rep,bool invert);
 
-void zyPlane(float x0,float y0,float z0,float yinc,float zinc,int steps,vector<Point> &points,vector<Point> &normals,vector<Point2D> &texPoints,bool rep);
+void zyPlane(float x0,float y0,float z0,float yinc,float zinc,int steps,vector<Point> &points,vector<Point> &normals,vector<Point2D> &texPoints,bool rep,bool invert);
 
-void yxPlane(float x0,float y0,float z0,float xinc,float yinc,int steps,vector<Point> &points,vector<Point> &normals,vector<Point2D> &texPoints,bool rep);
+void yxPlane(float x0,float y0,float z0,float xinc,float yinc,int steps,vector<Point> &points,vector<Point> &normals,vector<Point2D> &texPoints,bool rep,bool invert);
 
 void calcInds(int i0,int steps,vector<int> &indexs);
 

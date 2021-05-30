@@ -16,6 +16,8 @@ add_executable(generator
                models/box.h
                models/cone.cpp
                models/cone.h
+			   models/cilinder.cpp
+               models/cilinder.h
                models/sphere.cpp
                models/sphere.h
                models/plane.cpp

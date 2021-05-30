@@ -1,0 +1,54 @@
+<setup>
+    <iddleFunc on="false" />
+</setup>
+<scene>
+    <lights>
+        <light type="SPOT" posX="30" posY="30" posZ="30" dirX="-1" dirY="-1" dirZ="-1" cutOff="90"/>
+    </lights>
+    <group>
+        <models>
+            <model file="../models/invertedBox.3d" texture="../textures/wood.jpg" emissR="0.2" emissG="0.2" emissB="0.2"  />
+        </models>
+    </group>
+    <group>
+        <translate X="-12" Y="-24.5" Z="-19" />
+        <scale X="0.25" Y="0.25" Z="0.25"/>
+        <models>
+            <model file = "../models/torus.3d" diffR="0.8" diffG="0" diffB="0" specR="0.8" specG="0" specB="0" />
+        </models>
+    </group>
+    <group>
+        <translate X="-21" Y="-25" Z="-19" />
+        <models>
+            <model file = "../models/scone.3d"  diffR="0.1" diffG="0.35" diffB="1" specR="0.1" specG="0.35" specB="1"/>
+        </models>
+    </group>
+    <group>
+        <scale X="0.8" Y="0.8" Z="0.8"/>
+        <translate X="-21" Y="-31.5" Z="-28" />
+        <rotate angle="-90" X="1" Y="0" Z="0" />
+        <group>
+            <rotate angle="45" X="0" Y="0" Z="1" />
+            <models>
+                <model file = "../models/bezierTeapot.3d" diffR="1" diffG="0.5" diffB="0.1" specR="1" specG="0.5" specB="0.1" />
+            </models>
+        </group>
+    </group>
+    <group>
+        <translate X="-21" Y="-24" Z="-15" />
+        <models>
+            <model file = "../models/ssphere.3d" diffR="0" diffG="0.7" diffB="0" specR="0" specG="0.7" specB="0"/>
+        </models>
+    </group>
+    <group>
+        <translate X="-15" Y="-24.2" Z="-15" />
+        <scale X="0.15" Y="0.15" Z="0.15"/>
+        <rotate angle="90" Z="1"/>
+        <group>
+            <rotate angle="40" X="1"/>
+            <models>
+                <model file = "../models/cilinder.3d" diffR="1" diffG="1" diffB="0" specR="1" specG="1" specB="0"/>
+            </models>
+        </group>
+    </group>
+</scene>

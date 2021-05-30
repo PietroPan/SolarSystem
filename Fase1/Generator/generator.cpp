@@ -77,11 +77,17 @@ int main(int argc, char **argv) {
         int slices=stoi(argv[4]);
         int stacks=stoi(argv[5]);
         if (radius>0.0f&&height>0.0f&&slices>=0&&stacks>=0) pointsCone(radius,height,slices,stacks,argv[6]);
+    } else if (strcmp(argv[1], "cilinder") == 0) {
+        float radius=stof(argv[2]);
+        float height=stof(argv[3]);
+        int slices=stoi(argv[4]);
+        int stacks=stoi(argv[5]);
+        if (radius>0.0f&&height>0.0f&&slices>=0&&stacks>=0) pointsCilinder(radius,height,slices,stacks,argv[6]);
     } else if (strcmp(argv[1], "torus") == 0) {
         float inRadius=stof(argv[2]);
         float outRadius=stof(argv[3]);
-        int sides=stoi(argv[4]);
-        int rings=stoi(argv[5]);
+        int rings=stoi(argv[4]);
+        int sides=stoi(argv[5]);
         if (inRadius>0.0f&&outRadius>0.0f&&sides>=0&&rings>=0) pointsTorus(inRadius,outRadius,sides,rings,argv[6]);
     } else if (strcmp(argv[1],"bezierPatch") == 0) {
         int tess=stoi(argv[3]);

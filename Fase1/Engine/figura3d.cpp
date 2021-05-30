@@ -28,7 +28,7 @@ private:
         h=stoi(s);
         char contentor[100];
 
-        int distinctPoints = (w*2*(h-1));
+        int distinctPoints = ((w-2)*2*(h-3));
         for (int i = 0; i < distinctPoints; i++) {
         file.getline(contentor, 99);
         int index = 0;
@@ -224,8 +224,8 @@ public:
             glBindBuffer(GL_ARRAY_BUFFER, this->texCoords);
 	        glTexCoordPointer(2, GL_FLOAT, 0, 0);
 
-            for (int i = 0; i < h ; i++) {
-                glDrawArrays(GL_TRIANGLE_STRIP, (w) * 2 * i, (w) * 2);
+            for (int i = 1; i < h-2 ; i++) {
+                glDrawArrays(GL_TRIANGLE_STRIP, (w-2) * 2 * i, (w-2) * 2);
             }
         } else {
             glBindBuffer(GL_ARRAY_BUFFER,this->vertices);

@@ -1,0 +1,14 @@
+<setup>
+    <iddleFunc on="false" />
+</setup>
+<scene>
+    <lights>
+        <light type="DIRECTIONAL" dirX="1" dirY="0.3" dirZ="0"/>
+        <light type="DIRECTIONAL" dirX="1" dirY="0.3" dirZ="0"/>
+    </lights>
+    <group>
+        <models>
+            <model file="../models/cilinder.3d" texture="../textures/OilDrum.jpg"/>
+        </models>
+    </group>
+</scene>

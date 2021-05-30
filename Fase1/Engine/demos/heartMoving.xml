@@ -3,7 +3,9 @@
 </setup>
 <scene>
     <lights>
-        <light type="DIRECTIONAL" dirX="0" dirY="0" dirZ="1"/>
+        <light type="POINT" dirX="0" dirY="0" dirZ="0"/>
+        <light type="POINT" dirX="0" dirY="0" dirZ="0"/>
+        <light type="POINT" dirX="0" dirY="0" dirZ="0"/>
     </lights>
     <group>
     <rotate angle="-90" X="1" Y="0" Z="0" />

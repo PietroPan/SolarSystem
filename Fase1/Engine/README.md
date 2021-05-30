@@ -24,3 +24,4 @@
  t            | toggles xyz axis
  m            | toggles rendering of catmull-rom curves
  n            | changes the type of rendering of catmull-rom curves (points or lines)
+ l            | changes between GL_LINES and GL_FILL

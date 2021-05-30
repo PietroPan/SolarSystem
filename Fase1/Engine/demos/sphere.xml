@@ -4,8 +4,6 @@
 <scene> 
     <lights>
         <light type="DIRECTIONAL" dirX="1" dirY="1" dirZ="0"/>
-        <light type="DIRECTIONAL" dirX="1" dirY="1" dirZ="0"/>
-        <light type="DIRECTIONAL" dirX="1" dirY="1" dirZ="0"/>
     </lights>
     <group>
         <scale X="5" Y="5" Z="5"/>

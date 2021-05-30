@@ -1,0 +1,25 @@
+<setup>
+    <iddleFunc on="false" />
+    <camera B="22.5" R="250" />
+</setup>
+<scene>
+    <lights>
+        <light type="DIRECTIONAL" dirX="0" dirY="0.2" dirZ="1"/>
+    </lights>
+    <group>
+        <models>
+            <model file="../models/sskyBox.3d" texture="../textures/stars.jpg" emissR="1" emissG="1" emissB="1" />
+        </models>
+    </group>
+    <group>
+        <models>
+            <model file="../models/sea.3d" texture="../textures/relva.jpg" diffR="1" diffG="1" diffB="1" ambR="1" ambG="1" ambB="1" />
+        </models>
+    </group>
+    <group>
+        <translate X="0" Y="50" Z="0"/>
+        <models>
+            <model file = "../models/hill.3d" texture="../textures/sea.jpg" diffR="1" diffG="1" diffB="1" ambR="1" ambG="1" ambB="1"/> 
+        </models>
+    </group>
+</scene>

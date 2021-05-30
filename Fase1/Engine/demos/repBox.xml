@@ -1,0 +1,10 @@
+<setup>
+    <iddleFunc on="false" />
+</setup>
+<scene>
+    <group>
+        <models>
+            <model file="../models/repBox.3d" texture="../textures/wood.jpg" />
+        </models>
+    </group>
+</scene>

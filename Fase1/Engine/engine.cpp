@@ -529,6 +529,7 @@ int main(int argc, char** argv)
     glEnableClientState(GL_NORMAL_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
     glEnable(GL_TEXTURE_2D);
+    glEnable(GL_NORMALIZE);
 
     glutDisplayFunc(renderScene);
     glutIdleFunc(renderScene);

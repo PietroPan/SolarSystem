@@ -8,6 +8,7 @@
 #include <math.h>
 #include <limits>
 #include "models/box.h"
+#include "models/cilinder.h"
 #include "models/cone.h"
 #include "models/plane.h"
 #include "models/sphere.h"

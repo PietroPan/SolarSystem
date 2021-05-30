@@ -1,15 +1,15 @@
 #include "torus.h"
 
 void pointsT(float inRadius,float outRadius,int sides,int rings,vector<Point> &points,vector<Point> &normals,vector<Point2D> &texPoints){
-	float ringAng=0,sideAng=0,xc=0,yc=0,zc=0;
+	float ringAng=0,sideAng=0,x=0,y=0,z=0;
     for (int i=0; i<=sides; i++){
+        sideAng= (-M_PI/2) + (i * 2 * M_PI / sides);
 		for (int j=0; j<=rings; j++){
-            float s = i % sides + 0.5;
-            float t = j % (rings + 1);
+            ringAng=j * 2 * M_PI / rings;
 
-            float x = (outRadius + inRadius * cos(s * 2 * M_PI / sides)) * cos(t * 2 * M_PI / rings);
-            float y = (outRadius + inRadius * cos(s * 2 * M_PI / sides)) * sin(t * 2 * M_PI / rings);
-            float z = inRadius * sin(s * 2 * M_PI / sides);
+            x = (outRadius + inRadius * cos(sideAng)) * cos(ringAng);
+            y = (outRadius + inRadius * cos(sideAng)) * sin(ringAng);
+            z = inRadius * sin(sideAng);
 
             points.push_back(Point(x,z,y));
             float n[3];
