@@ -90,6 +90,33 @@ public:
         }
     }
 
+    void moveFPSRL(int dir) {
+        if (mode == FPS) {
+            float posicao[3], destination[3];
+            pos(posicao);
+
+            destination[2] = posicao[2] + (dir*step) * cos(beta2) * sin(alpha2);
+            destination[1] = posicao[1] + (dir*step) * sin(beta2);
+            destination[0] = posicao[0] + (dir*step) * cos(beta2) * cos(alpha2);
+
+            radius = sqrt(pow(destination[0], 2)
+                    + pow(destination[1], 2)
+                    + pow(destination[2], 2));
+
+            beta = asin(destination[1] / radius);
+            if (beta >= M_PI / 2) {
+                beta = (M_PI / 2) - 0.001f;
+            } else if (beta <= -M_PI / 2) {
+                beta = 0.001f - (M_PI / 2);
+            }
+            alpha = acos(destination[2] / (radius * cos(beta)));
+            if (destination[0] < 0) {
+                //alpha += 2*(M_PI - alpha);
+                alpha = -alpha;
+            }
+        }
+    }
+
     void zoom(float value) {
         if (mode==EXPLORER){
             radius += value;

@@ -18,7 +18,9 @@
  c            | changes camera between fps and centered
  mouse wheel  | zooms camera (centered)
  w            | moves camera foward (fps)
+ a            | moves camera left (fps)
  s            | moves camera backwards (fps)
+ d            | moves camera right (fps)
  q            | increases camera speed (fps)
  e            | decreases camera speed (fps)
  t            | toggles xyz axis

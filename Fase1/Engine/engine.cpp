@@ -128,6 +128,12 @@ void processaNormalKeys(unsigned char key, int x, int y) {
         case 115:
             camera->moveFPS(-1);
             break;
+        case 97: //a
+            camera->moveFPSRL(1);
+            break;
+        case 100: //a
+            camera->moveFPSRL(-1);
+            break;
         case 113:
             camera->incStep(1.0f);
             break;
