@@ -452,7 +452,7 @@ Group* defineGrupos (TiXmlElement* groupElement,unordered_map<string, Drawable*>
                             }
                         } else if (name == "texture"){
                             texture = attrib->Value();
-                            draws.emplace_back(new Texture(texture));
+                            draws.emplace_back(new Texture(pathDoXML + texture));
 
                         } else if (name == "ambR"){
                             m->setAmbR(stof(attrib->Value()));
