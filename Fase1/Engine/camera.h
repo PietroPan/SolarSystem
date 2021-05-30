@@ -96,7 +96,7 @@ public:
             pos(posicao);
 
             destination[2] = posicao[2] + (dir*step) * cos(beta2) * sin(alpha2);
-            destination[1] = posicao[1] + (dir*step) * sin(beta2);
+            destination[1] = posicao[1];
             destination[0] = posicao[0] + (dir*step) * cos(beta2) * cos(alpha2);
 
             radius = sqrt(pow(destination[0], 2)
