@@ -1,17 +1,20 @@
-# Make
-    Use cmake on CMakeLists.txt to a build directory
+# Engine
 
-# Run
-    Runnable takes the path to a xml file as argument
+The [OpenGL](https://www.opengl.org//), [glew](http://glew.sourceforge.net/), [cmake](https://www.opengl.org//), [freeglut](http://freeglut.sourceforge.net/) and [devil](http://openil.sourceforge.net/) packages are required!
 
-## Inputs Examples (if runnable is in a build dir)
+## Make
+
+    cmake CMakeLists.txt
+    make
+
+## Run Examples
     ./Engine ../demos/solar_system.xml
     ./Engine ../demos/plane.xml
     ./Engine ../demos/box.xml
     ./Engine ../demos/cone.xml
     ./Engine ../demos/shpere.xml
 
-# Engine Controls
+## Engine Controls
  Key          | Effect
  -------------|----------------------------------------
  mouse        | moves camera
